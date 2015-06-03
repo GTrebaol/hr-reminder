@@ -71,7 +71,7 @@ Content-Type: application/json; charset=utf-8
 
 #### Utilisateur
 
-- **GET** an 'utilisateur' by its ID
+- **GET** an 'utilisateur' by its id
     ###### Request
         ```
         GET /utilisateur/{id}
