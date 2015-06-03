@@ -69,7 +69,9 @@ Content-Type: application/json; charset=utf-8
 
 ### Endpoints
 
+
 #### Utilisateur
+
 
 - **GET** an 'utilisateur' by its id
     ###### Request
