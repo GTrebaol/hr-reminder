@@ -89,6 +89,27 @@ Content-Type: application/json; charset=utf-8
             ...
         }
         ```
+#### Utilisateur
+
+- **GET** an 'utilisateur' by its id
+    ###### Request
+        ```
+        GET /utilisateur/{id}
+        ```
+    ###### Response
+        ```
+        HTTP/1.1 200 OK
+        Content-Type: application/json; charset=utf-8
+        {
+            id : 15,
+            nom : “Le Gallois”,
+            prenom : “Perceval”,
+            telephone :  0298475124,
+            email : “le_gros_faisan@au-sud.com”,
+            ...
+        }
+        ```
+
 
 #### Rappel
 
