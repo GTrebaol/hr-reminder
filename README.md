@@ -86,7 +86,7 @@ Content-Type: application/json; charset=utf-8
             id : 15,
             nom : “Le Gallois”,
             prenom : “Perceval”,
-            telephone :  0298475124,
+            telephone :  “0298475124”,
             email : “le_gros_faisan@au-sud.com”,
             ...
         }
@@ -103,10 +103,10 @@ Content-Type: application/json; charset=utf-8
         Content-Type: application/json; charset=utf-8
         {
             id : 15,
-            nom : “Le Gallois”,
-            prenom : “Perceval”,
-            telephone :  0298475124,
-            email : “le_gros_faisan@au-sud.com”,
+            nom : “Karadoc”,
+            prenom : “Croc”,
+            telephone :  “0298475124”,
+            email : “le_graal_par_ci@le_graal_par_la.kmltt”,
             ...
         }
         ```
