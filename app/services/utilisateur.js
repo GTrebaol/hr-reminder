@@ -25,6 +25,10 @@ UtilisateurService = function (models) {
         return new models.utilisateur.fetchAll();
       }
 
+      utilisateur.findByName = function(name){
+        return new models.utilisateur.({nom: name}).fetch({withRelated:['rappels']});
+      }
+
     return utilisateur;
 
 };
