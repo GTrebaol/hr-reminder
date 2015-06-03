@@ -92,25 +92,27 @@ Content-Type: application/json; charset=utf-8
 
 #### Rappel
 
-- **GET** the 'rappel' by its id
+#### Utilisateur
+
+- **GET** an 'utilisateur' by its id
 
     ###### Request
         ```
-        GET /rappel/{id}
+        GET /utilisateur/{id}
         ```
     ###### Response
         ```
         HTTP/1.1 200 OK
         Content-Type: application/json; charset=utf-8
         {
-            id : 150,
-            date_rappel : “2015-05-05”,
-            date_rdv : “2015-06-05”,
-            commentaire : “Salut, Sire. Je trouve qu’il fait beau, mais encore frais, mais beau !”,
-            utilisateur_id : 15
+            id : 15,
+            nom : “Le Gallois”,
+            prenom : “Perceval”,
+            telephone :  0298475124,
+            email : “le_gros_faisan@au-sud.com”,
+            ...
         }
         ```
-
 
 - **GET** the upcoming 'rappels'
     ###### Request
