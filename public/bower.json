@@ -1,0 +1,27 @@
+{
+  "name": "Supraball_League",
+  "version": "0.0.0",
+  "authors": [
+    "Gwenaël Trebaol <s4ngoku@gmail.com>"
+  ],
+  "description": "Supraball website handling the leagues",
+  "main": "/public/index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "~1.3.11",
+    "angular": "~1.3.11",
+    "underscore": "~1.7.0",
+    "restangular": "~1.4.0",
+    "angular-translate": "~2.6.1",
+    "angular-translate-loader-static-files": "~2.6.1",
+    "bootstrap": "~3.3.2"
+  }
+}

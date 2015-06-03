@@ -1,0 +1,71 @@
+/* Supraball League Stylesheet */
+
+/* fonts */
+@font-face{
+    font-family: FrutigerLTStd-Roman;
+    src : url("../fonts/FrutigerLTStd-Roman.woff");
+}
+@font-face{
+    font-family: FrutigerLTStd-Bold;
+    src : url("../fonts/FrutigerLTStd-Bold.woff");
+}
+/* end fonts */
+
+body {
+    font-family: FrutigerLTStd-Roman;
+}
+
+
+/* Top menu style */
+#navbar-main {
+    background-color: #40516a;
+    border-radius: 2px;
+    border: none;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    font-family: FrutigerLTStd-Bold;
+    font-size: 1.5em;
+    margin-bottom: 0;
+    padding-left: 0px;
+}
+
+#navbar-main  > .navbar-nav > li:first-child > a {
+    border-top-left-radius: 2px;
+}
+
+#navbar-main  > .navbar-nav > li > a {
+    color: #fff;
+}
+
+#navbar-main  > .navbar-nav > li > a:hover {
+    background-color: #5B6E89;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    color: #fff;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+#navbar-main  > .navbar-nav > .active > a {
+    background-color: #768aa8;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    color: #ffff00;
+}
+#navbar-main  > .navbar-nav > .active > a:active {
+    background-color: #768aa8;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    color: #ffff00;
+}
+#navbar-main  > .navbar-nav > .active > a:hover {
+    background-color: #889FC1;
+    color: #ffff00;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}

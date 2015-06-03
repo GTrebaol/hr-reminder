@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="hrReminder">
+    <head>
+        <base href="/"/>
+        <meta charset="utf-8">
+        <title>HR Reminder</title>
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="assets/css/style.css"/>
+    </head>
+    <body ng-controller = "ReminderCtrl as main">
+        <div class="menu-container">
+            <div ng-include src="'partials/top-menu.html'"></div>
+        </div>
+
+        <div ng-view></div>
+        <!-- In production use:
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+        -->
+        <!-- libraries -->
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/underscore/underscore.js"></script>
+        <script src="bower_components/restangular/dist/restangular.js"></script>
+        <script src="bower_components/angular-translate/angular-translate.min.js"></script>
+        <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+        <!-- supraball sources -->
+        <script src="app/app.js"></script>
+        <script src="app/services/ReminderService.js"></script>
+        <script src="app/controllers/mainController.js"></script>
+        <script src="app/filters/filters.js"></script>
+
+    </body>
+</html>
