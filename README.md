@@ -93,6 +93,7 @@ Content-Type: application/json; charset=utf-8
 #### Rappel
 
 - **GET** the 'rappel' by its id
+
     ###### Request
         ```
         GET /rappel/{id}
