@@ -7,21 +7,22 @@ var ReminderConfig = function ($locationProvider, $routeProvider, $translateProv
     RestangularProvider.setBaseUrl("http://localhost:8080/api");
 
     $routeProvider.when('/users/', {
-        templateUrl: 'partials/utilisateur/list.html',
+        templateUrl: '/partials/utilisateur/list.html',
         controller: 'UserCtrl'
     });
 
 
-    $routeProvider.when('/', {
-        controller: 'ReminderCtrl'
-    });
-
     $routeProvider.when('/rappel/:id/', {
-        templateUrl: 'partials/rappel/view.html',
+        templateUrl: '/partials/rappel/view.html',
         controller: 'RappelCtrl'
     });
 
-    $routeProvider.otherwise({redirectTo: '/'});
+    $routeProvider.otherwise({
+      redirectTo: '/',
+      templateUrl: '/partials/commons/home.html',
+      controller: 'ReminderCtrl'
+      });
+
     $locationProvider.html5Mode(true);
 
 

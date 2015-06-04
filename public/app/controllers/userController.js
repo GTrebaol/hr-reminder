@@ -5,14 +5,13 @@
 *
 *
 */
-var UserCtrl = function($scope, $modal, ReminderService){
+var UserCtrl = function($scope, $modal, UtilisateurService){
 
-  $scope.utilisateurs = ReminderService.findAllUtilisateurs();
-  console.log(JSON.stringify($scope.utilisateurs));
+  $scope.utilisateurs = UtilisateurService.findAllUtilisateurs();
 
 }
 
 
-UserCtrl.$inject = ['$scope', '$modal', 'ReminderService']
+UserCtrl.$inject = ['$scope', '$modal', 'UtilisateurService']
 
 angular.module('hrReminder').controller('UserCtrl', UserCtrl);

@@ -1,3 +1,5 @@
 <div >
-  <li ng-repeat="rappel in allUpcomingRappels"></li>
+  <li ng-repeat="rappel in allUpcomingRappels">
+    {{ 'reminder'|translate }}Rappel le : {{::rappel.date_rappel | date:'dd/MM/yyyy'}} pour {{::rappel.utilisateur.nom}} {{::rappel.utilisateur.prenom}}
+  </li>
 </div>

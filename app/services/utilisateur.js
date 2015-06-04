@@ -29,6 +29,10 @@ UtilisateurService = function (models) {
         return new models.utilisateur({nom: name}).fetch({withRelated:['rappels']});
       }
 
+      utilisateur.findAllByDiscr = function(discr){
+        return new models.utilisateur({discr: discr}).fetchAll();
+      }
+
     return utilisateur;
 
 };

@@ -27,7 +27,7 @@ RappelService = function (models, dateService) {
     var dateToday = service.getDateToday();
     return new models.rappel().query(function(qb){
       qb.where('date_rappel', '<=', dateOffset).andWhere('date_rappel', '>=', dateToday);
-    }).fetchAll();
+    }).fetchAll({withRelated:'utilisateur'});
   }
 
   rappel.findAllForToday = function(){
