@@ -53,6 +53,7 @@ CREATE TABLE IF NOT EXISTS `reminder`.`rappel` (
   `date_rappel` DATE NOT NULL,
   `date_rdv` DATE NULL,
   `commentaire` VARCHAR(150) NULL,
+  `traite` TINYINT NOT NULL,
   `utilisateur_id` INT NOT NULL,
   PRIMARY KEY (`id`, `utilisateur_id`),
   INDEX `fk_rappel_utilisateur1_idx` (`utilisateur_id` ASC),

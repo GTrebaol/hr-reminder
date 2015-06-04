@@ -20,11 +20,11 @@ module.exports.load = function (app) {
   */
   app.get('/api/utilisateur/:id', function (req, res) {
     console.log("Routes -  Utilisateur::findById");
-    services.utilisateur.findById(req.params.id).then(function (data) {
+    services.utilisateur.findById(req.params.id, true).then(function (data) {
       return res.json(data);
     }).catch(function (error) {
           console.log(error);
-          //TODO implement error handler;
+          res.json(500, error);
     });
   })
 
@@ -37,7 +37,7 @@ module.exports.load = function (app) {
       return res.json(data);
     }).catch(function (error) {
           console.log(error);
-          //TODO implement error handler;
+          res.json(500, error);
     });
   })
 
@@ -50,8 +50,19 @@ module.exports.load = function (app) {
       return res.json(data);
     }).catch(function (error) {
           console.log(error);
-          //TODO implement error handler;
+          res.json(500, error);
     });
   })
+
+
+  app.put('/api/utilisateur/', function (req, res) {
+      console.log("Routes - Utilisateur::update");
+      services.utilisateur.save(req.body).then(function(model){
+          return res.json(model);
+      }).catch(function (error) {
+          console.log(error);
+          res.json(500, error);
+      });
+  });
 
 };

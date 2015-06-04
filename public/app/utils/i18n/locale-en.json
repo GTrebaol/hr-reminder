@@ -2,5 +2,8 @@
   "header.home": "News",
   "header.users" : "Users",
   "reminders" : "reminders",
-  "users" : "users"
+  "users" : "users",
+  "date.format":"dd/MM/yyyy",
+  "reminder.home" : "Reminder : ",
+  "for" : "for"
 }

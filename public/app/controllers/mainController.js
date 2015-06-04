@@ -4,7 +4,7 @@
 
 var ReminderCtrl = function (RappelService, $scope, $location, $rootScope) {
 
-  $scope.allUpcomingRappels = ReminderService.findAllRappelsForNextMonth();
+  $scope.allUpcomingRappels = RappelService.findAllRappelsForNextMonth();
 
 
 };

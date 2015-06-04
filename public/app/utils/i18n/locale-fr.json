@@ -2,5 +2,8 @@
   "header.home": "Accueil",
   "header.users" : "Utilisateurs",
   "reminders" : "rappels",
-  "users" : "utilisateurs"
+  "users" : "utilisateurs",
+  "date.format":"dd/MM/yyyy",
+  "reminder.home" : "Rappel le :",
+  "for" : "pour"
 }
