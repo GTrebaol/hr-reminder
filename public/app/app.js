@@ -6,9 +6,19 @@ var ReminderConfig = function ($locationProvider, $routeProvider, $translateProv
 
     RestangularProvider.setBaseUrl("http://localhost:8080/api");
 
-    $routeProvider.when('/league/:abbrRegion/:idLeague/matchday', {
-        templateUrl: 'partials/matchday.html',
-        controller: 'SupraballLeagueCtrl'
+    $routeProvider.when('/users/', {
+        templateUrl: 'partials/utilisateur/list.html',
+        controller: 'UserCtrl'
+    });
+
+
+    $routeProvider.when('/', {
+        controller: 'ReminderCtrl'
+    });
+
+    $routeProvider.when('/rappel/:id/', {
+        templateUrl: 'partials/rappel/view.html',
+        controller: 'RappelCtrl'
     });
 
     $routeProvider.otherwise({redirectTo: '/'});
@@ -19,7 +29,7 @@ var ReminderConfig = function ($locationProvider, $routeProvider, $translateProv
         prefix: 'app/utils/i18n/locale-',
         suffix: '.json'
     });
-    $translateProvider.preferredLanguage('en');
+    $translateProvider.preferredLanguage('fr');
 }
 
 ReminderConfig.$inject = ['$locationProvider', '$routeProvider', '$translateProvider', 'RestangularProvider'];
@@ -27,5 +37,6 @@ ReminderConfig.$inject = ['$locationProvider', '$routeProvider', '$translateProv
 angular.module('hrReminder', [
     'restangular',
     'ngRoute',
-    'pascalprecht.translate'
+    'pascalprecht.translate',
+    'ui.bootstrap'
 ]).config(ReminderConfig);

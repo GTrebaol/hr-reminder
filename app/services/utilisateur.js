@@ -22,11 +22,11 @@ UtilisateurService = function (models) {
 
 
       utilisateur.findAll = function(){
-        return new models.utilisateur.fetchAll();
+        return new models.utilisateur().fetchAll();
       }
 
       utilisateur.findByName = function(name){
-        return new models.utilisateur.({nom: name}).fetch({withRelated:['rappels']});
+        return new models.utilisateur({nom: name}).fetch({withRelated:['rappels']});
       }
 
     return utilisateur;

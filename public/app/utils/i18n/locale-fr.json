@@ -1,4 +1,6 @@
 {
-  "home": "Accueil",
-  "reminders" : "rappels"
+  "header.home": "Accueil",
+  "header.users" : "Utilisateurs",
+  "reminders" : "rappels",
+  "users" : "utilisateurs"
 }

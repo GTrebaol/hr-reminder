@@ -22,6 +22,7 @@
     "restangular": "~1.4.0",
     "angular-translate": "~2.6.1",
     "angular-translate-loader-static-files": "~2.6.1",
-    "bootstrap": "~3.3.2"
+    "bootstrap": "~3.3.2",
+    "angular-bootstrap": "~0.13.0"
   }
 }

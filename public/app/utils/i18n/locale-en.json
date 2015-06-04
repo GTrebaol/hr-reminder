@@ -1,4 +1,6 @@
 {
-  "news": "News",
-  "reminders" : "reminders"
+  "header.home": "News",
+  "header.users" : "Users",
+  "reminders" : "reminders",
+  "users" : "users"
 }

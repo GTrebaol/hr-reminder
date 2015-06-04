@@ -23,4 +23,14 @@ module.exports.load = function (app) {
     });
   })
 
+  app.get('/api/utilisateur', function (req, res) {
+    console.log("Routes -  Utilisateur::findAll");
+    services.utilisateur.findAll().then(function (data) {
+      return res.json(data);
+    }).catch(function (error) {
+          console.log(error);
+          //TODO implement error handler;
+    });
+  })
+
 };

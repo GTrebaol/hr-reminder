@@ -19,18 +19,8 @@ body {
 /* Top menu style */
 #navbar-main {
     background-color: #40516a;
-    border-radius: 2px;
-    border: none;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
     font-family: FrutigerLTStd-Bold;
     font-size: 1.5em;
-    margin-bottom: 0;
-    padding-left: 0px;
-}
-
-#navbar-main  > .navbar-nav > li:first-child > a {
-    border-top-left-radius: 2px;
 }
 
 #navbar-main  > .navbar-nav > li > a {
