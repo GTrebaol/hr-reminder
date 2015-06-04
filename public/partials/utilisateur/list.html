@@ -1,4 +1,29 @@
+<section>
+	<input type="text" ng-model="search" class="search-query pull-left" placeholder="{{'search'|translate}}">
+	<button ng-click="open(null, true)" class="btn btn-primary pull-right"><i class="icon-white icon-plus"></i>{{'add.user'|translate}}</button>
+</section>
 
-<div>
-  <li ng-repeat="utilisateur in utilisateurs">{{utilisateur.nom|uppercase}} {{utilisateur.prenom}}</li>
-</div>
+
+<table ng-table="table-users" class="table">
+	<thead>
+		<tr>
+			<th>{{'name'|translate}}</th>
+			<th>{{'firstname'|translate}}</th>
+			<th>{{'mail'|translate}}</th>
+      <th>{{'status'|translate}}</th>
+			<th>{{'actions'|translate}}</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="utilisateur in utilisateurs | filter:search | orderBy:'nom'">
+			<td><span>{{::utilisateur.nom}}</span></td>
+			<td><span>{{::utilisateur.prenom}}</span></td>
+      <td><span>{{::utilisateur.mail}}</span></td>
+      <td><span>{{::utilisateur.discr|uppercase}}</span></td>
+			<td width="200">
+				<a href="" class="btn btn-primary btn-xs" ng-click="open(utilisateur.id, false)">{{'details'|translate}}</a>
+				<a href="" class="btn btn-primary btn-xs" ng-click="open(utilisateur.id, true)">{{'edit'|translate}}</a>
+			</td>
+		</tr>
+	</tbody>
+</table>

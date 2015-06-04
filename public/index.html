@@ -8,18 +8,23 @@
         <link rel="stylesheet" href="assets/css/style.css"/>
     </head>
     <body>
+      <div class="container">
         <div class="menu-container">
-            <div ng-include src="partials/commons/top-menu.html"></div>
+            <div ng-include src="'partials/commons/top-menu.html'"></div>
         </div>
 
+
+
+
         <div ng-view></div>
+      </div>
         <!-- In production use:
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
         -->
         <!-- libraries -->
         <script src="bower_components/angular/angular.js"></script>
         <script src="bower_components/angular-route/angular-route.js"></script>
-        <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
         <script src="bower_components/underscore/underscore.js"></script>
         <script src="bower_components/restangular/dist/restangular.js"></script>
         <script src="bower_components/angular-translate/angular-translate.min.js"></script>
@@ -32,8 +37,9 @@
         <script src="app/app.js"></script>
         <script src="app/services/rappelService.js"></script>
         <script src="app/services/utilisateurService.js"></script>
-        <script src="app/controllers/mainController.js"></script>
-        <script src="app/controllers/userController.js"></script>
+        <script src="app/controllers/rappelController.js"></script>
+        <script src="app/controllers/modalUtilisateurCtrl.js"></script>
+        <script src="app/controllers/utilisateurController.js"></script>
         <script src="app/filters/filters.js"></script>
 
     </body>

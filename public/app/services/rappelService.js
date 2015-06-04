@@ -10,7 +10,7 @@ var RappelService = function (Restangular, $log) {
      * @returns {*}
      */
     this.findAllRappelsForUpcomingDay = function (day) {
-        $log.info("ReminderService :: findAllRappelsForUpcomingDay");
+        $log.info("RappelService :: findAllRappelsForUpcomingDay");
         return Restangular.all('rappel').one('upcoming', day).getList().$object;
     };
 
@@ -19,7 +19,7 @@ var RappelService = function (Restangular, $log) {
      * @returns {*}
      */
     this.findAllRappelsForNextMonth = function () {
-        $log.info("ReminderService :: findAllForNextMonth");
+        $log.info("RappelService :: findAllForNextMonth");
         return Restangular.all('rappel').all('upcoming').getList().$object;
     };
 
@@ -29,7 +29,7 @@ var RappelService = function (Restangular, $log) {
      * @returns {*}
      */
     this.findRappelById = function (id) {
-        $log.info("ReminderService :: findRappelById");
+        $log.info("RappelService :: findRappelById");
         return Restangular.one('rappel', id).get().$object;
     };
 

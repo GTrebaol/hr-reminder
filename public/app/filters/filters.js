@@ -18,6 +18,18 @@ var uniqueFilter = function(){
 }
 
 
+var fetchUtilisateur = function(){
+  return function(users, id) {
+    for (var i = 0; i < users.length; i++) {
+      if (users[i]['id'] == id) { //
+        return users[i];
+      }
+    }
+  }
+}
+
+
 
 
 angular.module('hrReminder').filter('unique', uniqueFilter);
+angular.module('hrReminder').filter('fetchUtilisateur', fetchUtilisateur);

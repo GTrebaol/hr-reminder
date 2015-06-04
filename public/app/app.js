@@ -8,7 +8,7 @@ var ReminderConfig = function ($locationProvider, $routeProvider, $translateProv
 
     $routeProvider.when('/users/', {
         templateUrl: '/partials/utilisateur/list.html',
-        controller: 'UserCtrl'
+        controller: 'UtilisateurCtrl'
     });
 
 
@@ -20,11 +20,10 @@ var ReminderConfig = function ($locationProvider, $routeProvider, $translateProv
     $routeProvider.otherwise({
       redirectTo: '/',
       templateUrl: '/partials/commons/home.html',
-      controller: 'ReminderCtrl'
+      controller: 'RappelCtrl'
       });
 
     $locationProvider.html5Mode(true);
-
 
     $translateProvider.useStaticFilesLoader({
         prefix: 'app/utils/i18n/locale-',

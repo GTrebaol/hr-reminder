@@ -5,5 +5,19 @@
   "users" : "utilisateurs",
   "date.format":"dd/MM/yyyy",
   "reminder.home" : "Rappel le :",
-  "for" : "pour"
+  "for" : "pour",
+  "add.user" : "Ajouter un utilisateur",
+  "search" : "Rechercher",
+  "name" : "Nom",
+  "firstname" : "Prénom",
+  "status" : "Statut",
+  "mail" : "Mail",
+  "edit" : "Editer",
+  "delete" : "Suppr.",
+  "save" : "Enreg.",
+  "details" : "Détails",
+  "actions" : "Actions",
+  "close" : "Fermer",
+  "add" : "Créer",
+  "cancel" : "Annuler"
 }
