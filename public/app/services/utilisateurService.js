@@ -24,6 +24,12 @@ var UtilisateurService = function (Restangular, $log) {
       return Restangular.all('utilisateur').getList().$object;
     }
 
+
+    this.saveOrCreateUtilisateur = function(utilisateur){
+      $log.info("ReminderService :: saveOrCreateUtilisateur");
+      return Restangular.all('utilisateur').all('update').customPUT(utilisateur);
+    }
+
 };
 
 UtilisateurService.$inject = ["Restangular", "$log"];

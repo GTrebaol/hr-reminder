@@ -36,12 +36,11 @@ UtilisateurService = function (models) {
   }
 
   utilisateur.save = function(model){
+    // The ORM doesn't remove the relations before doing operations on the entity.
     if(model.rappels){
       delete(model.rappels);
     }
-    return this.findById(model.id, false).then(function(user){
-      return user.save(model);
-    });
+    return models.utilisateur.forge(model).save();
   }
 
     return utilisateur;

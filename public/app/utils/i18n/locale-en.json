@@ -8,10 +8,7 @@
   "for" : "for",
   "add.user" : "Add an user",
   "search" : "Search",
-  "name" : "Name",
-  "firstname" : "Firstname",
-  "status" : "Status",
-  "mail" : "Mail",
+
   "edit" : "Edit",
   "delete" : "Delete",
   "save" : "Save",
@@ -19,5 +16,30 @@
   "actions" : "Actions",
   "close" : "Close",
   "add" : "Add",
-  "cancel" : "Cancel"
+  "cancel" : "Cancel",
+
+  "user.name" : "Name",
+  "user.firstname" : "Firstname",
+  "user.status" : "Status",
+  "user.telephone" : "Phone",
+  "user.discr" : "Type",
+  "user.formation" : "Education",
+  "user.mail" : "Mail",
+  "user.view" : "User Details",
+  "user.edit" : "Edit User",
+  "user.list" : "User List",
+  "user.add" : "Add User",
+  "user.etudes" : "Study years",
+  "user.pretentions" : "Expectations",
+  "user.mobilite" : "Mobility",
+  "user.remarques" : "Notes",
+  "user.decision" : "Decision",
+  "user.source" : "Source",
+  "user.date_embauche" : "Hire Date",
+
+  "user.form.error" : "Please, fill the mandatory inputs",
+  "user.success" : "User successfully updated"
+
+
+
 }

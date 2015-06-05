@@ -57,5 +57,7 @@ angular.module('hrReminder', [
     'restangular',
     'ngRoute',
     'pascalprecht.translate',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'ngAnimate',
+    'toastr'
 ]).config(ReminderConfig);

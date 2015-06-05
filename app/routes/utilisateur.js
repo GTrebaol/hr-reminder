@@ -55,7 +55,7 @@ module.exports.load = function (app) {
   })
 
 
-  app.put('/api/utilisateur/', function (req, res) {
+  app.put('/api/utilisateur/update', function (req, res) {
       console.log("Routes - Utilisateur::update");
       services.utilisateur.save(req.body).then(function(model){
           return res.json(model);

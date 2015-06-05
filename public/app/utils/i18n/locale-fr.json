@@ -8,10 +8,7 @@
   "for" : "pour",
   "add.user" : "Ajouter un utilisateur",
   "search" : "Rechercher",
-  "name" : "Nom",
-  "firstname" : "Prénom",
-  "status" : "Statut",
-  "mail" : "Mail",
+
   "edit" : "Editer",
   "delete" : "Suppr.",
   "save" : "Enreg.",
@@ -20,8 +17,26 @@
   "close" : "Fermer",
   "add" : "Créer",
   "cancel" : "Annuler",
+
+  "user.name" : "Nom",
+  "user.firstname" : "Prénom",
+  "user.status" : "Statut",
+  "user.telephone" : "Téléphone",
+  "user.discr" : "Type",
+  "user.formation" : "Formation",
+  "user.mail" : "Mail",
   "user.view" : "Détails Utilisateur",
   "user.edit" : "Edition Utilisateur",
   "user.list" : "Liste des Utilisateurs",
-  "user.add" : "Ajout Utilisateur"
+  "user.add" : "Ajout Utilisateur",
+  "user.etudes" : "Années d'études",
+  "user.pretentions" : "Prétentions",
+  "user.mobilite" : "Mobilité",
+  "user.remarques" : "Remarques",
+  "user.decision" : "Décision",
+  "user.source" : "Source",
+  "user.date_embauche" : "Date embauche",
+
+  "user.form.error" : "Veuillez renseigner les données obligatoires",
+  "user.success" : "Utilisateur mis à jour avec succès"
 }
