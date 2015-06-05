@@ -19,5 +19,9 @@
   "actions" : "Actions",
   "close" : "Fermer",
   "add" : "Créer",
-  "cancel" : "Annuler"
+  "cancel" : "Annuler",
+  "user.view" : "Détails Utilisateur",
+  "user.edit" : "Edition Utilisateur",
+  "user.list" : "Liste des Utilisateurs",
+  "user.add" : "Ajout Utilisateur"
 }

@@ -1,141 +1,113 @@
 <h3>{{::userMethod}}</h3>
-<form>
+<form class="form-horizontal">
   <div class="form-group">
-  	<label class="control-label" for="nom">{{'name'|translate}} *</label>
-  	<div class="controls">
-  		<span ng-if="!updatable" name="nom">{{::utilisateur.nom}}</span>
-  		<div ng-if="updatable">
-  			<input class="form-control" name="nom" ng-model="utilisateur.nom"  class="input-xlarge"/>
-  		</div>
+  	<label class="col-sm-2 control-label" for="nom">{{'name'|translate}} *</label>
+  	<div class="col-sm-10">
+  		<span ng-if="!updatable" class="form-control" name="nom">{{::utilisateur.nom}}</span>
+			<input ng-if="updatable" class="form-control" name="nom" ng-model="utilisateur.nom"  class="input-xlarge"/>
   	</div>
   </div>
 
   <div class="form-group">
-  	<label class="control-label" for="prenom">{{'firstname'|translate}} *</label>
-  	<div class="controls">
-  		<span ng-if="!updatable" name="prenom">{{::utilisateur.prenom}}</span>
-  		<div ng-if="updatable">
-  			<input class="form-control" name="prenom" ng-model="utilisateur.prenom" class="input-xlarge"/>
-  		</div>
+  	<label class="col-sm-2 control-label" for="prenom">{{'firstname'|translate}} *</label>
+  	<div class="col-sm-10">
+  		<span ng-if="!updatable" class="form-control" name="prenom">{{::utilisateur.prenom}}</span>
+			<input ng-if="updatable" class="form-control" name="prenom" ng-model="utilisateur.prenom" class="input-xlarge"/>
   	</div>
   </div>
 
   <div class="form-group">
-  	<label class="control-label" for="nom">{{'mail'|translate}}</label>
-  	<div class="controls">
-  		<span ng-if="!updatable" name="mail">{{::utilisateur.mail}}</span>
-  		<div ng-if="updatable">
-  			<input class="form-control" type="text" ng-model="utilisateur.mail"  name="mail" class="input-xlarge"/>
-  		</div>
-  	</div>
+  	<label class="col-sm-2 control-label" for="nom">{{'mail'|translate}}</label>
+  	<div class="col-sm-10">
+  		<span ng-if="!updatable" class="form-control" name="mail">{{::utilisateur.mail}}</span>
+  		<input ng-if="updatable" class="form-control" type="text" ng-model="utilisateur.mail"  name="mail" class="input-xlarge"/>
+		</div>
   </div>
 
   <div class="form-group">
-  	<label class="control-label" for="nom">{{'telephone'|translate}}</label>
-  	<div class="controls">
-  		<span ng-if="!updatable" name="mail">{{::utilisateur.telephone}}</span>
-  		<div ng-if="updatable">
-  			<input class="form-control" type="text" ng-model="utilisateur.telephone"  name="telephone" class="input-xlarge"/>
-  		</div>
-  	</div>
+  	<label class="col-sm-2 col-sm-2 control-label" for="nom">{{'telephone'|translate}}</label>
+  	<div class="col-sm-10">
+  		<span ng-if="!updatable" class="form-control" name="mail">{{::utilisateur.telephone}}</span>
+  		<input ng-if="updatable" class="form-control" type="text" ng-model="utilisateur.telephone"  name="telephone" class="input-xlarge"/>
+		</div>
   </div>
 
   <div class="form-group">
-  	<label class="control-label" for="nom">{{'discr'|translate}} *</label>
-  	<div class="controls">
-  		<span ng-if="!updatable" name="mail">{{::utilisateur.discr}}</span>
-  		<div ng-if="updatable">
-  			<select class="form-control">
+  	<label class="col-sm-2 control-label" for="nom">{{'discr'|translate}} *</label>
+  	<div class="col-sm-10">
+  		<span ng-if="!updatable" class="form-control" name="mail">{{::utilisateur.discr}}</span>
+  		<select ng-if="updatable" class="form-control">
   				<option ng-repeat="discrObj in listDiscrObj">{{discrObj.discr}}</option>
   			</select>
-  		</div>
+		</div>
+  </div>
+
+
+  <div class="form-group">
+  	<label class="col-sm-2 control-label" for="nom">{{'formation'|translate}}</label>
+  	<div class="col-sm-10">
+  		<span ng-if="!updatable" class="form-control" name="mail">{{::utilisateur.formation}}</span>
+  		<input ng-if="updatable" class="form-control" type="text" ng-model="utilisateur.formation"  name="formation" class="input-xlarge"/>
+		</div>
+  </div>
+
+
+  <div class="form-group">
+  	<label class="col-sm-2 control-label" for="nom">{{'utilisateur.etudes'|translate}}</label>
+  	<div class="col-sm-10">
+  		<span ng-if="!updatable" class="form-control" name="mail">{{::utilisateur.annees_etudes}}</span>
+  		<input ng-if="updatable" class="form-control" type="number" ng-model="utilisateur.annees_etudes"  name="annees_etudes" class="input-xlarge"/>
+		</div>
+  </div>
+
+  <div class="form-group">
+  	<label class="col-sm-2 control-label" for="nom">{{'utilisateur.pretention'|translate}}</label>
+  	<div class="col-sm-10">
+  		<span ng-if="!updatable" class="form-control" name="mail">{{::utilisateur.pretention}}</span>
+  		<input ng-if="updatable" class="form-control" type="number" ng-model="utilisateur.pretention"  name="pretention" class="input-xlarge"/>
+		</div>
+  </div>
+
+  <div class="form-group">
+  	<label class="col-sm-2 control-label" for="nom">{{'utilisateur.mobilite'|translate}}</label>
+  	<div class="col-sm-10">
+  		<span ng-if="!updatable" class="form-control" name="mail">{{::utilisateur.mobilite}}</span>
+			<input ng-if="updatable" class="form-control" type="text" ng-model="utilisateur.mobilite"  name="mobilite" class="input-xlarge"/>
+  	</div>
+  </div>
+
+  <div class="form-group">
+  	<label class="col-sm-2 control-label" for="nom">{{'utilisateur.remarques'|translate}}</label>
+  	<div class="col-sm-10">
+  		<span ng-if="!updatable" class="form-control" name="mail">{{::utilisateur.mobilite}}</span>
+			<textarea ng-if="updatable" name="remarques" class="form-control"  ng-model="utilisateur.remarques" rows="5"></textarea>
   	</div>
   </div>
 
 
   <div class="form-group">
-  	<label class="control-label" for="nom">{{'formation'|translate}}</label>
-  	<div class="controls">
-  		<span ng-if="!updatable" name="mail">{{::utilisateur.formation}}</span>
-  		<div ng-if="updatable">
-  			<input class="form-control" type="text" ng-model="utilisateur.formation"  name="formation" class="input-xlarge"/>
-  		</div>
+  	<label class="col-sm-2 control-label" for="nom">{{'utilisateur.decision'|translate}}</label>
+  	<div class="col-sm-10">
+  		<span ng-if="!updatable" class="form-control" name="mail">{{::utilisateur.decision}}</span>
+      <input ng-if="updatable" type="checkbox" ng-model="utilisateur.decision"> 
+    </div>
+  </div>
+
+
+  <div class="form-group">
+  	<label class="col-sm-2 control-label" for="nom">{{'utilisateur.source'|translate}}</label>
+  	<div class="col-sm-10">
+  		<span ng-if="!updatable" class="form-control" name="mail">{{::utilisateur.source}}</span>
+			<input ng-if="updatable" class="form-control" type="text" ng-model="utilisateur.source"  name="source" class="input-xlarge"/>
   	</div>
   </div>
 
 
   <div class="form-group">
-  	<label class="control-label" for="nom">{{'annees.etudes'|translate}}</label>
-  	<div class="controls">
-  		<span ng-if="!updatable" name="mail">{{::utilisateur.annees_etudes}}</span>
-  		<div ng-if="updatable">
-  			<input class="form-control" type="number" ng-model="utilisateur.annees_etudes"  name="annees_etudes" class="input-xlarge"/>
-  		</div>
-  	</div>
-  </div>
-
-  <div class="form-group">
-  	<label class="control-label" for="nom">{{'annees.pretention'|translate}}</label>
-  	<div class="controls">
-  		<span ng-if="!updatable" name="mail">{{::utilisateur.pretention}}</span>
-  		<div ng-if="updatable">
-  			<input class="form-control" type="number" ng-model="utilisateur.pretention"  name="pretention" class="input-xlarge"/>
-  		</div>
-  	</div>
-  </div>
-
-  <div class="form-group">
-  	<label class="control-label" for="nom">{{'annees.mobilite'|translate}}</label>
-  	<div class="controls">
-  		<span ng-if="!updatable" name="mail">{{::utilisateur.mobilite}}</span>
-  		<div ng-if="updatable">
-  			<input class="form-control" type="text" ng-model="utilisateur.mobilite"  name="mobilite" class="input-xlarge"/>
-  		</div>
-  	</div>
-  </div>
-
-  <div class="form-group">
-  	<label class="control-label" for="nom">{{'annees.remarques'|translate}}</label>
-  	<div class="controls">
-  		<span ng-if="!updatable" name="mail">{{::utilisateur.mobilite}}</span>
-  		<div ng-if="updatable">
-  			<textarea name="remarques" class="form-control"  ng-model="utilisateur.remarques" rows="5"></textarea>
-  		</div>
-  	</div>
-  </div>
-
-
-  <div class="form-group">
-  	<label class="control-label" for="nom">{{'annees.decision'|translate}}</label>
-  	<div class="controls">
-  		<span ng-if="!updatable" name="mail">{{::utilisateur.decision}}</span>
-  		<div class="checkbox" ng-if="updatable">
-  	    <label>
-  	      <input type="checkbox" ng-model="utilisateur.decision"> (Oui / cochée, Non / Décochée)
-  	    </label>
-  	  </div>
-  	</div>
-  </div>
-
-
-  <div class="form-group">
-  	<label class="control-label" for="nom">{{'annees.source'|translate}}</label>
-  	<div class="controls">
-  		<span ng-if="!updatable" name="mail">{{::utilisateur.source}}</span>
-  		<div ng-if="updatable">
-  			<input class="form-control" type="text" ng-model="utilisateur.source"  name="source" class="input-xlarge"/>
-  		</div>
-  	</div>
-  </div>
-
-
-  <div class="form-group">
-  	<label class="control-label" for="nom">{{'annees.date_embauche'|translate}}</label>
-  	<div class="controls">
-  		<span ng-if="!updatable" name="mail">{{::utilisateur.date_embauche}}</span>
-  		<div ng-if="updatable">
-  			<input class="datepicker" data-date-format="dd/mm/yyyy" ng-model="utilisateur.date_embauche"/>
-  		</div>
+  	<label class="col-sm-2 control-label" for="nom">{{'utilisateur.date_embauche'|translate}}</label>
+  	<div class="col-sm-10">
+  		<span ng-if="!updatable" class="form-control" name="mail">{{::utilisateur.date_embauche}}</span>
+			<input ng-if="updatable" class="datepicker" data-date-format="dd/mm/yyyy" ng-model="utilisateur.date_embauche"/>
   	</div>
   </div>
 

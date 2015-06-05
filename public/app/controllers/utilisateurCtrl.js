@@ -5,7 +5,7 @@
 *
 *
 */
-var UtilisateurCtrl = function($scope, $modal, $filter, $route, $location, $routeParams, $translate, UtilisateurService, UtilsService){
+var UtilisateurCtrl = function($scope, $modal, $filter, $route, $location, $routeParams, UtilisateurService, UtilsService){
 
 
   $scope.add = function(){
@@ -36,7 +36,8 @@ var UtilisateurCtrl = function($scope, $modal, $filter, $route, $location, $rout
     var method = $route.current.method;
     if (method !== undefined) {
       $scope[method]();
-      $scope.userMethod = $translate(method+'_user');
+      console.log('user.'+method);
+      $scope.userMethod = $filter('translate')('user.'+method);
     }else{
       $location.path('/404');
     }
@@ -48,6 +49,6 @@ var UtilisateurCtrl = function($scope, $modal, $filter, $route, $location, $rout
 }
 
 
-UtilisateurCtrl.$inject = ['$scope', '$modal', '$filter', '$route', '$location', '$routeParams', '$translate', 'UtilisateurService', 'UtilsService']
+UtilisateurCtrl.$inject = ['$scope', '$modal', '$filter', '$route', '$location', '$routeParams', 'UtilisateurService', 'UtilsService']
 
 angular.module('hrReminder').controller('UtilisateurCtrl', UtilisateurCtrl);

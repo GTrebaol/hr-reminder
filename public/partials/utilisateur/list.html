@@ -1,29 +1,40 @@
+<h3>{{::userMethod}}</h3>
+<br>
 <section>
-	<input type="text" ng-model="search" class="search-query pull-left" placeholder="{{'search'|translate}}">
-	<a href="utilisateur/add" role="button" class="btn btn-primary pull-right"><i class="icon-white icon-plus"></i>{{'add.user'|translate}}</a>
+	<div class="col-sm-5 form-inline">
+		<label for="search">{{'search'|translate}} : </label>
+		<input type="text" ng-model="search" class="form-control" >
+	</div>
+	<div class="col-sm-3 col-sm-offset-4">
+		<a href="utilisateur/add" role="button" class="btn btn-primary pull-right"><i class="icon-white icon-plus"></i>{{'add.user'|translate}}</a>
+	</div>
+
 </section>
 
-
-<table ng-table="table-users" class="table">
-	<thead>
-		<tr>
-			<th>{{'name'|translate}}</th>
-			<th>{{'firstname'|translate}}</th>
-			<th>{{'mail'|translate}}</th>
-      <th>{{'status'|translate}}</th>
-			<th>{{'actions'|translate}}</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr ng-repeat="utilisateur in utilisateurs | filter:search | orderBy:'nom'">
-			<td><span>{{::utilisateur.nom}}</span></td>
-			<td><span>{{::utilisateur.prenom}}</span></td>
-      <td><span>{{::utilisateur.mail}}</span></td>
-      <td><span>{{::utilisateur.discr|uppercase}}</span></td>
-			<td width="200">
-				<a href="utilisateur/{{utilisateur.id}}/view" class="btn btn-primary btn-xs" >{{'details'|translate}}</a>
-				<a href="utilisateur/{{utilisateur.id}}/edit" class="btn btn-primary btn-xs" >{{'edit'|translate}}</a>
-			</td>
-		</tr>
-	</tbody>
-</table>
+<article class="table-users">
+	<table ng-table="table-users" class="table table-striped table-bordered">
+		<thead>
+			<tr>
+				<th>{{'name'|translate}}</th>
+				<th>{{'firstname'|translate}}</th>
+				<th>{{'mail'|translate}}</th>
+				<th>{{'phone'|translate}}</th>
+	      <th>{{'status'|translate}}</th>
+				<th>{{'actions'|translate}}</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="utilisateur in utilisateurs | filter:search | orderBy:'nom'">
+				<td><span>{{::utilisateur.nom}}</span></td>
+				<td><span>{{::utilisateur.prenom}}</span></td>
+	      <td><span>{{::utilisateur.mail}}</span></td>
+				<td><span>{{::utilisateur.telephone}}</span></td>
+	      <td><span>{{::utilisateur.discr|uppercase}}</span></td>
+				<td width="200">
+					<a href="utilisateur/{{utilisateur.id}}/view" class="btn btn-primary btn-xs" >{{'details'|translate}}</a>
+					<a href="utilisateur/{{utilisateur.id}}/edit" class="btn btn-primary btn-xs" >{{'edit'|translate}}</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</article>

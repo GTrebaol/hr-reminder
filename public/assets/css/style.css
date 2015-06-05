@@ -59,3 +59,7 @@ body {
     -o-transition: all 0.2s;
     transition: all 0.2s;
 }
+
+.table-users{
+  margin-top:75px;
+}
