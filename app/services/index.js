@@ -21,10 +21,12 @@ Services.initialize = function (configuration) {
     services.bookshelf = require('bookshelf')(knex);
     services.models = require('./models.js')(services.bookshelf);
     services.date = require('./utils/date.js');
+    services.selectList = require('./utils/selectList.js')(services.models);
 
     // Register all services
     services.utilisateur = require('./utilisateur.js')(services.models);
     services.rappel = require('./rappel.js')(services.models, services.date);
+
 
     return services;
 };
