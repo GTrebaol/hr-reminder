@@ -10,13 +10,28 @@
         <link rel="stylesheet" href="assets/css/style.css"/>
     </head>
     <body>
+      <div class="presentation text-center">
+        <h1>Application RH Reminder</h1>
+        <br>
+      </div>
       <div class="container">
         <div class="menu-container">
             <div ng-include src="'partials/commons/top-menu.html'"></div>
         </div>
 
+
+
         <div ng-view></div>
       </div>
+
+        <footer class="footer" class="footer">
+          <div class="container">
+            <a href="http://angularjs.org" target="_blank"><img class="icons" src="assets/img/ng-logo.png" alt="Angular Logo" /></a>
+            <a href="http://nodejs.org" target="_blank"><img class="icons" src="assets/img/node-logo.png" alt="node Logo" /></a>
+            <a href="http://bookshelfjs.org" target="_blank"><img class="icons" src="assets/img/bookshelf-logo.png" alt="bookshelf Logo" /></a>
+          </div>
+        </footer>
+
         <!-- In production use:
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
         -->
@@ -46,6 +61,5 @@
         <script src="app/controllers/utilisateurCtrl.js"></script>
 
         <script src="app/filters/filters.js"></script>
-
     </body>
 </html>
