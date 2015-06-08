@@ -17,6 +17,7 @@
   "close" : "Close",
   "add" : "Add",
   "cancel" : "Cancel",
+  "state" : "State",
 
   "user.name" : "Name",
   "user.firstname" : "Firstname",
@@ -38,7 +39,8 @@
   "user.date_embauche" : "Hire Date",
 
   "reminder.date" : "Reminder Date",
-  "comment" : "Comment"
+  "reminder.add" : "Add Reminder",
+  "comment" : "Comment",
 
   "user.form.error" : "Please, fill the mandatory inputs",
   "user.success" : "User successfully updated"

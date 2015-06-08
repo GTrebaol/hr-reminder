@@ -9,7 +9,7 @@ var myOwnClock = function($filter){
         if(value){
           format = value;
         }else{
-          format = " dd/MM/yyyy  hh:mm:ss"
+          format = " dd/MM/yyyy  HH:mm:ss"
         }
           updateTime();
       });

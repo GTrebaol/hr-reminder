@@ -39,6 +39,7 @@
   "user.date_embauche" : "Date embauche",
 
   "reminder.date" : "Date de Rappel",
+  "reminder.add" : "Rappel",
   "comment" : "Commentaire",
 
   "user.form.error" : "Veuillez renseigner les données obligatoires",
