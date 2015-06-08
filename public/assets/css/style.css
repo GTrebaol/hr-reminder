@@ -40,8 +40,16 @@ textarea {
     font-size: 1.5em;
 }
 
+.date-display{
+  color: #fff;
+  display:block;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-right:25px;
+}
+
 #navbar-main  > .navbar-nav > li > a {
-    color: #fff;
+  color: #fff;
 }
 
 #navbar-main  > .navbar-nav > li > a:hover {
