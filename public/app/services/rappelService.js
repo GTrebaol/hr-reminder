@@ -11,7 +11,7 @@ var RappelService = function (Restangular, $log) {
      */
     this.findAllRappelsForUpcomingDay = function (day) {
         $log.info("RappelService :: findAllRappelsForUpcomingDay");
-        return Restangular.all('rappel').one('upcoming', day).getList().$object;
+        return Restangular.all('rappel').one('upcoming', day).getList();
     };
 
     /**
@@ -20,7 +20,7 @@ var RappelService = function (Restangular, $log) {
      */
     this.findAllRappelsForNextMonth = function () {
         $log.info("RappelService :: findAllForNextMonth");
-        return Restangular.all('rappel').all('upcoming').getList().$object;
+        return Restangular.all('rappel').all('upcoming').getList();
     };
 
     /**
@@ -30,8 +30,13 @@ var RappelService = function (Restangular, $log) {
      */
     this.findRappelById = function (id) {
         $log.info("RappelService :: findRappelById");
-        return Restangular.one('rappel', id).get().$object;
+        return Restangular.one('rappel', id).get();
     };
+
+    this.findAllPastRappels = function(){
+      $log.info("RappelService :: findAllPastRappels");
+      return Restangular.all('rappel').all('past').getList();
+    }
 
 
 };

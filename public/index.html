@@ -19,19 +19,12 @@
             <div ng-include src="'partials/commons/top-menu.html'"></div>
         </div>
 
-
-
         <div ng-view></div>
       </div>
 
-        <footer class="footer" class="footer">
-          <div class="container">
-            <a href="http://angularjs.org" target="_blank"><img class="icons" src="assets/img/ng-logo.png" alt="Angular Logo" /></a>
-            <a href="http://nodejs.org" target="_blank"><img class="icons" src="assets/img/node-logo.png" alt="node Logo" /></a>
-            <a href="http://bookshelfjs.org" target="_blank"><img class="icons" src="assets/img/bookshelf-logo.png" alt="bookshelf Logo" /></a>
-          </div>
-        </footer>
 
+        <footer class="footer" class="footer" ng-include src="'partials/commons/footer.html'"></footer>
+        
         <!-- In production use:
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
         -->

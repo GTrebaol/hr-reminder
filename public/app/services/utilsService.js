@@ -17,6 +17,12 @@ var UtilsService = function (Restangular, $log) {
       });
   };
 
+  /**
+  *
+  * Remove the extra information returned by the server response
+  * We just need the disc values.
+  *
+  */
   var flattenListDiscr = function(result){
     var discrList = [];
     for(var key in result){
@@ -26,8 +32,6 @@ var UtilsService = function (Restangular, $log) {
     }
     return discrList;
   }
-
-
 
 };
 

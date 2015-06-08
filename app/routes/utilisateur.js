@@ -11,7 +11,7 @@ module.exports.load = function (app) {
       return res.json(data);
     }).catch(function (error) {
           console.log(error);
-          //TODO implement error handler;
+          res.json(500, error);
     });
   })
 

@@ -9,6 +9,7 @@ RappelService = function (models, dateService) {
   var self = {};
   var MONTH_OFFSET = 30;
   var TODAY_OFFSET = 0;
+  var service = new dateService();
 
   self.findById = function(id){
     return new models.rappel({id: id}).fetch({withRelated: ['utilisateur']});
@@ -22,7 +23,6 @@ RappelService = function (models, dateService) {
   }
 
   self.findAllForNextMonth = function(){
-    var service = new dateService();
     var dateOffset = service.getDateWithOffset(MONTH_OFFSET);
     var dateToday = service.getDateToday();
     return new models.rappel().query(function(qb){
@@ -32,6 +32,13 @@ RappelService = function (models, dateService) {
 
   self.findAllForToday = function(){
     return rappel.findAllForUpcomingDay(TODAY_OFFSET);
+  }
+
+  self.findAllPastRappels = function(){
+    var dateToday = service.getDateToday();
+    return new models.rappel().query(function(qb){
+      qb.where('date_rappel', '<', dateToday).andWhere('traite', '0');
+    }).fetchAll({withRelated:'utilisateur'});
   }
 
   return self;

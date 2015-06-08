@@ -17,6 +17,7 @@
   "close" : "Fermer",
   "add" : "Créer",
   "cancel" : "Annuler",
+  "state" : "Etat",
 
   "user.name" : "Nom",
   "user.firstname" : "Prénom",
@@ -36,6 +37,9 @@
   "user.decision" : "Décision",
   "user.source" : "Source",
   "user.date_embauche" : "Date embauche",
+
+  "reminder.date" : "Date de Rappel",
+  "comment" : "Commentaire",
 
   "user.form.error" : "Veuillez renseigner les données obligatoires",
   "user.success" : "Utilisateur mis à jour avec succès"

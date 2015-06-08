@@ -4,9 +4,13 @@
 
 var RappelCtrl = function (RappelService, $scope) {
 
-  $scope.allUpcomingRappels = RappelService.findAllRappelsForNextMonth();
+  RappelService.findAllRappelsForNextMonth().then(function(data){
+    $scope.allUpcomingRappels = data;
+  });
 
-
+  RappelService.findAllPastRappels().then(function(data){
+    $scope.allPastRappels = data;
+  });
 };
 
 RappelCtrl.$inject = ['RappelService', '$scope'];

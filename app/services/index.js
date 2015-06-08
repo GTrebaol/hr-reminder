@@ -15,7 +15,11 @@ Services.initialize = function (configuration) {
     var services = {
                 VERSION: '0.0.1'
             },
-            knex = require('knex')({client: 'mysql', connection: configuration});
+    knex = require('knex')({client: 'mysql', connection: configuration});
+
+    knex.raw('select 1+1 as result').then(function () {}).catch(function(error){
+      console.log("Error :: Can't connect to the database, check your configuration. \n Code : "+error.code);
+    });
 
     services.knex = knex;
     services.bookshelf = require('bookshelf')(knex);

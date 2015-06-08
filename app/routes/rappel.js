@@ -8,17 +8,28 @@ module.exports.load = function (app) {
         services.rappel.findAllForUpcomingDay(req.params.day).then(function (model) {
             return res.json(model)
         }).catch(function (error) {
-            console.log(error)
+            console.log(error);
+            res.json(500, error);
         });
     });
 
     app.get('/api/rappel/upcoming', function (req, res) {
         console.log("Routes -  Rappel::findAllForNextMonth");
-        services.rappel.findAllForNextMonth().then(function (model) {
-            return res.json(model);
+        services.rappel.findAllForNextMonth().then(function (models) {
+          return res.json(models);
         }).catch(function (error) {
             console.log(error);
-            //TODO implement error handler;
+            res.json(500, error);
+        });
+    });
+
+    app.get('/api/rappel/past', function (req, res) {
+        console.log("Routes -  Rappel::findAllPastRappels");
+        services.rappel.findAllPastRappels().then(function(models) {
+          return res.json(models);
+        }).catch(function (error) {
+            console.log(error);
+            res.json(500, error);
         });
     });
 
@@ -28,7 +39,7 @@ module.exports.load = function (app) {
             return res.json(model);
         }).catch(function (error) {
             console.log(error);
-            //TODO implement error handler;
+            res.json(500, error);
         });
     });
 
@@ -40,8 +51,10 @@ module.exports.load = function (app) {
           })
         }).catch(function (error) {
             console.log(error);
-            //TODO implement error handler;
+            res.json(500, error);
         });
     });
+
+
 
 };

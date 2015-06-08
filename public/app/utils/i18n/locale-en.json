@@ -37,6 +37,9 @@
   "user.source" : "Source",
   "user.date_embauche" : "Hire Date",
 
+  "reminder.date" : "Reminder Date",
+  "comment" : "Comment"
+
   "user.form.error" : "Please, fill the mandatory inputs",
   "user.success" : "User successfully updated"
 
