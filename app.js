@@ -10,10 +10,19 @@ var express = require('express'),
         http = require('http'),
         path = require('path'),
         fs = require('fs'),
-        routeDir = 'app/routes',
-        routeFiles = fs.readdirSync(routeDir);
+        routeDir = './app/routes/',
+        routeFiles = fs.readdirSync(routeDir),
+        log4js = require('log4js');
+
 
 app = module.exports = express();
+
+log4js.configure({
+  appenders: [
+    { type: 'console' },
+    { type: 'file', filename: 'logs/debug.log', category: 'debug' }
+  ]
+});
 
 /**
  * Configuration
@@ -23,12 +32,17 @@ app = module.exports = express();
 app.set('port', process.env.OPENSHIFT_NODEJS_PORT || 8080);
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP;
 
+
+
 if (typeof ipaddress === "undefined") {
 	//  Log errors on OpenShift but continue w/ 127.0.0.1 - this
 	//  allows us to run/test the app locally.
 	console.warn('No OPENSHIFT_NODEJS_IP var, using 127.0.0.1');
 	ipaddress = "127.0.0.1";
 };
+
+logger.debug('ip address :' + ipaddress);
+
 app.set('ipaddress', ipaddress);
 app.use(morgan('dev'));
 app.use(bodyParser.json());
@@ -40,6 +54,8 @@ app.use(methodOverride());
 
 var env = process.env.NODE_ENV || 'development';
 
+logger.debug('env :' + env);
+
 // Connection to the database based on the environment.
 var conf = require('./app/config/' + env + '.conf.js');
 
@@ -49,7 +65,7 @@ app.set('services', services);
 
 //Initializing routes
 routeFiles.forEach(function (file) {
-    var filePath = path.resolve('./', routeDir, file), route = require(filePath);
+    var filePath = path.resolve(routeDir, file), route = require(filePath);
     console.log('Loading routes for ' + file);
     route.load(app);
 });
@@ -70,6 +86,8 @@ app.all('/*', function(req, res, next) {
  * Start Server
  */
 var server = http.createServer(app);
+
+logger.debug('port :' + app.get('port'));
 
 server.listen(app.get('port'), app.get('ipaddress'), function () {
     console.log('Server running and listening on port ' + app.get('port'));
