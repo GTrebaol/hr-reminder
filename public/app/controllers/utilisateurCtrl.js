@@ -10,6 +10,11 @@ var UtilisateurCtrl = function($scope, $modal, $filter, $route, $location, $rout
   $scope.utilisateur = {};
   $scope.listDiscr = [];
 
+  $scope.dateOptions = {
+       changeYear: true,
+       changeMonth: true,
+       yearRange: '1900:-0'
+   };
 
   $scope.add = function(){
     $scope.$loadDiscrList();
@@ -17,26 +22,30 @@ var UtilisateurCtrl = function($scope, $modal, $filter, $route, $location, $rout
   }
 
   $scope.edit = function(){
-      var id = $routeParams.id;
-      $scope.utilisateur = UtilisateurService.findUtilisateurById(id);
+      $scope.view();
       $scope.$loadDiscrList();
       $scope.updatable = true;
   }
 
 
   $scope.list = function(){
-    $scope.utilisateurs = UtilisateurService.findAllUtilisateurs();
+    UtilisateurService.findAllUtilisateurs().then(function(data){
+      $scope.utilisateurs = data;
+    });
   }
 
   $scope.view = function(){
     var id = $routeParams.id;
-    $scope.utilisateur = UtilisateurService.findUtilisateurById(id);
+    UtilisateurService.findUtilisateurById(id).then(function(data){
+      $scope.utilisateur = data;
+    });
   }
-
 
 
   $scope.submit = function(){
     if($scope.$isUtilisateurValid()){
+      var date = new Date($scope.utilisateur.date_embauche);
+      console.log(date.toISOString());
       UtilisateurService.saveOrCreateUtilisateur($scope.utilisateur).then(function(utilisateur){
         toastr.success($filter('translate')('user.success'));
         $location.path( "/utilisateur/"+utilisateur.id+"/view" );
@@ -44,12 +53,15 @@ var UtilisateurCtrl = function($scope, $modal, $filter, $route, $location, $rout
     }else{
       toastr.error($filter('translate')('user.form.error'));
     }
-
   }
 
 
+  $scope.$formatDates = function(){
+    $scope.utilisateur.date_embauche
+  }
+
   $scope.$isUtilisateurValid = function(){
-    return ($scope.utilisateur.nom) && ($scope.utilisateur.prenom) && ($scope.utilisateur.discr) && ($scope.utilisateur.annees_etudes && typeof $scope.utilisateur.annees_etudes  == 'number');
+    return ($scope.utilisateur.nom) && ($scope.utilisateur.prenom) && ($scope.utilisateur.discr);
   }
 
 
@@ -60,12 +72,10 @@ var UtilisateurCtrl = function($scope, $modal, $filter, $route, $location, $rout
   }
 
   $scope.$init = function(){
-    var method = $route.current.method;
-    if (method !== undefined) {
+    var method = $filter('getMethodFromCurrentUrl')();
+    if ($scope[method]) {
       $scope[method]();
       $scope.userMethod = $filter('translate')('user.'+method);
-    }else{
-      $location.path('/404');
     }
   }
 

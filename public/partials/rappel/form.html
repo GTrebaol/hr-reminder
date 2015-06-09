@@ -4,7 +4,7 @@
   <div class="form-group">
   	<label class="col-sm-2 control-label" for="date_rappel">{{'rappel.date_rappel'|translate}}</label>
   	<div class="col-sm-10">
-  		<span ng-if="!updatable" class="form-control" name="date_rappel">{{::rappel.date_rappel}}</span>
+  		<span ng-if="!updatable" class="form-control" name="date_rappel">{{::rappel.date_rappel|date:'dd/MM/yyyy'}}</span>
   		<input ng-if="updatable" class="datepicker" name="date_rappel" data-date-format="dd/mm/yyyy" ng-model="rappel.date_rappel"/>
   	</div>
   </div>
@@ -28,8 +28,8 @@
   <div class="form-group">
   	<label class="col-sm-2 control-label" for="traite">{{'rappel.traite'|translate}}</label>
   	<div class="col-sm-10">
-  		<span ng-if="!updatable" class="form-control" name="traite">{{::rappel.traite}}</span>
-      <input ng-if="updatable" type="checkbox" name="traite" ng-model="rappel.traite">
+  		<input ng-if="!updatable" type="checkbox" checked="{{rappel.traite}}" disabled class="big-checkbox" name="traite">
+      <input ng-if="updatable" type="checkbox" name="traite" class="form-control"  ng-model="rappel.traite">
     </div>
   </div>
 

@@ -1,7 +1,6 @@
 /**
  * Services module fetch information from database
  *
- * Created by Thomas Lechauve on 14/12/14.
  */
 
 var Services = function () {
@@ -20,6 +19,7 @@ Services.initialize = function (configuration) {
     knex.raw('select 1+1 as result').then(function () {}).catch(function(error){
       console.log("Error :: Can't connect to the database, check your configuration. \n Code : "+error.code);
     });
+
 
     services.knex = knex;
     services.bookshelf = require('bookshelf')(knex);

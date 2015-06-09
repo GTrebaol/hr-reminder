@@ -85,6 +85,11 @@ textarea {
     transition: all 0.2s;
 }
 
+.big-checkbox{
+  width:35px;
+  height:35px;
+}
+
 .table-users{
   margin-top:75px;
 }

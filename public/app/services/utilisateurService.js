@@ -11,7 +11,7 @@ var UtilisateurService = function (Restangular, $log) {
      */
     this.findUtilisateurById = function (id) {
         $log.info("ReminderService :: findUtilisateurById");
-        return Restangular.one('utilisateur', id).get().$object;
+        return Restangular.one('utilisateur', id).get();
     };
 
 
@@ -21,7 +21,7 @@ var UtilisateurService = function (Restangular, $log) {
     **/
     this.findAllUtilisateurs = function(){
       $log.info("ReminderService :: findAllUtilisateurs");
-      return Restangular.all('utilisateur').getList().$object;
+      return Restangular.all('utilisateur').getList();
     }
 
 

@@ -1,10 +1,9 @@
 {
-  "name": "Supraball_League",
+  "name": "RH-Reminder",
   "version": "0.0.0",
   "authors": [
     "Gwenaël Trebaol <s4ngoku@gmail.com>"
   ],
-  "description": "Supraball website handling the leagues",
   "main": "/public/index.html",
   "license": "MIT",
   "private": true,
@@ -24,11 +23,14 @@
     "angular-translate-loader-static-files": "~2.6.1",
     "bootstrap": "~3.3.2",
     "angular-bootstrap": "~0.13.0",
-    "bootstrap-datepicker": "~1.4.0",
     "angular-toastr": "~1.4.1",
-    "angular-animate": "~1.4.0"
+    "angular-animate": "~1.4.0",
+    "jquery": "~2.1.4",
+    "angular-ui-date": "~0.0.7"
   },
   "resolutions": {
-    "angular": "1.4.0"
+    "angular": "1.4.0",
+    "bootstrap": "~3.3.2",
+    "jquery": "~2.1.4"
   }
 }

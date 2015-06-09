@@ -24,6 +24,9 @@ log4js.configure({
   ]
 });
 
+var logger = log4js.getLogger('debug');
+var moment = require('moment');
+
 /**
  * Configuration
  */
@@ -67,7 +70,7 @@ app.set('services', services);
 routeFiles.forEach(function (file) {
     var filePath = path.resolve(routeDir, file), route = require(filePath);
     console.log('Loading routes for ' + file);
-    route.load(app);
+    route.load(app, moment);
 });
 
 // Configure the url rewriting

@@ -28,8 +28,21 @@ var fetchUtilisateur = function(){
   }
 }
 
+var getMethodFromCurrentUrl = function($location){
+  return function() {
+    var url = $location.path();
+    var values = url.split('/');
+    return values[values.length-1];
+  }
+}
 
+
+
+
+
+getMethodFromCurrentUrl.$inject = ['$location'];
 
 
 angular.module('hrReminder').filter('unique', uniqueFilter);
 angular.module('hrReminder').filter('fetchUtilisateur', fetchUtilisateur);
+angular.module('hrReminder').filter('getMethodFromCurrentUrl', getMethodFromCurrentUrl);

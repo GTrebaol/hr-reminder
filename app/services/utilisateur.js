@@ -40,6 +40,7 @@ UtilisateurService = function (models) {
     if(model.rappels){
       delete(model.rappels);
     }
+
     return models.utilisateur.forge(model).save();
   }
 
