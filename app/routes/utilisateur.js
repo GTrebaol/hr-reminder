@@ -28,13 +28,14 @@ module.exports.load = function (app) {
     });
   })
 
-  /**
-  * find all utilisateurs
-  */
-  app.get('/api/utilisateur', function (req, res) {
-    console.log("Routes -  Utilisateur::findAll");
-    services.utilisateur.findAll().then(function (models) {
-      return res.json(models);
+
+
+  app.get('/api/utilisateur/p/:page', function (req, res) {
+    console.log("Routes -  Utilisateur::findAll paginated");
+    services.utilisateur.findAll(req.params.page).then(function (models) {
+      services.utilisateur.count().then(function(count){
+        return res.json({utilisateurs : models, count : count[0]['cnt'], page_size : 10});
+      });
     }).catch(function (error) {
           console.log(error);
           res.status(500).json(error);

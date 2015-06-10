@@ -6,6 +6,7 @@ var RappelCtrl = function ($scope, $filter, $routeParams, $location, $route, toa
 
 
   $scope.rappel = {};
+  $scope.utilisateur = {};
 
   $scope.add = function(){
     $scope.updatable = true;
@@ -16,17 +17,12 @@ var RappelCtrl = function ($scope, $filter, $routeParams, $location, $route, toa
       $scope.updatable = true;
   }
 
-
-  $scope.list = function(){
-
-  }
-
   $scope.view = function(){
     var id = $routeParams.id;
     RappelService.findRappelById(id).then(function(data){
       $scope.rappel = data;
       $scope.utilisateur = data.utilisateur;
-    })
+    });
   }
 
   $scope.user = function(){
@@ -38,6 +34,13 @@ var RappelCtrl = function ($scope, $filter, $routeParams, $location, $route, toa
     var in6months = new Date(new Date(today).setMonth(today.getMonth()+6));
     $scope.rappel.date_rappel = in6months;
     $scope.updatable = true;
+  }
+
+
+  $scope.close = function(id){
+    RappelService.processRappel(id).then(function(rappel){
+      $location.path("/rappel/add/"+rappel.utilisateur_id+"/user");
+    })
   }
 
 

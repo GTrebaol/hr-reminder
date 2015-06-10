@@ -39,3 +39,7 @@
 		</tbody>
 	</table>
 </article>
+
+<div class="pagination-container">
+<pagination total-items="count" ng-model="currentPage" max-size="pageSize" previous-text="{{'previous'|translate}}" next-text="{{'next'|translate}}" ng-change="pageChanged()"></pagination>
+</div>

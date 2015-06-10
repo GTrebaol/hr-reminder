@@ -41,6 +41,11 @@ RappelService = function (models, dateService) {
     }).fetchAll({withRelated:'utilisateur'});
   }
 
+  self.setProcessed = function(model){
+      delete(model.utilisateur);
+      return model.save({traite:1});
+  }
+
 
   self.save = function(model){
     // The ORM doesn't remove the relations before doing operations on the entity.

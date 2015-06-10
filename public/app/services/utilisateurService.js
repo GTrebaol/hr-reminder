@@ -19,9 +19,9 @@ var UtilisateurService = function (Restangular, $log) {
     * Get all the utilisateurs
     * @returns {*}
     **/
-    this.findAllUtilisateurs = function(){
+    this.findAllUtilisateurs = function(page){
       $log.info("ReminderService :: findAllUtilisateurs");
-      return Restangular.all('utilisateur').getList();
+      return Restangular.all('utilisateur').one('p',page).customGET();
     }
 
 

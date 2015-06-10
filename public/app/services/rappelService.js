@@ -45,6 +45,12 @@ var RappelService = function (Restangular, $log) {
     }
 
 
+    this.processRappel = function(id){
+      $log.info("ReminderService :: processRappel");
+      return Restangular.one('rappel', id).all('traite').customGET();
+    }
+
+
   // Had HUGE issues with the timezone and restangular. This app is used in UTC +2 timezone
   // and since I used only date and not datetime, my values were like : 03/01/2015 00:00:00
   // Restangular would then transform this date into UTC, resulting into : 02/01/2015 22:00:00

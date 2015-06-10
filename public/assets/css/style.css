@@ -93,3 +93,8 @@ textarea {
 .table-users{
   margin-top:75px;
 }
+
+.pagination-container{
+  width: 100%;
+  text-align: center;
+}

@@ -43,12 +43,12 @@ module.exports.load = function (app) {
         });
     });
 
-    app.post('/api/rappel/:id/traite', function (req, res) {
+    app.get('/api/rappel/:id/traite', function (req, res) {
         console.log("Routes -  Rappel::setTraite");
         services.rappel.findById(req.params.id).then(function (model) {
-          model.save({traite:1}).then(function(){
-            res.json({model : model, error: false, data: {message: 'User details updated'}});
-          })
+          services.rappel.setProcessed(model).then(function(model){
+            return res.json(model);
+          });
         }).catch(function (error) {
             console.log(error);
             res.status(500).json(error);

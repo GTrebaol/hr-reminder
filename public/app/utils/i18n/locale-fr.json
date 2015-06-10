@@ -18,6 +18,8 @@
   "add" : "Créer",
   "cancel" : "Annuler",
   "state" : "Etat",
+  "previous" : "Prec.",
+  "next" : "Suiv.",
 
   "user.name" : "Nom",
   "user.firstname" : "Prénom",

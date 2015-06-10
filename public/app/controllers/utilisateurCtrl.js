@@ -29,10 +29,19 @@ var UtilisateurCtrl = function($scope, $modal, $filter, $route, $location, $rout
 
 
   $scope.list = function(){
-    UtilisateurService.findAllUtilisateurs().then(function(data){
-      $scope.utilisateurs = data;
-    });
+    $scope.currentPage = $routeParams.p ? $routeParams.p : 1;
+    $scope.pageChanged();
   }
+
+
+  $scope.pageChanged = function() {
+    UtilisateurService.findAllUtilisateurs($scope.currentPage).then(function(data){
+        $scope.utilisateurs = data.utilisateurs;
+        $scope.count = data.count;
+        $scope.pageSize = data.page_size;
+    });
+  };
+
 
   $scope.view = function(){
     var id = $routeParams.id;
@@ -52,7 +61,6 @@ var UtilisateurCtrl = function($scope, $modal, $filter, $route, $location, $rout
       toastr.error($filter('translate')('form.error'));
     }
   }
-
 
   $scope.$formatDates = function(){
     $scope.utilisateur.date_embauche

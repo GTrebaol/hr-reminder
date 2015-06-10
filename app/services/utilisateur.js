@@ -9,6 +9,7 @@ UtilisateurService = function (models) {
 
 
   var self = {};
+  var utilisateur_per_page = 50;
 
   /**
    * Retourne un utilisateur avec ces rappels
@@ -18,11 +19,15 @@ UtilisateurService = function (models) {
    */
    self.findById = function (id, withRelated) {
      return new models.utilisateur({id: parseInt(id)}).fetch({withRelated:['rappels']});;
-    }
+   }
 
 
-    self.findAll = function(){
-    return new models.utilisateur().fetchAll();
+  self.findAll = function(page){
+    return new models.utilisateur().query({ limit: 10, offset: 10*(page-1) }).fetchAll()
+  }
+
+  self.count = function(){
+    return new models.utilisateur().query().count('id as cnt');
   }
 
   self.findByName = function(name){
@@ -40,7 +45,6 @@ UtilisateurService = function (models) {
     if(model.rappels){
       delete(model.rappels);
     }
-
     return models.utilisateur.forge(model).save();
   }
 
