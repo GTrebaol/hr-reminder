@@ -41,6 +41,19 @@ RappelService = function (models, dateService) {
     }).fetchAll({withRelated:'utilisateur'});
   }
 
+
+  self.save = function(model){
+    // The ORM doesn't remove the relations before doing operations on the entity.
+    console.log(model.commentaire);
+    if(model.utilisateur){
+      if(!model.utilisateur_id){
+        model.utilisateur_id = model.utilisateur.id;
+      }
+      delete(model.utilisateur);
+    }
+    return models.rappel.forge(model).save();
+  }
+
   return self;
 
 };

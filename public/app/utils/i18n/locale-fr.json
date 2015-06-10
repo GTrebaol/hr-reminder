@@ -40,8 +40,17 @@
 
   "reminder.date" : "Date de Rappel",
   "reminder.add" : "Rappel",
+  "reminder.view" : "Détails du Rappel",
+  "reminder.user" : "Création du rappel",
+  "reminder.edit" : "Edition du rappel",
+  "reminder.date_rdv" : "Date Rendez-vous",
+  "reminder.commentaire" : "Commentaire",
+  "reminder.traite" : "Traité",
   "comment" : "Commentaire",
 
+  "for.user" : "de l'utilisateur",
+
   "user.form.error" : "Veuillez renseigner les données obligatoires",
-  "user.success" : "Utilisateur mis à jour avec succès"
+  "user.success" : "Utilisateur mis à jour avec succès",
+  "reminder.success" : "Rappel mis à jour avec succès"
 }

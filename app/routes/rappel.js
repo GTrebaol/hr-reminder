@@ -9,7 +9,7 @@ module.exports.load = function (app) {
             return res.json(model)
         }).catch(function (error) {
             console.log(error);
-            res.json(500, error);
+            res.status(500).json(error);
         });
     });
 
@@ -19,7 +19,7 @@ module.exports.load = function (app) {
           return res.json(models);
         }).catch(function (error) {
             console.log(error);
-            res.json(500, error);
+            res.status(500).json(error);
         });
     });
 
@@ -29,7 +29,7 @@ module.exports.load = function (app) {
           return res.json(models);
         }).catch(function (error) {
             console.log(error);
-            res.json(500, error);
+            res.status(500).json(error);
         });
     });
 
@@ -39,7 +39,7 @@ module.exports.load = function (app) {
             return res.json(model);
         }).catch(function (error) {
             console.log(error);
-            res.json(500, error);
+            res.status(500).json(error);
         });
     });
 
@@ -51,7 +51,19 @@ module.exports.load = function (app) {
           })
         }).catch(function (error) {
             console.log(error);
-            res.json(500, error);
+            res.status(500).json(error);
+        });
+    });
+
+
+
+    app.put('/api/rappel/update', function (req, res) {
+        console.log("Routes - Rappel::update");
+        services.rappel.save(req.body).then(function(model){
+            return res.json(model);
+        }).catch(function (error) {
+            console.log(error);
+            res.status(500).json(error);
         });
     });
 

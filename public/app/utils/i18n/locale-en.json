@@ -39,11 +39,21 @@
   "user.date_embauche" : "Hire Date",
 
   "reminder.date" : "Reminder Date",
-  "reminder.add" : "Add Reminder",
+  "reminder.add" : "Reminder",
+  "reminder.view" : "Reminder Details",
+  "reminder.user" : "Add Reminder",
+  "reminder.edit" : "Edit Reminder",
+  "reminder.date_rdv" : "Appointment Date",
+  "reminder.commentaire" : "Comment",
+  "reminder.traite" : "Processed",
   "comment" : "Comment",
 
-  "user.form.error" : "Please, fill the mandatory inputs",
-  "user.success" : "User successfully updated"
+  "for.user" : "for the user",
+
+  "form.error" : "Please, fill the mandatory inputs",
+  "user.success" : "User successfully updated",
+  "reminder.success" : "Reminder successfully updated"
+
 
 
 

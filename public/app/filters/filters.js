@@ -39,7 +39,6 @@ var getMethodFromCurrentUrl = function($location){
 
 
 
-
 getMethodFromCurrentUrl.$inject = ['$location'];
 
 

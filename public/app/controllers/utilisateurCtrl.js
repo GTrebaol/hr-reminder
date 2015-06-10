@@ -44,14 +44,12 @@ var UtilisateurCtrl = function($scope, $modal, $filter, $route, $location, $rout
 
   $scope.submit = function(){
     if($scope.$isUtilisateurValid()){
-      var date = new Date($scope.utilisateur.date_embauche);
-      console.log(date.toISOString());
       UtilisateurService.saveOrCreateUtilisateur($scope.utilisateur).then(function(utilisateur){
         toastr.success($filter('translate')('user.success'));
         $location.path( "/utilisateur/"+utilisateur.id+"/view" );
       })
     }else{
-      toastr.error($filter('translate')('user.form.error'));
+      toastr.error($filter('translate')('form.error'));
     }
   }
 
@@ -78,6 +76,8 @@ var UtilisateurCtrl = function($scope, $modal, $filter, $route, $location, $rout
       $scope.userMethod = $filter('translate')('user.'+method);
     }
   }
+
+
 
   $scope.$init();
 

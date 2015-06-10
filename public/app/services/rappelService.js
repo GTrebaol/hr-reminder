@@ -38,6 +38,37 @@ var RappelService = function (Restangular, $log) {
       return Restangular.all('rappel').all('past').getList();
     }
 
+    this.saveOrCreateRappel = function(rappel){
+      $log.info("ReminderService :: saveOrCreateRappel");
+      handleTimeZone(rappel);
+      return Restangular.all('rappel').all('update').customPUT(rappel);
+    }
+
+
+  // Had HUGE issues with the timezone and restangular. This app is used in UTC +2 timezone
+  // and since I used only date and not datetime, my values were like : 03/01/2015 00:00:00
+  // Restangular would then transform this date into UTC, resulting into : 02/01/2015 22:00:00
+  // The following code fix that, but it's really really really ugly, sorry for that...
+  var handleTimeZone = function(rappel){
+    if(rappel.date_rappel != null){
+      if(typeof rappel.date_rappel != Date){
+        rappel.date_rappel = new Date(rappel.date_rappel);
+      }
+      rappel.date_rappel.setHours(rappel.date_rappel.getHours() + 2);
+    }
+
+
+    if(rappel.date_rdv != null){
+      if(typeof rappel.date_rdv != Date){
+        rappel.date_rdv = new Date(rappel.date_rdv);
+      }
+      rappel.date_rdv.setHours(rappel.date_rdv.getHours() + 2);
+    }
+    return rappel;
+  }
+
+
+
 
 };
 

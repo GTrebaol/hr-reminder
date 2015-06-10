@@ -8,7 +8,7 @@
 UtilisateurService = function (models) {
 
 
-  var utilisateur = {};
+  var self = {};
 
   /**
    * Retourne un utilisateur avec ces rappels
@@ -16,26 +16,26 @@ UtilisateurService = function (models) {
    * @param id
    * @returns {models.utilisateur}
    */
-   utilisateur.findById = function (id, withRelated) {
+   self.findById = function (id, withRelated) {
      return new models.utilisateur({id: parseInt(id)}).fetch({withRelated:['rappels']});;
     }
 
 
-  utilisateur.findAll = function(){
+    self.findAll = function(){
     return new models.utilisateur().fetchAll();
   }
 
-  utilisateur.findByName = function(name){
+  self.findByName = function(name){
     return new models.utilisateur().query(function(qb){
       qb.where('nom', 'LIKE', '%'+name+'');
     }).fetch({withRelated:['rappels']});
   }
 
-  utilisateur.findAllByDiscr = function(discr){
+  self.findAllByDiscr = function(discr){
     return new models.utilisateur({discr: discr}).fetchAll();
   }
 
-  utilisateur.save = function(model){
+  self.save = function(model){
     // The ORM doesn't remove the relations before doing operations on the entity.
     if(model.rappels){
       delete(model.rappels);
@@ -44,7 +44,7 @@ UtilisateurService = function (models) {
     return models.utilisateur.forge(model).save();
   }
 
-    return utilisateur;
+    return self;
 
 }
 

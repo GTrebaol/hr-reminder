@@ -1,17 +1,17 @@
 var services = app.get('services');
 
-module.exports.load = function (app, moment) {
+module.exports.load = function (app) {
 
   /**
   * find a utilisateur by its name
   */
   app.get('/api/utilisateur/:name/name', function (req, res) {
     console.log("Routes -  Utilisateur::findById");
-    services.utilisateur.findByName(req.params.name).then(function (data){
-      return res.json(setDatesToUTC(data));
+    services.utilisateur.findByName(req.params.name).then(function (model){
+      return res.json(model);
     }).catch(function (error) {
           console.log(error);
-          res.json(500, error);
+          res.status(500).json(error);
     });
   })
 
@@ -20,11 +20,11 @@ module.exports.load = function (app, moment) {
   */
   app.get('/api/utilisateur/:id', function (req, res) {
     console.log("Routes -  Utilisateur::findById");
-    services.utilisateur.findById(req.params.id, true).then(function (data) {
-      return res.json(setDatesToUTC(data));
+    services.utilisateur.findById(req.params.id, true).then(function (model) {
+      return res.json(model);
     }).catch(function (error) {
           console.log(error);
-          res.json(500, error);
+          res.status(500).json(error);
     });
   })
 
@@ -33,11 +33,11 @@ module.exports.load = function (app, moment) {
   */
   app.get('/api/utilisateur', function (req, res) {
     console.log("Routes -  Utilisateur::findAll");
-    services.utilisateur.findAll().then(function (data) {
-      return res.json(data);
+    services.utilisateur.findAll().then(function (models) {
+      return res.json(models);
     }).catch(function (error) {
           console.log(error);
-          res.json(500, error);
+          res.status(500).json(error);
     });
   })
 
@@ -46,32 +46,23 @@ module.exports.load = function (app, moment) {
   */
   app.get('/api/utilisateur/:discr/discr', function (req, res) {
     console.log("Routes -  Utilisateur::findAll");
-    services.utilisateur.findAllByDiscr(req.params.discr).then(function (data) {
-      return res.json(data);
+    services.utilisateur.findAllByDiscr(req.params.discr).then(function (models) {
+      return res.json(models);
     }).catch(function (error) {
           console.log(error);
-          res.json(500, error);
+          res.status(500).json(error);
     });
   })
 
 
   app.put('/api/utilisateur/update', function (req, res) {
       console.log("Routes - Utilisateur::update");
-      console.log(req.body);
       services.utilisateur.save(req.body).then(function(model){
           return res.json(model);
       }).catch(function (error) {
           console.log(error);
-          res.json(500, error);
+          res.status(500).json(error);
       });
   });
-
-  var setDatesToUTC = function(model){
-    if(model.date_embauche){
-      model.date_embauche=moment.utc(model.date_embauche);
-    }
-
-    return model;
-  }
 
 };
