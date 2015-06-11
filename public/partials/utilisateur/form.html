@@ -124,7 +124,7 @@
           <th>{{'comment'|translate}}</th>
           <th>{{'actions'|translate}}</th>
         </tr>
-        <tr ng-repeat="rappel in utilisateur.rappels | orderBy:'date_rappel'">
+        <tr ng-repeat="rappel in utilisateur.rappels | orderBy:'-date_rappel'">
           <td class="{{'rappel.css.base'|translate}} {{getColorClass(rappel)}}"></td>
           <td><span>{{::rappel.date_rappel | date : 'dd/MM/yyyy'}}</span></td>
           <td><span>{{::rappel.utilisateur.nom}} {{::rappel.utilisateur.prenom}}</span></td>
