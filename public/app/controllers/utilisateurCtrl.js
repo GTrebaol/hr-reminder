@@ -5,7 +5,8 @@
 *
 *
 */
-var UtilisateurCtrl = function($scope, $modal, $filter, $route, $location, $routeParams, toastr, UtilisateurService, UtilsService){
+var UtilisateurCtrl = function($scope, $modal, $filter, $route, $location,
+  $routeParams, toastr, UtilisateurService, UtilsService, RappelService){
 
   $scope.utilisateur = {};
   $scope.filters = {};
@@ -33,7 +34,6 @@ var UtilisateurCtrl = function($scope, $modal, $filter, $route, $location, $rout
     $scope.filters.currentPage = $routeParams.p ? $routeParams.p : 1;
     $scope.pageChanged();
     $scope.$loadDiscrList();
-    $scope.filters.discr = [];
   }
 
   $scope.pageChanged = function(){
@@ -52,6 +52,11 @@ var UtilisateurCtrl = function($scope, $modal, $filter, $route, $location, $rout
   }
 
 
+  $scope.getColorClass = function(rappel){
+    return RappelService.getColorClass(rappel);
+  }
+
+
   $scope.submit = function(){
     if($scope.$isUtilisateurValid()){
       UtilisateurService.saveOrCreateUtilisateur($scope.utilisateur).then(function(utilisateur){
@@ -60,6 +65,14 @@ var UtilisateurCtrl = function($scope, $modal, $filter, $route, $location, $rout
       })
     }else{
       toastr.error($filter('translate')('form.error'));
+    }
+  }
+
+  $scope.setDiscrFilter = function(discr){
+    if($scope.filters.discr[discr]){
+      delete $scope.filters.discr[discr];
+    }else{
+      $scope.filters.discr[discr] = true;
     }
   }
 
@@ -75,6 +88,7 @@ var UtilisateurCtrl = function($scope, $modal, $filter, $route, $location, $rout
   $scope.$loadDiscrList = function(){
     UtilsService.getListDiscr(function(data){
       $scope.listDiscr = data;
+      $scope.filters.discr = {};
     });
   }
 
@@ -85,7 +99,12 @@ var UtilisateurCtrl = function($scope, $modal, $filter, $route, $location, $rout
       $scope.userMethod = $filter('translate')('user.'+method);
     }
   }
-
+  
+  $scope.close = function(id){
+    RappelService.processRappel(id).then(function(rappel){
+      $location.path("/rappel/add/"+rappel.utilisateur_id+"/user");
+    })
+  }
 
 
   $scope.$init();
@@ -94,6 +113,7 @@ var UtilisateurCtrl = function($scope, $modal, $filter, $route, $location, $rout
 }
 
 
-UtilisateurCtrl.$inject = ['$scope', '$modal', '$filter', '$route', '$location', '$routeParams', 'toastr', 'UtilisateurService', 'UtilsService']
+UtilisateurCtrl.$inject = ['$scope', '$modal', '$filter', '$route', '$location',
+'$routeParams', 'toastr', 'UtilisateurService', 'UtilsService', 'RappelService']
 
 angular.module('hrReminder').controller('UtilisateurCtrl', UtilisateurCtrl);

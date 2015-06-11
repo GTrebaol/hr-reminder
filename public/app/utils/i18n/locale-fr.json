@@ -1,7 +1,7 @@
 {
   "header.home": "Accueil",
   "header.users" : "Utilisateurs",
-  "reminders" : "rappels",
+  "reminders" : "Rappels",
   "users" : "utilisateurs",
   "date.format":"dd/MM/yyyy",
   "reminder.home" : "Rappel le :",
@@ -20,6 +20,7 @@
   "state" : "Etat",
   "previous" : "Prec.",
   "next" : "Suiv.",
+  "search" : "Rechercher",
 
   "user.name" : "Nom",
   "user.firstname" : "Prénom",
@@ -49,6 +50,16 @@
   "reminder.commentaire" : "Commentaire",
   "reminder.traite" : "Traité",
   "comment" : "Commentaire",
+
+  "rappel.css.base" : "legend-rappel",
+  "rappel.css.traite" : "green",
+  "rappel.css.danger" : "red",
+  "rappel.css.normal" : "grey",
+  "rappel.css.warning" : "orange",
+  "rappel.traite" : "Fait",
+  "rappel.danger" : "Retard",
+  "rappel.normal" : "Normal",
+  "rappel.warning" : "A venir",
 
   "for.user" : "de l'utilisateur",
 

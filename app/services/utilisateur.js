@@ -5,7 +5,7 @@
  * @param models
  * @constructor
  */
-UtilisateurService = function (models, logger) {
+UtilisateurService = function (models, logger, bookshelf) {
 
 
   var self = {};
@@ -23,25 +23,30 @@ UtilisateurService = function (models, logger) {
 
 
   self.findAll = function(filters, count){
-    var queryFilter  = [];
-    var limit = 10;
-    var offset = 10*(filters.currentPage-1);
-    logger.debug(queryFilter);
-    if(count){
-      return self.count();
-    }else{
-      return new models.utilisateur().query(searchQuery(filters, limit, offset)).fetchAll();
+    var offset = filters.limit*(filters.currentPage-1);
+    var query = bookshelf.knex('utilisateur');
+    query.where(1, '=', 1)
+    if(filters.nom){
+      query.andWhere('nom', 'LIKE', '%'+filters.nom+'%');
     }
-  }
 
-  var searchQuery = function(filters, limit, offset){
-    return function(qb){
-      if(filters.nom){
-        qb.where('nom', 'LIKE', '%'+filters.nom+'%');
-      }
-      qb.limit(limit);
-      qb.offset(offset);
-    };
+    if(filters.discr && Object.keys(filters.discr).length > 0){
+      query.andWhere(function(){
+        var first = true;
+        for(var i in filters.discr){
+          if(first){
+            this.where('discr', '=', ''+i);
+            first = false;
+          }else{
+            this.orWhere('discr', '=', ''+i)
+          }
+        }
+      })
+    }
+    if(!count){
+      query.limit(filters.limit).offset(offset);
+    }
+    return query;
   }
 
   self.count = function(){

@@ -28,7 +28,7 @@ Services.initialize = function (configuration, logger) {
     services.selectList = require('./utils/selectList.js')(services.models);
 
     // Register all services
-    services.utilisateur = require('./utilisateur.js')(services.models, logger);
+    services.utilisateur = require('./utilisateur.js')(services.models, logger, services.bookshelf);
     services.rappel = require('./rappel.js')(services.models, services.date, logger);
 
 

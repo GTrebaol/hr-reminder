@@ -7,15 +7,15 @@
 
 		<div class="form-group">
 	    <label  for="nom">{{'user.name'|translate}} : </label>
-	    <input type="text" class="form-control" ng-model="filters.nom" placeholder="{{'enter.name'|translate}}">
+	    <input type="text" class="form-control" ng-model="filters.nom">
 	  </div>
 		<div class="form-group">
 		<label for="discr">{{'user.discr'|translate}} : </label>
 		<div class="btn-group" data-toggle="buttons-checkbox">
-		  <button type="button" ng-model="filters.discr[0]" class="btn btn-default">{{listDiscr[0]|uppercase}}</button>
+		  <button type="button" ng-repeat="discr in listDiscr" ng-click="setDiscrFilter(discr)" class="btn btn-default">{{discr|uppercase}}</button>
 		</div>
 	</div>
-		<button class="btn btn-primary col-sm-12 search" ng-click="pageChanged()">Search  <i class="glyphicon glyphicon-search"></i></button>
+		<button class="btn btn-primary col-sm-12 search" ng-click="pageChanged()">{{'search'|translate}}  <i class="glyphicon glyphicon-search"></i></button>
 	</form>
 </section>
 

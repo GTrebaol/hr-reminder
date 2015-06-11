@@ -34,7 +34,8 @@ module.exports.load = function (app) {
     console.log("Routes -  Utilisateur::findAll paginated");
     var vars = req.body;
     var count = 0;
-    services.utilisateur.findAll(vars, true).then(function(countRes){ vars.count = countRes[0]['cnt']});
+    vars.limit = 10;
+    services.utilisateur.findAll(vars, true).then(function (models) {vars.count = models.length});
     services.utilisateur.findAll(vars, false).then(function (models) {
         return res.json({utilisateurs : models, vars:vars});
       }).catch(function (error) {

@@ -1,7 +1,7 @@
 {
   "header.home": "News",
   "header.users" : "Users",
-  "reminders" : "reminders",
+  "reminders" : "Reminders",
   "users" : "users",
   "date.format":"dd/MM/yyyy",
   "reminder.home" : "Reminder : ",
@@ -20,6 +20,7 @@
   "state" : "State",
   "previous" : "Previous",
   "next" : "Next",
+  "search" : "Search",
 
   "user.name" : "Name",
   "user.firstname" : "Firstname",
@@ -49,6 +50,17 @@
   "reminder.commentaire" : "Comment",
   "reminder.traite" : "Processed",
   "comment" : "Comment",
+
+  "rappel.css.base" : "legend-rappel",
+  "rappel.css.traite" : "green",
+  "rappel.css.danger" : "red",
+  "rappel.css.normal" : "grey",
+  "rappel.css.warning" : "orange",
+  "rappel.traite" : "Done",
+  "rappel.danger" : "Late",
+  "rappel.normal" : "Normal",
+  "rappel.warning" : "Incoming",
+
 
   "for.user" : "for the user",
 

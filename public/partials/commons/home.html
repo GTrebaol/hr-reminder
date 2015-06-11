@@ -16,7 +16,7 @@
 				<th>{{'comment'|translate}}</th>
         <th>{{'actions'|translate}}</th>
 			</tr>
-      <tr ng-repeat="rappel in allPastRappels">
+      <tr ng-repeat="rappel in allPastRappels | orderBy:'date_rappel'">
 				<td style="background-color:red"></td>
 				<td><span>{{::rappel.date_rappel | date : 'dd/MM/yyyy'}}</span></td>
 	      <td><span>{{::rappel.utilisateur.nom}} {{::rappel.utilisateur.prenom}}</span></td>
@@ -28,12 +28,12 @@
 					<a href="/rappel/{{rappel.id}}/edit" class="btn btn-primary btn-xs" >{{'edit'|translate}}</a>
 				</td>
 			</tr>
-      <tr ng-if="allUpcomingRappels">
+      <tr ng-if="allUpcomingRappels.length">
         <td colspan=7>
           <h3>Rappels à venir</h3>
         </td>
       </tr>
-      <tr>
+      <tr ng-if="allUpcomingRappels.length">
         <th>{{'state'|translate}}</th>
         <th>{{'reminder.date'|translate}}</th>
 				<th>{{'user.name'|translate}}</th>
@@ -42,7 +42,7 @@
 				<th>{{'comment'|translate}}</th>
         <th>{{'actions'|translate}}</th>
 			</tr>
-			<tr ng-repeat="rappel in allUpcomingRappels">
+			<tr ng-repeat="rappel in allUpcomingRappels | orderBy:'date_rappel'">
 				<td style="background-color:orange"></td>
 				<td><span>{{::rappel.date_rappel | date : 'dd/MM/yyyy'}}</span></td>
         <td><span>{{::rappel.utilisateur.nom}} {{::rappel.utilisateur.prenom}}</span></td>
