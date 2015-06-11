@@ -10,7 +10,7 @@ var Services = function () {
 // Constructor for a new `Services` object, it accepts
 // an active SqlConnection and initializes the appropriate
 // services with the models.
-Services.initialize = function (configuration) {
+Services.initialize = function (configuration, logger) {
     var services = {
                 VERSION: '0.0.1'
             },
@@ -28,8 +28,8 @@ Services.initialize = function (configuration) {
     services.selectList = require('./utils/selectList.js')(services.models);
 
     // Register all services
-    services.utilisateur = require('./utilisateur.js')(services.models);
-    services.rappel = require('./rappel.js')(services.models, services.date);
+    services.utilisateur = require('./utilisateur.js')(services.models, logger);
+    services.rappel = require('./rappel.js')(services.models, services.date, logger);
 
 
     return services;

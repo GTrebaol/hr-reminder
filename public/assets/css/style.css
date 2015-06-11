@@ -91,7 +91,26 @@ textarea {
 }
 
 .table-users{
-  margin-top:75px;
+  margin-top:45px;
+}
+
+.filters{
+  margin-bottom: 50px;
+}
+
+@-moz-document url-prefix() {
+  .filters{
+    margin-bottom: 95px;
+  }
+}
+
+.form-group{
+  margin-right: 15px;
+}
+
+.search{
+  margin-top:10px;
+  margin-bottom:50px;
 }
 
 .pagination-container{

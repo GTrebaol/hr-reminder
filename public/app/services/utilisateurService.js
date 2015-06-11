@@ -2,7 +2,7 @@
 
 /* Services */
 
-var UtilisateurService = function (Restangular, $log) {
+var UtilisateurService = function (Restangular, $log, $filter) {
 
     /**
      * Get a single utilisateur from the database
@@ -19,9 +19,9 @@ var UtilisateurService = function (Restangular, $log) {
     * Get all the utilisateurs
     * @returns {*}
     **/
-    this.findAllUtilisateurs = function(page){
+    this.findAllUtilisateurs = function(filters){
       $log.info("ReminderService :: findAllUtilisateurs");
-      return Restangular.all('utilisateur').one('p',page).customGET();
+      return Restangular.all('utilisateur').customPOST(filters);
     }
 
 
@@ -35,27 +35,19 @@ var UtilisateurService = function (Restangular, $log) {
     // Had HUGE issues with the timezone and restangular. This app is used in UTC +2 timezone
     // and since I used only date and not datetime, my values were like : 03/01/2015 00:00:00
     // Restangular would then transform this date into UTC, resulting into : 02/01/2015 22:00:00
-    // The following code fix that, but it's really really really ugly, sorry for that...
+    // The following code fix simply removes the time since I can't do it from the datepicker
+    // but it's really really really ugly, sorry for that...
     var handleTimeZone = function(utilisateur){
       if(utilisateur.date_embauche){
-        if(typeof utilisateur.date_embauche != Date){
-          utilisateur.date_embauche = new Date(utilisateur.date_embauche);
-        }
-        utilisateur.date_embauche.setHours(utilisateur.date_embauche.getHours() + 2);
+        utilisateur.date_embauche = $filter('amDateFormat')(utilisateur.date_embauche, "YYYY-MM-DD");
       }
 
       if(utilisateur.dernier_ese){
-        if(typeof utilisateur.dernier_ese != Date){
-          utilisateur.dernier_ese = new Date(utilisateur.dernier_ese);
-        }
-        utilisateur.dernier_ese.setHours(utilisateur.dernier_ese.getHours() + 2);
+        utilisateur.dernier_ese = $filter('amDateFormat')(utilisateur.dernier_ese, "YYYY-MM-DD");
       }
 
       if(utilisateur.prochain_ese){
-        if(typeof utilisateur.prochain_ese != Date){
-          utilisateur.prochain_ese = new Date(utilisateur.prochain_ese);
-        }
-        utilisateur.prochain_ese.setHours(utilisateur.prochain_ese.getHours() + 2);
+        utilisateur.prochain_ese = $filter('amDateFormat')(utilisateur.prochain_ese, "YYYY-MM-DD");
       }
 
       return utilisateur;
@@ -67,7 +59,7 @@ var UtilisateurService = function (Restangular, $log) {
 
 };
 
-UtilisateurService.$inject = ["Restangular", "$log"];
+UtilisateurService.$inject = ["Restangular", "$log", "$filter"];
 
 
 angular.module('hrReminder').service('UtilisateurService', UtilisateurService);

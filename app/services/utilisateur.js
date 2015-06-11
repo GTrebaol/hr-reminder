@@ -5,7 +5,7 @@
  * @param models
  * @constructor
  */
-UtilisateurService = function (models) {
+UtilisateurService = function (models, logger) {
 
 
   var self = {};
@@ -22,8 +22,26 @@ UtilisateurService = function (models) {
    }
 
 
-  self.findAll = function(page){
-    return new models.utilisateur().query({ limit: 10, offset: 10*(page-1) }).fetchAll()
+  self.findAll = function(filters, count){
+    var queryFilter  = [];
+    var limit = 10;
+    var offset = 10*(filters.currentPage-1);
+    logger.debug(queryFilter);
+    if(count){
+      return self.count();
+    }else{
+      return new models.utilisateur().query(searchQuery(filters, limit, offset)).fetchAll();
+    }
+  }
+
+  var searchQuery = function(filters, limit, offset){
+    return function(qb){
+      if(filters.nom){
+        qb.where('nom', 'LIKE', '%'+filters.nom+'%');
+      }
+      qb.limit(limit);
+      qb.offset(offset);
+    };
   }
 
   self.count = function(){

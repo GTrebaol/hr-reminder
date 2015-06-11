@@ -4,7 +4,7 @@
 
 var ReminderConfig = function ($locationProvider, $routeProvider, $translateProvider, RestangularProvider) {
 
-  RestangularProvider.setBaseUrl("http://localhost:8080/api");
+  RestangularProvider.setBaseUrl("./api");
 
   $routeProvider.when('/utilisateur/list', {
       templateUrl: '/partials/utilisateur/list.html',
@@ -78,5 +78,6 @@ angular.module('hrReminder', [
     'ui.bootstrap',
     'ngAnimate',
     'toastr',
-    'ui.date'
+    'ui.date',
+    'angularMoment'
 ]).config(ReminderConfig);

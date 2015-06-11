@@ -8,6 +8,7 @@
 var UtilisateurCtrl = function($scope, $modal, $filter, $route, $location, $routeParams, toastr, UtilisateurService, UtilsService){
 
   $scope.utilisateur = {};
+  $scope.filters = {};
   $scope.listDiscr = [];
 
   $scope.dateOptions = {
@@ -29,18 +30,18 @@ var UtilisateurCtrl = function($scope, $modal, $filter, $route, $location, $rout
 
 
   $scope.list = function(){
-    $scope.currentPage = $routeParams.p ? $routeParams.p : 1;
+    $scope.filters.currentPage = $routeParams.p ? $routeParams.p : 1;
     $scope.pageChanged();
+    $scope.$loadDiscrList();
+    $scope.filters.discr = [];
   }
 
-
-  $scope.pageChanged = function() {
-    UtilisateurService.findAllUtilisateurs($scope.currentPage).then(function(data){
+  $scope.pageChanged = function(){
+    UtilisateurService.findAllUtilisateurs($scope.filters).then(function(data){
         $scope.utilisateurs = data.utilisateurs;
-        $scope.count = data.count;
-        $scope.pageSize = data.page_size;
+        $scope.filters = data.vars;
     });
-  };
+  }
 
 
   $scope.view = function(){

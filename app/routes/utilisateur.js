@@ -30,13 +30,14 @@ module.exports.load = function (app) {
 
 
 
-  app.get('/api/utilisateur/p/:page', function (req, res) {
+  app.post('/api/utilisateur', function (req, res) {
     console.log("Routes -  Utilisateur::findAll paginated");
-    services.utilisateur.findAll(req.params.page).then(function (models) {
-      services.utilisateur.count().then(function(count){
-        return res.json({utilisateurs : models, count : count[0]['cnt'], page_size : 10});
-      });
-    }).catch(function (error) {
+    var vars = req.body;
+    var count = 0;
+    services.utilisateur.findAll(vars, true).then(function(countRes){ vars.count = countRes[0]['cnt']});
+    services.utilisateur.findAll(vars, false).then(function (models) {
+        return res.json({utilisateurs : models, vars:vars});
+      }).catch(function (error) {
           console.log(error);
           res.status(500).json(error);
     });

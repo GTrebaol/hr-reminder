@@ -4,7 +4,7 @@
  * @param models
  */
 
-RappelService = function (models, dateService) {
+RappelService = function (models, dateService, logger) {
 
   var self = {};
   var MONTH_OFFSET = 30;

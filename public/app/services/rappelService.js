@@ -2,7 +2,7 @@
 
 /* Services */
 
-var RappelService = function (Restangular, $log) {
+var RappelService = function (Restangular, $log, $filter) {
 
     /**
      * Get all the rappels happening in the given day
@@ -54,21 +54,15 @@ var RappelService = function (Restangular, $log) {
   // Had HUGE issues with the timezone and restangular. This app is used in UTC +2 timezone
   // and since I used only date and not datetime, my values were like : 03/01/2015 00:00:00
   // Restangular would then transform this date into UTC, resulting into : 02/01/2015 22:00:00
-  // The following code fix that, but it's really really really ugly, sorry for that...
+  // The following code fix simply removes the time since I can't do it from the datepicker
+  // but it's really really really ugly, sorry for that...
   var handleTimeZone = function(rappel){
     if(rappel.date_rappel != null){
-      if(typeof rappel.date_rappel != Date){
-        rappel.date_rappel = new Date(rappel.date_rappel);
-      }
-      rappel.date_rappel.setHours(rappel.date_rappel.getHours() + 2);
+      rappel.date_rappel = $filter('amDateFormat')(rappel.date_rappel, "YYYY-MM-DD");
     }
 
-
     if(rappel.date_rdv != null){
-      if(typeof rappel.date_rdv != Date){
-        rappel.date_rdv = new Date(rappel.date_rdv);
-      }
-      rappel.date_rdv.setHours(rappel.date_rdv.getHours() + 2);
+      rappel.date_rdv = $filter('amDateFormat')(rappel.date_rdv, "YYYY-MM-DD");
     }
     return rappel;
   }
@@ -78,7 +72,7 @@ var RappelService = function (Restangular, $log) {
 
 };
 
-RappelService.$inject = ["Restangular", "$log"];
+RappelService.$inject = ["Restangular", "$log", "$filter"];
 
 
 angular.module('hrReminder').service('RappelService', RappelService);

@@ -18,6 +18,8 @@
   "add" : "Add",
   "cancel" : "Cancel",
   "state" : "State",
+  "previous" : "Previous",
+  "next" : "Next",
 
   "user.name" : "Name",
   "user.firstname" : "Firstname",
