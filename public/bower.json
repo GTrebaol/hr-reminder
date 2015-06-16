@@ -1,12 +1,18 @@
 {
-  "name": "RH-Reminder",
-  "version": "0.0.0",
+  "name": "rh-reminder",
+  "version": "0.1.0",
+  "description": "Reminder RH",
+  "keywords": [
+    "Node.js",
+    "Human Ressources",
+    "AngularJS",
+    "Bookshelf.js"
+  ],
   "authors": [
-    "Gwenaël Trebaol <s4ngoku@gmail.com>"
+    "Gwenaël Trebaol <trebaol.gwenael@gmail.com>"
   ],
   "main": "/public/index.html",
   "license": "MIT",
-  "private": true,
   "ignore": [
     "**/.*",
     "node_modules",
@@ -30,8 +36,6 @@
     "angular-moment": "~0.10.1"
   },
   "resolutions": {
-    "angular": "1.4.0",
-    "bootstrap": "~3.3.2",
-    "jquery": "~2.1.4"
+    "angular": "1.4.0"
   }
 }
