@@ -12,15 +12,23 @@ var express = require('express'),
         fs = require('fs'),
         routeDir = './app/routes/',
         routeFiles = fs.readdirSync(routeDir),
-        log4js = require('log4js');
+        log4js = require('log4js'),
+        mkdirp = require('mkdirp');
 
 
 app = module.exports = express();
 
+var logPath = './logs';
+var logFile = 'debug.log';
+
+mkdirp(logPath, function(err){
+    if(err)console.log("couldn't create log directory" + err);
+});
+
 log4js.configure({
   appenders: [
     { type: 'console' },
-    { type: 'file', filename: 'logs/debug.log', category: 'debug' }
+    { type: 'file', filename: logPath+'/'+logFile, category: 'debug' }
   ]
 });
 
