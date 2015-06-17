@@ -5,7 +5,7 @@ LOCK TABLES `utilisateur` WRITE;
 INSERT INTO `utilisateur` VALUES
 (1,'Trebaol','Gwenaël','0607467217','trebaol@mail.io',25,'apsidien','Master TIIL',5,'Javascript',50,'Bretagne',NULL,NULL,'0000-00-00','0000-00-00',NULL, NULL,NULL, NULL),
 (2,'Lechauve','Thomas','0101010101','lechauve@mail.io',25,'independant','Master en élevage de ver de terre',-23,'PHP, Python',150000,'2 jambes','Bouuh t\'es moche !',0,'LA SOURCE !','1901-12-22', NULL, NULL,NULL,NULL),
-(3,'Ogor','Yohann','0102030405','ogor@mail.io','candidat',25,'Master TIIL',5,'Java JEE',150,'Bretagne',NULL,NULL,NULL,NULL,NULL,NULL,NULL, NULL),
+(3,'Ogor','Yohann','0102030405','ogor@mail.io',25,'candidat','Master TIIL',5,'Java JEE',150,'Bretagne',NULL,NULL,NULL,NULL,NULL,NULL,NULL, NULL),
 (4,'Le Sanguinaire','Léodagan',NULL,'jme-la-taille@en-biseau-voyez.kmltt',50,'independant',NULL,NULL,NULL,NULL,NULL,'Ah nan mais j\'vous jure hein, des tanches pareilles, on devrait les mettre sous verre !',1,NULL,NULL,NULL,NULL,NULL, NULL),
 (5,'Blaize','Père','0298632541','les-autres-intervalles@c-est-dla-merde.kmltt',30,'apsidien','Aucune',5,NULL,NULL,NULL,'Non mais attendez, là, je crois qu\'on s\'est mal compris : vous avez une idée du temps qu\'il me faut pour tracer une lettre avec ces PUTAINS DE PLUMES ?!',1,NULL,NULL,NULL,NULL,NULL , NULL),
 (6,'Macoincoin','Jeremy','02986532','bizu@mail.io',25,'apsidien','?',5,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL, NULL),

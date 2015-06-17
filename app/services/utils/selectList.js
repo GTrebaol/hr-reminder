@@ -14,11 +14,11 @@ SelectListService = function (models) {
             qb.groupBy('discr');
         });
         return query.fetchAll({columns: ['discr']});
-    }
+    };
 
     return self;
 
-}
+};
 
 
 module.exports = SelectListService;

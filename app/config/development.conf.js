@@ -12,4 +12,4 @@ module.exports.db = {
     user: db_username === undefined ? 'root' : db_username,
     password: db_password === undefined ? '' : db_password,
     database: db_database === undefined ? 'reminder' : db_database
-}
+};

@@ -13,4 +13,4 @@ module.exports.db = {
     user: db_username,
     password: db_password,
     database: 'reminder'
-}
+};

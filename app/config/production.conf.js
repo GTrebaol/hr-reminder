@@ -13,4 +13,5 @@ module.exports.db = {
     user: db_username === undefined ? 'adminuaAUVZW' : db_username,
     password: db_password === undefined ? '_FsNvpHAXZvd' : db_password,
     database: 'reminder'
-}
+};
+

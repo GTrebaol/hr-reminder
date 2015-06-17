@@ -184,11 +184,10 @@ Content-Type: application/json; charset=utf-8
 
 
 ## TODO
-- Create a new type of user, 'Ancien Apsidien'.
-- Identify the different type of users (Candidat, Apsidien, Independant, Ancien Apsidien) and display different fields for each.
+- Identify the different type of users (Candidat, Apsidien, Independant) and display different fields for each.
 - For a 'Candidat', we should have a first interview date, and the source shall be choose from a predefined list of values
 - For an 'Independant', new fields : 'TJM', 'Ancien sous-traitant Apside' (checkbox).
-- For an 'Ancien Apsidien', new fields : 'Annee embauche Apside', 'Annee départ Apside', 'Accord pour recontact', 'Eligible', 'Salaire'.
+- For an 'Apsidien', new fields : 'Annee embauche Apside', 'Annee départ Apside', 'Accord pour recontact', 'Eligible', 'Salaire'.
 
 ### Thoughts
 I created only one table for all the different types of users that will be contained in this app. The thing is I will need to display different informations

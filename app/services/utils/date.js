@@ -18,13 +18,13 @@ DateService = function () {
                                                 typeof date === "object" ? new Date(date.year, date.month, date.date) :
                                                         NaN
         );
-    }
+    };
 
     /* format is dd/mm/yyyy */
     self.getDateToday = function () {
         var today = new Date();
         return self.getFormatedDate(today);
-    }
+    };
 
     self.getFormatedDate = function (date) {
         date = self.convert(date);
@@ -42,7 +42,7 @@ DateService = function () {
 
         formatedDate = yyyy + '-' + mm + '-' + dd;
         return formatedDate;
-    }
+    };
 
     self.compare = function (date_a, date_b) {
         return (
@@ -51,7 +51,7 @@ DateService = function () {
                 (a > b) - (a < b) :
                         NaN
         );
-    }
+    };
 
     self.getDateWithOffset = function (day_offset) {
         assert(true, day_offset.constructor === Number, 'offset must be a number');
@@ -59,11 +59,11 @@ DateService = function () {
         var date = new Date();
         var dateWithOffset = self.getFormatedDate(date.setDate(date.getDate() + parseInt(day_offset)));
         return dateWithOffset;
-    }
+    };
 
     return self;
 
-}
+};
 
 
 module.exports = DateService;

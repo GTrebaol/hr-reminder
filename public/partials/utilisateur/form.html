@@ -82,6 +82,16 @@
   </div>
 
   <div class="form-group">
+    <label class="col-sm-2 control-label" for="competences">{{'user.competences'|translate}}</label>
+
+    <div class="col-sm-10">
+      <span ng-if="!updatable" class="form-control" id="competences">{{::utilisateur.competences}}</span>
+      <input ng-if="updatable" class="form-control input-xlarge" type="text" ng-model="utilisateur.competences"
+             id="competences"/>
+    </div>
+  </div>
+
+  <div class="form-group">
     <label class="col-sm-2 control-label" for="pretentions">{{'user.pretentions'|translate}}</label>
 
     <div class="col-sm-10">
