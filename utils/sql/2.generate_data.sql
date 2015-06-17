@@ -3,20 +3,20 @@
 LOCK TABLES `utilisateur` WRITE;
 /*!40000 ALTER TABLE `utilisateur` DISABLE KEYS */;
 INSERT INTO `utilisateur` VALUES
-(1,'Trebaol','Gwenaël','0607467217','trebaol@mail.io','apsidien','Master TIIL',5,'Javascript',50,'Bretagne',NULL,NULL,'0000-00-00','0000-00-00',NULL, NULL,NULL, NULL),
-(2,'Lechauve','Thomas','0101010101','lechauve@mail.io','independant','Master en élevage de ver de terre',-23,'PHP, Python',150000,'2 jambes','Bouuh t\'es moche !',0,'LA SOURCE !','1901-12-22', NULL, NULL,NULL,NULL),
-(3,'Ogor','Yohann','0102030405','ogor@mail.io','candidat','Master TIIL',5,'Java JEE',150,'Bretagne',NULL,NULL,NULL,NULL,NULL,NULL,NULL, NULL),
-(4,'Le Sanguinaire','Léodagan',NULL,'jme-la-taille@en-biseau-voyez.kmltt','independant',NULL,NULL,NULL,NULL,NULL,'Ah nan mais j\'vous jure hein, des tanches pareilles, on devrait les mettre sous verre !',1,NULL,NULL,NULL,NULL,NULL, NULL),
-(5,'Blaize','Père','0298632541','les-autres-intervalles@c-est-dla-merde.kmltt','apsidien','Aucune',5,NULL,NULL,NULL,'Non mais attendez, là, je crois qu\'on s\'est mal compris : vous avez une idée du temps qu\'il me faut pour tracer une lettre avec ces PUTAINS DE PLUMES ?!',1,NULL,NULL,NULL,NULL,NULL , NULL),
-(6,'Macoincoin','Jeremy','02986532','bizu@mail.io','apsidien','?',5,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL, NULL),
-(7,'Le blanche Fesse','Guenièvre','98653214','mefiez-vous@des-cons.kmltt','independant',NULL,10,NULL,NULL,NULL,'Comme vous me touchez pas, les choses de l’amour je m’assois dessus, et je parle au figuré, alors je m\'suis plongée dans la pâte d\'amande! Quand je vous regarde et que j\'vois comment vous m\'traitez, hein, je m\'dis que j’aurais meilleur compte d’aller d\'ici jusqu’à Rome à pieds pour en chercher parce que c’est finalement la meilleure chose qui me soit arrivée ….',1,NULL,NULL,NULL,NULL,NULL, NULL),
-(8,'Jean','Marc',NULL,'jean-marc@bidoch.on','candidat',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL, NULL),
-(9,'Le Gallois','Perceval',NULL,'gros-faisan@du-sud.kmltt','candidat',NULL,NULL,NULL,NULL,NULL,'Bref, tout ça pour dire, que je voudrais bien qu’on me considère en tant que Tel.',NULL,NULL,NULL,NULL,NULL,NULL, NULL),
-(10,'De Vannes','Karadoc',NULL,'le-graal-par-ci@le-graal-par-la.kmltt','candidat',NULL,NULL,NULL,NULL,NULL,'De l’hypolipémie ! J’ai plus de gras dans le sang. Je vais me mettre à peler et à perdre mes cheveux…',NULL,NULL,NULL,NULL,NULL,NULL, NULL),
-(11,'Pendragon','Arthur',NULL,'je-suis-pas-romain@merde.kmltt','independant',NULL,NULL,NULL,NULL,NULL,'Et si je vous dis que vous êtes deux glands, là, vous avez du péremptoire. C’est vous qui voyez.',NULL,NULL,NULL,NULL,NULL,NULL, NULL),
-(12,'Le Jeune','Bohort',NULL,'je-suis-un-miserable@mecreants.kmltt','independant',NULL,NULL,NULL,NULL,NULL,'J\'irai me coucher quand vous m\'aurez juré qu\'il n\'y a pas dans cette forêt d\'animal plus dangereux que le lapin adulte !',NULL,NULL,NULL,NULL,NULL,NULL, NULL),
-(13,'L\'enchanteur','Merlin',NULL,'evidemment-c-est@sans-alcool.kmltt','independant',NULL,NULL,NULL,NULL,NULL,'Vous n’êtes pas le plus fort, Môssieur Élias ! Quand on confond un clafoutis et une part de clafoutis, on vient pas la ramener !',NULL,NULL,NULL,NULL,NULL,NULL, NULL),
-(14,'CALECA','Mael',NULL,NULL,'candidat',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL, NULL);
+(1,'Trebaol','Gwenaël','0607467217','trebaol@mail.io',25,'apsidien','Master TIIL',5,'Javascript',50,'Bretagne',NULL,NULL,'0000-00-00','0000-00-00',NULL, NULL,NULL, NULL),
+(2,'Lechauve','Thomas','0101010101','lechauve@mail.io',25,'independant','Master en élevage de ver de terre',-23,'PHP, Python',150000,'2 jambes','Bouuh t\'es moche !',0,'LA SOURCE !','1901-12-22', NULL, NULL,NULL,NULL),
+(3,'Ogor','Yohann','0102030405','ogor@mail.io','candidat',25,'Master TIIL',5,'Java JEE',150,'Bretagne',NULL,NULL,NULL,NULL,NULL,NULL,NULL, NULL),
+(4,'Le Sanguinaire','Léodagan',NULL,'jme-la-taille@en-biseau-voyez.kmltt',50,'independant',NULL,NULL,NULL,NULL,NULL,'Ah nan mais j\'vous jure hein, des tanches pareilles, on devrait les mettre sous verre !',1,NULL,NULL,NULL,NULL,NULL, NULL),
+(5,'Blaize','Père','0298632541','les-autres-intervalles@c-est-dla-merde.kmltt',30,'apsidien','Aucune',5,NULL,NULL,NULL,'Non mais attendez, là, je crois qu\'on s\'est mal compris : vous avez une idée du temps qu\'il me faut pour tracer une lettre avec ces PUTAINS DE PLUMES ?!',1,NULL,NULL,NULL,NULL,NULL , NULL),
+(6,'Macoincoin','Jeremy','02986532','bizu@mail.io',25,'apsidien','?',5,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL, NULL),
+(7,'Le blanche Fesse','Guenièvre','98653214','mefiez-vous@des-cons.kmltt',40,'independant',NULL,10,NULL,NULL,NULL,'Comme vous me touchez pas, les choses de l’amour je m’assois dessus, et je parle au figuré, alors je m\'suis plongée dans la pâte d\'amande! Quand je vous regarde et que j\'vois comment vous m\'traitez, hein, je m\'dis que j’aurais meilleur compte d’aller d\'ici jusqu’à Rome à pieds pour en chercher parce que c’est finalement la meilleure chose qui me soit arrivée ….',1,NULL,NULL,NULL,NULL,NULL, NULL),
+(8,'Jean','Marc',NULL,'jean-marc@bidoch.on',20,'candidat',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL, NULL),
+(9,'Le Gallois','Perceval',NULL,'gros-faisan@du-sud.kmltt',35,'candidat',NULL,NULL,NULL,NULL,NULL,'Bref, tout ça pour dire, que je voudrais bien qu’on me considère en tant que Tel.',NULL,NULL,NULL,NULL,NULL,NULL, NULL),
+(10,'De Vannes','Karadoc',NULL,'le-graal-par-ci@le-graal-par-la.kmltt',35,'candidat',NULL,NULL,NULL,NULL,NULL,'De l’hypolipémie ! J’ai plus de gras dans le sang. Je vais me mettre à peler et à perdre mes cheveux…',NULL,NULL,NULL,NULL,NULL,NULL, NULL),
+(11,'Pendragon','Arthur',NULL,'je-suis-pas-romain@merde.kmltt',40,'independant',NULL,NULL,NULL,NULL,NULL,'Et si je vous dis que vous êtes deux glands, là, vous avez du péremptoire. C’est vous qui voyez.',NULL,NULL,NULL,NULL,NULL,NULL, NULL),
+(12,'Le Jeune','Bohort',NULL,'je-suis-un-miserable@mecreants.kmltt',30,'independant',NULL,NULL,NULL,NULL,NULL,'J\'irai me coucher quand vous m\'aurez juré qu\'il n\'y a pas dans cette forêt d\'animal plus dangereux que le lapin adulte !',NULL,NULL,NULL,NULL,NULL,NULL, NULL),
+(13,'L\'enchanteur','Merlin',NULL,'evidemment-c-est@sans-alcool.kmltt',99,'independant',NULL,NULL,NULL,NULL,NULL,'Vous n’êtes pas le plus fort, Môssieur Élias ! Quand on confond un clafoutis et une part de clafoutis, on vient pas la ramener !',NULL,NULL,NULL,NULL,NULL,NULL, NULL),
+(14,'CALECA','Mael',NULL,NULL,NULL,'candidat',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL, NULL);
 /*!40000 ALTER TABLE `utilisateur` ENABLE KEYS */;
 UNLOCK TABLES;
 

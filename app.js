@@ -21,15 +21,15 @@ app = module.exports = express();
 var logPath = './logs';
 var logFile = 'debug.log';
 
-mkdirp(logPath, function(err){
-    if(err)console.log("couldn't create log directory" + err);
+mkdirp(logPath, function (err) {
+    if (err)console.log("couldn't create log directory" + err);
 });
 
 log4js.configure({
-  appenders: [
-    { type: 'console' },
-    { type: 'file', filename: logPath+'/'+logFile, category: 'debug' }
-  ]
+    appenders: [
+        {type: 'console'},
+        {type: 'file', filename: logPath + '/' + logFile, category: 'debug'}
+    ]
 });
 
 var logger = log4js.getLogger('debug');
@@ -72,7 +72,7 @@ app.use('/css', express.static(__dirname + '/public/css'));
 app.use('/bower_components', express.static(__dirname + '/public/bower_components')); //Replace by CDNs later on!
 app.use('/partials', express.static(__dirname + '/public/partials'));
 
-app.all('/*', function(req, res, next) {
+app.all('/*', function (req, res, next) {
     // Just send the index.html for other files to support HTML5Mode
     res.sendFile(path.join(__dirname, '/public/index.html'));
 });
@@ -82,15 +82,15 @@ app.all('/*', function(req, res, next) {
 var server = http.createServer(app);
 
 server.listen(app.get('port'), app.get('ipaddress'), function () {
-  logger.debug('Server running and listening on ' + app.get('ipaddress') + ':'+app.get('port'));
+    logger.debug('Server running and listening on ' + app.get('ipaddress') + ':' + app.get('port'));
 });
 
 server.on('error', function (e) {
-  if (e.code == 'EADDRINUSE') {
-    console.log('Address in use, retrying...');
-    setTimeout(function () {
-      server.close();
-      server.listen(app.get('port'), app.get('ipaddress'));
-    }, 1000);
-  }
+    if (e.code == 'EADDRINUSE') {
+        console.log('Address in use, retrying...');
+        setTimeout(function () {
+            server.close();
+            server.listen(app.get('port'), app.get('ipaddress'));
+        }, 1000);
+    }
 });

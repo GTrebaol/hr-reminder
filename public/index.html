@@ -1,66 +1,65 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="hrReminder">
-    <head>
-        <base href="/"/>
-        <meta charset="utf-8">
-        <title>HR Reminder</title>
-        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="bower_components/jquery-ui/themes/smoothness/jquery-ui.css"/>
-        <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.min.css" />
-        <link rel="stylesheet" href="assets/css/style.css"/>
-    </head>
-    <body>
-      <div class="presentation text-center">
-        <h1>Application RH Reminder</h1>
-        <br>
-      </div>
-      <div class="container">
-        <div class="menu-container">
-            <div ng-include src="'partials/commons/top-menu.html'"></div>
-        </div>
+<head>
+  <base href="/"/>
+  <meta charset="utf-8">
+  <title>HR Reminder</title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="bower_components/jquery-ui/themes/smoothness/jquery-ui.css"/>
+  <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.min.css"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body>
+<div class="presentation text-center">
+  <h1>Application RH Reminder</h1>
+  <br>
+</div>
+<div class="container">
+  <div class="menu-container">
+    <div ng-include src="'partials/commons/top-menu.html'"></div>
+  </div>
 
-        <div ng-view></div>
-      </div>
-
-
-        <footer class="footer" class="footer" ng-include src="'partials/commons/footer.html'"></footer>
-
-        <!-- In production use:
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-        -->
-        <!-- libraries -->
-        <script src="bower_components/jquery/dist/jquery.min.js"></script>
-        <script src="bower_components/jquery-ui/jquery-ui.js"></script>
-        <script src="bower_components/angular/angular.js"></script>
-        <script src="bower_components/angular-route/angular-route.js"></script>
-        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-        <script src="bower_components/underscore/underscore.js"></script>
-        <script src="bower_components/restangular/dist/restangular.js"></script>
-        <script src="bower_components/angular-translate/angular-translate.min.js"></script>
-        <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
-        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.min.js"></script>
-        <script src="bower_components/angular-animate/angular-animate.min.js"></script>
-        <script src="bower_components/angular-ui-date/src/date.js"></script>
-        <script src="bower_components/jquery-ui/ui/i18n/datepicker-fr.js"></script>
-        <script src="bower_components/moment/min/moment.min.js"></script>
-        <script src="bower_components/angular-moment/angular-moment.min.js"></script>
+  <div ng-view></div>
+</div>
 
 
-        <!-- supraball sources -->
-        <script src="app/app.js"></script>
+<footer class="footer" ng-include src="'partials/commons/footer.html'"></footer>
 
-        <script src="app/services/rappelService.js"></script>
-        <script src="app/services/utilisateurService.js"></script>
-        <script src="app/services/utilsService.js"></script>
+<!-- In production use:
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+-->
+<!-- libraries -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/jquery-ui/jquery-ui.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script src="bower_components/underscore/underscore.js"></script>
+<script src="bower_components/restangular/dist/restangular.js"></script>
+<script src="bower_components/angular-translate/angular-translate.min.js"></script>
+<script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/angular-toastr/dist/angular-toastr.tpls.min.js"></script>
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="bower_components/angular-ui-date/src/date.js"></script>
+<script src="bower_components/jquery-ui/ui/i18n/datepicker-fr.js"></script>
+<script src="bower_components/moment/min/moment.min.js"></script>
+<script src="bower_components/angular-moment/angular-moment.min.js"></script>
 
-        <script src="app/controllers/rappelCtrl.js"></script>
-        <script src="app/controllers/utilisateurCtrl.js"></script>
 
-        <script src="app/filters/filters.js"></script>
-        <script src="app/directives/directives.js"></script>
+<!-- supraball sources -->
+<script src="app/app.js"></script>
+
+<script src="app/services/rappelService.js"></script>
+<script src="app/services/utilisateurService.js"></script>
+<script src="app/services/utilsService.js"></script>
+
+<script src="app/controllers/rappelCtrl.js"></script>
+<script src="app/controllers/utilisateurCtrl.js"></script>
+
+<script src="app/filters/filters.js"></script>
+<script src="app/directives/directives.js"></script>
 
 
-
-    </body>
+</body>
 </html>

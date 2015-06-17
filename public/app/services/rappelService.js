@@ -33,59 +33,57 @@ var RappelService = function (Restangular, $log, $filter) {
         return Restangular.one('rappel', id).get();
     };
 
-    this.findAllPastRappels = function(){
-      $log.info("RappelService :: findAllPastRappels");
-      return Restangular.all('rappel').all('past').getList();
-    }
+    this.findAllPastRappels = function () {
+        $log.info("RappelService :: findAllPastRappels");
+        return Restangular.all('rappel').all('past').getList();
+    };
 
-    this.saveOrCreateRappel = function(rappel){
-      $log.info("ReminderService :: saveOrCreateRappel");
-      handleTimeZone(rappel);
-      return Restangular.all('rappel').all('update').customPUT(rappel);
-    }
-
-
-    this.processRappel = function(id){
-      $log.info("ReminderService :: processRappel");
-      return Restangular.one('rappel', id).all('traite').customGET();
-    }
+    this.saveOrCreateRappel = function (rappel) {
+        $log.info("ReminderService :: saveOrCreateRappel");
+        handleTimeZone(rappel);
+        return Restangular.all('rappel').all('update').customPUT(rappel);
+    };
 
 
-    this.getColorClass = function (rappel){
-      var today = new Date();
-      var colorClass = ""
-      if(rappel.traite == 1){
-        colorClass = $filter('translate')('rappel.css.traite');
-      }else{
-        if(new Date(rappel.date_rappel) < today ){
-          colorClass = $filter('translate')('rappel.css.danger');
-        }else if(new Date(rappel.date_rappel) > today.setDate(today.getDate() + 30)){
-          colorClass = $filter('translate')('rappel.css.normal');
-        }else{
-          colorClass = $filter('translate')('rappel.css.warning');
+    this.processRappel = function (id) {
+        $log.info("ReminderService :: processRappel");
+        return Restangular.one('rappel', id).all('traite').customGET();
+    };
+
+
+    this.getColorClass = function (rappel) {
+        var today = new Date();
+        var colorClass = ""
+        if (rappel.traite == 1) {
+            colorClass = $filter('translate')('rappel.css.traite');
+        } else {
+            if (new Date(rappel.date_rappel) < today) {
+                colorClass = $filter('translate')('rappel.css.danger');
+            } else if (new Date(rappel.date_rappel) > today.setDate(today.getDate() + 30)) {
+                colorClass = $filter('translate')('rappel.css.normal');
+            } else {
+                colorClass = $filter('translate')('rappel.css.warning');
+            }
         }
-      }
-      return colorClass;
+        return colorClass;
+    };
+
+
+    // Had HUGE issues with the timezone and restangular. This app is used in UTC +2 timezone
+    // and since I used only date and not datetime, my values were like : 03/01/2015 00:00:00
+    // Restangular would then transform this date into UTC, resulting into : 02/01/2015 22:00:00
+    // The following code fix simply removes the time since I can't do it from the datepicker
+    // but it's really really really ugly, sorry for that...
+    var handleTimeZone = function (rappel) {
+        if (rappel.date_rappel != null) {
+            rappel.date_rappel = $filter('amDateFormat')(rappel.date_rappel, "YYYY-MM-DD");
+        }
+
+        if (rappel.date_rdv != null) {
+            rappel.date_rdv = $filter('amDateFormat')(rappel.date_rdv, "YYYY-MM-DD");
+        }
+        return rappel;
     }
-
-
-  // Had HUGE issues with the timezone and restangular. This app is used in UTC +2 timezone
-  // and since I used only date and not datetime, my values were like : 03/01/2015 00:00:00
-  // Restangular would then transform this date into UTC, resulting into : 02/01/2015 22:00:00
-  // The following code fix simply removes the time since I can't do it from the datepicker
-  // but it's really really really ugly, sorry for that...
-  var handleTimeZone = function(rappel){
-    if(rappel.date_rappel != null){
-      rappel.date_rappel = $filter('amDateFormat')(rappel.date_rappel, "YYYY-MM-DD");
-    }
-
-    if(rappel.date_rdv != null){
-      rappel.date_rdv = $filter('amDateFormat')(rappel.date_rdv, "YYYY-MM-DD");
-    }
-    return rappel;
-  }
-
-
 
 
 };

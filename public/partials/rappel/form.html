@@ -1,36 +1,47 @@
+<!--suppress ALL -->
+
 <h3>{{::rappelMethod}} {{'for.user'|translate}} : {{::utilisateur.nom}} {{::utilisateur.prenom}}</h3>
 <form class="form-horizontal">
 
   <div class="form-group">
-  	<label class="col-sm-2 control-label" for="date_rappel">{{'reminder.date'|translate}} *</label>
-  	<div class="col-sm-10">
-  		<span ng-if="!updatable" class="form-control" name="date_rappel">{{::rappel.date_rappel|date:'dd/MM/yyyy'}}</span>
-  		<input ng-if="updatable" ui-date="dateOptions" name="date_rappel" class="form-control" ng-model="rappel.date_rappel"/>
-  	</div>
+    <label class="col-sm-2 control-label" for="date_rappel">{{'reminder.date'|translate}} *</label>
+
+    <div class="col-sm-10">
+      <span ng-if="!updatable" class="form-control" id="date_rappel">{{::rappel.date_rappel|date:'dd/MM/yyyy'}}</span>
+      <input ng-if="updatable" ui-date="dateOptions" id="date_rappel" class="form-control"
+             ng-model="rappel.date_rappel"/>
+    </div>
   </div>
 
 
   <div class="form-group">
     <label class="col-sm-2 control-label" for="date_rdv">{{'reminder.date_rdv'|translate}}</label>
+
     <div class="col-sm-10">
-      <span ng-if="!updatable" class="form-control" name="date_rdv">{{::rappel.date_rdv|date:'dd/MM/yyyy'}}</span>
-      <input ng-if="updatable" ui-date="dateOptions" name="date_rappel" class="form-control" ng-model="rappel.date_rdv"/>
+      <span ng-if="!updatable" class="form-control" id="date_rdv">{{::rappel.date_rdv|date:'dd/MM/yyyy'}}</span>
+      <input ng-if="updatable" ui-date="dateOptions" id="date_rdv" class="form-control" ng-model="rappel.date_rdv"/>
     </div>
   </div>
 
   <div class="form-group">
-  	<label class="col-sm-2 control-label" for="commentaire">{{'reminder.commentaire'|translate}}</label>
-  	<div class="col-sm-10">
-  		<textarea ng-if="!updatable" disabled="true" class="form-control" name="commentaire">{{::rappel.commentaire}}</textarea>
-			<textarea ng-if="updatable" name="commentaire" class="form-control"  ng-model="rappel.commentaire" rows="5"></textarea>
-  	</div>
+    <label class="col-sm-2 control-label" for="commentaire">{{'reminder.commentaire'|translate}}</label>
+
+    <div class="col-sm-10">
+      <textarea ng-if="!updatable" disabled="true" class="form-control"
+                id="commentaire">{{::rappel.commentaire}}</textarea>
+      <textarea ng-if="updatable" id="commentaire" class="form-control" ng-model="rappel.commentaire"
+                rows="5"></textarea>
+    </div>
   </div>
 
   <div class="form-group">
-  	<label class="col-sm-2 control-label" for="traite">{{'reminder.traite'|translate}}</label>
-  	<div class="col-sm-10">
-  		<input ng-if="!updatable" type="checkbox" disabled ng-true-value="1" ng-false-value="0" ng-model="rappel.traite" disabled class="big-checkbox" name="traite">
-      <input ng-if="updatable" type="checkbox" ng-true-value="1" ng-false-value="0" name="traite" class="big-checkbox"  ng-model="rappel.traite">
+    <label class="col-sm-2 control-label" for="traite">{{'reminder.traite'|translate}}</label>
+
+    <div class="col-sm-10">
+      <input ng-if="!updatable" type="checkbox" disabled ng-true-value="1" ng-false-value="0" ng-model="rappel.traite"
+             disabled class="big-checkbox" id="traite">
+      <input ng-if="updatable" type="checkbox" ng-true-value="1" ng-false-value="0" id="traite" class="big-checkbox"
+             ng-model="rappel.traite">
     </div>
   </div>
 
@@ -38,11 +49,15 @@
 <div class="footer">
   <div ng-if="updatable">
     <a href="/utilisateur" role="button" class="btn btn-default">{{'cancel'|translate}}</a>
-  	<button ng-click="submit()" type="submit" ng-if="!rappel.id" class="btn btn-primary"><i class="icon-white icon-plus"></i>{{'add'|translate}}</button>
-  	<button ng-click="submit()" type="submit" ng-if="rappel.id" class="btn btn-primary"><i class="icon-white icon-plus"></i>{{'save'|translate}}</button>
+    <button ng-click="submit()" type="submit" ng-if="!rappel.id" class="btn btn-primary"><i
+            class="icon-white icon-plus"></i>{{'add'|translate}}
+    </button>
+    <button ng-click="submit()" type="submit" ng-if="rappel.id" class="btn btn-primary"><i
+            class="icon-white icon-plus"></i>{{'save'|translate}}
+    </button>
   </div>
   <div ng-if="!updatable">
-	   <a href="/utilisateur" role="button" class="btn btn-default">{{'close'|translate}}</a>
+    <a href="/utilisateur" role="button" class="btn btn-default">{{'close'|translate}}</a>
   </div>
 </div>
 

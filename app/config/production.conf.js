@@ -2,9 +2,9 @@
  * Production database configuration file
  */
 var db_host = process.env.OPENSHIFT_MYSQL_DB_HOST,
-		db_port = process.env.OPENSHIFT_MYSQL_DB_PORT,
-		db_username = process.env.OPENSHIFT_MYSQL_DB_USERNAME,
-		db_password = process.env.OPENSHIFT_MYSQL_DB_PASSWORD;
+        db_port = process.env.OPENSHIFT_MYSQL_DB_PORT,
+        db_username = process.env.OPENSHIFT_MYSQL_DB_USERNAME,
+        db_password = process.env.OPENSHIFT_MYSQL_DB_PASSWORD;
 
 
 module.exports.db = {

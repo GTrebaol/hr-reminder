@@ -1,25 +1,27 @@
 /* Supraball League Stylesheet */
 
 /* fonts */
-@font-face{
-    font-family: FrutigerLTStd-Roman;
-    src : url("../fonts/FrutigerLTStd-Roman.woff");
+@font-face {
+  font-family: FrutigerLTStd-Roman;
+  src: url("../fonts/FrutigerLTStd-Roman.woff");
 }
-@font-face{
-    font-family: FrutigerLTStd-Bold;
-    src : url("../fonts/FrutigerLTStd-Bold.woff");
+
+@font-face {
+  font-family: FrutigerLTStd-Bold;
+  src: url("../fonts/FrutigerLTStd-Bold.woff");
 }
+
 /* end fonts */
 
 body {
-    font-family: FrutigerLTStd-Roman;
+  font-family: FrutigerLTStd-Roman, serif;
 }
 
 textarea {
-    resize: none;
+  resize: none;
 }
 
-.footer{
+.footer {
   padding-top: 40px;
   padding-bottom: 40px;
   margin-top: 100px;
@@ -28,110 +30,135 @@ textarea {
   border-top: 1px solid #e5e5e5;
 }
 
-
-.rappels-list-utilisateur{
+.rappels-list-utilisateur {
   border-top: 1px solid #e5e5e5;
   padding-top: 40px;
   margin-top: 100px;
 }
 
-
-.icons{
-  height:50px;
+.icons {
+  height: 50px;
 }
-
 
 /* Top menu style */
 #navbar-main {
-    background-color: #40516a;
-    font-family: FrutigerLTStd-Bold;
-    font-size: 1.5em;
+  background-color: #40516a;
+  font-family: FrutigerLTStd-Bold;
+  font-size: 1.5em;
 }
 
-.date-display{
+.date-display {
   color: #fff;
-  display:block;
+  display: block;
   padding-top: 10px;
   padding-bottom: 10px;
-  margin-right:25px;
+  margin-right: 25px;
 }
 
-#navbar-main  > .navbar-nav > li > a {
+#navbar-main > .navbar-nav > li > a {
   color: #fff;
 }
 
-#navbar-main  > .navbar-nav > li > a:hover {
-    background-color: #5B6E89;
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
-    color: #fff;
-    -webkit-transition: all 0.2s;
-    -moz-transition: all 0.2s;
-    -ms-transition: all 0.2s;
-    -o-transition: all 0.2s;
-    transition: all 0.2s;
-}
-#navbar-main  > .navbar-nav > .active > a {
-    background-color: #768aa8;
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
-    color: #ffff00;
-}
-#navbar-main  > .navbar-nav > .active > a:active {
-    background-color: #768aa8;
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
-    color: #ffff00;
-}
-#navbar-main  > .navbar-nav > .active > a:hover {
-    background-color: #889FC1;
-    color: #ffff00;
-    -webkit-transition: all 0.2s;
-    -moz-transition: all 0.2s;
-    -ms-transition: all 0.2s;
-    -o-transition: all 0.2s;
-    transition: all 0.2s;
+#navbar-main > .navbar-nav > li > a:hover {
+  background-color: #5B6E89;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  color: #fff;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
 }
 
-.big-checkbox{
-  width:35px;
-  height:35px;
+#navbar-main > .navbar-nav > .active > a {
+  background-color: #768aa8;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  color: #ffff00;
 }
 
-.table-users{
-  margin-top:45px;
+#navbar-main > .navbar-nav > .active > a:active {
+  background-color: #768aa8;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  color: #ffff00;
 }
 
-.filters{
+#navbar-main > .navbar-nav > .active > a:hover {
+  background-color: #889FC1;
+  color: #ffff00;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.big-checkbox {
+  width: 35px;
+  height: 35px;
+}
+
+.table-users {
+  margin-top: 45px;
+}
+
+.filters {
   margin-bottom: 50px;
 }
 
 @-moz-document url-prefix() {
-  .filters{
+  .filters {
     margin-bottom: 95px;
   }
 }
 
-.form-group{
+.form-group {
   margin-right: 15px;
 }
 
-.search{
-  margin-top:10px;
-  margin-bottom:50px;
+.search {
+  margin-top: 10px;
+  margin-bottom: 50px;
 }
 
-.pagination-container{
+.pagination-container {
   width: 100%;
   text-align: center;
 }
 
 /* basic positioning */
-.legend-rappel { list-style: none; }
-.legend-rappel li { float: left; margin-right: 10px; }
-.legend-rappel span { border: 1px solid #ccc; float: left; width: 12px; height: 12px; margin: 2px; }
+.legend-rappel {
+  list-style: none;
+}
+
+.legend-rappel li {
+  float: left;
+  margin-right: 10px;
+}
+
+.legend-rappel span {
+  border: 1px solid #ccc;
+  float: left;
+  width: 12px;
+  height: 12px;
+  margin: 2px;
+}
+
 /* your colors */
-.grey { background-color: grey; }
-.green { background-color: green; }
-.red { background-color: red; }
-.orange { background-color: orange; }
+.grey {
+  background-color: grey;
+}
+
+.green {
+  background-color: green;
+}
+
+.red {
+  background-color: red;
+}
+
+.orange {
+  background-color: orange;
+}

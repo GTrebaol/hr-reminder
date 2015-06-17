@@ -1,113 +1,148 @@
+<!--suppress ALL -->
 <h3>{{::userMethod}}</h3>
 <form class="form-horizontal">
   <div class="form-group">
-  	<label class="col-sm-2 control-label" for="nom">{{'user.name'|translate}} *</label>
-  	<div class="col-sm-10">
-  		<span ng-if="!updatable" class="form-control" name="nom">{{::utilisateur.nom}}</span>
-			<input ng-if="updatable" class="form-control" required name="nom" ng-model="utilisateur.nom"  class="input-xlarge"/>
-  	</div>
+    <label class="col-sm-2 control-label" for="nom">{{'user.name'|translate}} *</label>
+
+    <div class="col-sm-10">
+      <span ng-if="!updatable" class="form-control" id="nom">{{::utilisateur.nom}}</span>
+      <input ng-if="updatable" class="form-control input-xlarge" required id="nom" ng-model="utilisateur.nom"/>
+    </div>
   </div>
 
   <div class="form-group">
-  	<label class="col-sm-2 control-label" for="prenom">{{'user.firstname'|translate}} *</label>
-  	<div class="col-sm-10">
-  		<span ng-if="!updatable" class="form-control" name="prenom">{{::utilisateur.prenom}}</span>
-			<input ng-if="updatable" class="form-control" required name="prenom" ng-model="utilisateur.prenom" class="input-xlarge"/>
-  	</div>
+    <label class="col-sm-2 control-label" for="prenom">{{'user.firstname'|translate}} *</label>
+
+    <div class="col-sm-10">
+      <span ng-if="!updatable" class="form-control" id="prenom">{{::utilisateur.prenom}}</span>
+      <input ng-if="updatable" class="form-control input-xlarge" required id="prenom" ng-model="utilisateur.prenom"/>
+    </div>
   </div>
 
   <div class="form-group">
-  	<label class="col-sm-2 control-label" for="mail">{{'user.mail'|translate}}</label>
-  	<div class="col-sm-10">
-  		<span ng-if="!updatable" class="form-control" name="mail">{{::utilisateur.mail}}</span>
-  		<input ng-if="updatable" class="form-control" type="text" ng-model="utilisateur.mail"  name="mail" class="input-xlarge"/>
-		</div>
+    <label class="col-sm-2 control-label" for="mail">{{'user.mail'|translate}}</label>
+
+    <div class="col-sm-10">
+      <span ng-if="!updatable" class="form-control" id="mail">{{::utilisateur.mail}}</span>
+      <input ng-if="updatable" class="form-control input-xlarge" type="text" ng-model="utilisateur.mail" id="mail"/>
+    </div>
   </div>
 
   <div class="form-group">
-  	<label class="col-sm-2 col-sm-2 control-label" for="telephone">{{'user.telephone'|translate}}</label>
-  	<div class="col-sm-10">
-  		<span ng-if="!updatable" class="form-control" name="telephone">{{::utilisateur.telephone}}</span>
-  		<input ng-if="updatable" class="form-control" type="text" ng-model="utilisateur.telephone"  name="telephone" class="input-xlarge"/>
-		</div>
+    <label class="col-sm-2 col-sm-2 control-label" for="telephone">{{'user.telephone'|translate}}</label>
+
+    <div class="col-sm-10">
+      <span ng-if="!updatable" class="form-control" id="telephone">{{::utilisateur.telephone}}</span>
+      <input ng-if="updatable" class="form-control input-xlarge" type="text" ng-model="utilisateur.telephone"
+             id="telephone"/>
+    </div>
   </div>
 
   <div class="form-group">
-  	<label class="col-sm-2 control-label" for="discr">{{'user.discr'|translate}} *</label>
-  	<div class="col-sm-10">
-  		<span ng-if="!updatable" class="form-control" name="discr">{{::utilisateur.discr}}</span>
-  		<select ng-if="updatable" class="form-control" name="discr" ng-model="utilisateur.discr" ng-options="discr for discr in listDiscr">
+    <label class="col-sm-2 col-sm-2 control-label" for="telephone">{{'user.age'|translate}}</label>
+
+    <div class="col-sm-10">
+      <span ng-if="!updatable" class="form-control" id="age">{{::utilisateur.age}}</span>
+      <input ng-if="updatable" class="form-control input-xlarge" type="number" ng-model="utilisateur.age"
+             id="age"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="discr">{{'user.discr'|translate}} *</label>
+
+    <div class="col-sm-10">
+      <span ng-if="!updatable" class="form-control" id="discr">{{::utilisateur.discr}}</span>
+      <select ng-if="updatable" class="form-control input-xlarge" id="discr" ng-model="utilisateur.discr"
+              ng-options="discr for discr in listDiscr">
       </select>
-		</div>
-  </div>
-
-
-  <div class="form-group">
-  	<label class="col-sm-2 control-label" for="formation">{{'user.formation'|translate}}</label>
-  	<div class="col-sm-10">
-  		<span ng-if="!updatable" class="form-control" name="formation">{{::utilisateur.formation}}</span>
-  		<input ng-if="updatable" class="form-control" type="text" ng-model="utilisateur.formation"  name="formation" class="input-xlarge"/>
-		</div>
-  </div>
-
-
-  <div class="form-group">
-  	<label class="col-sm-2 control-label" for="annees_etudes">{{'user.etudes'|translate}}</label>
-  	<div class="col-sm-10">
-  		<span ng-if="!updatable" class="form-control" name="annees_etudes">{{::utilisateur.annees_etudes}}</span>
-  		<input ng-if="updatable" class="form-control" type="number" ng-model="utilisateur.annees_etudes"  name="annees_etudes" class="input-xlarge"/>
-		</div>
-  </div>
-
-  <div class="form-group">
-  	<label class="col-sm-2 control-label" for="pretentions">{{'user.pretentions'|translate}}</label>
-  	<div class="col-sm-10">
-  		<span ng-if="!updatable" class="form-control" name="pretentions">{{::utilisateur.pretentions}}</span>
-  		<input ng-if="updatable" class="form-control" type="number" ng-model="utilisateur.pretentions"  name="pretentions" class="input-xlarge"/>
-		</div>
-  </div>
-
-  <div class="form-group">
-  	<label class="col-sm-2 control-label" for="mobilite">{{'user.mobilite'|translate}}</label>
-  	<div class="col-sm-10">
-  		<span ng-if="!updatable" class="form-control" name="mobilite">{{::utilisateur.mobilite}}</span>
-			<input ng-if="updatable" class="form-control" type="text" ng-model="utilisateur.mobilite"  name="mobilite" class="input-xlarge"/>
-  	</div>
-  </div>
-
-  <div class="form-group">
-  	<label class="col-sm-2 control-label" for="remarques">{{'user.remarques'|translate}}</label>
-  	<div class="col-sm-10">
-  		<textarea ng-if="!updatable" disabled="true" class="form-control" name="remarques">{{::utilisateur.remarques}}</textarea>
-			<textarea ng-if="updatable" class="form-control"  name="remarques" ng-model="utilisateur.remarques" rows="5"></textarea>
-  	</div>
-  </div>
-
-
-  <div class="form-group">
-  	<label class="col-sm-2 control-label" for="decision">{{'user.decision'|translate}}</label>
-  	<div class="col-sm-10">
-      <span ng-if="!updatable" class="form-control" name="decision">{{::utilisateur.decision}}</span>
-			<input ng-if="updatable" class="form-control" type="text" ng-model="utilisateur.decision"  name="decision" class="input-xlarge"/>
     </div>
   </div>
 
 
   <div class="form-group">
-  	<label class="col-sm-2 control-label" for="source">{{'user.source'|translate}}</label>
-  	<div class="col-sm-10">
-  		<span ng-if="!updatable" class="form-control" name="source">{{::utilisateur.source}}</span>
-			<input ng-if="updatable" class="form-control" type="text" ng-model="utilisateur.source"  name="source" class="input-xlarge"/>
-  	</div>
+    <label class="col-sm-2 control-label" for="formation">{{'user.formation'|translate}}</label>
+
+    <div class="col-sm-10">
+      <span ng-if="!updatable" class="form-control" id="formation">{{::utilisateur.formation}}</span>
+      <input ng-if="updatable" class="form-control input-xlarge" type="text" ng-model="utilisateur.formation"
+             id="formation"/>
+    </div>
   </div>
 
 
   <div class="form-group">
-  	<label class="col-sm-2 control-label" for="date_embauche">{{'user.date_embauche'|translate}}</label>
-  	<div class="col-sm-10">
-  		<span ng-if="!updatable" class="form-control" name="date_embauche">{{utilisateur.date_embauche|date:'dd/MM/yyyy'}}</span>
-      <input ui-date="dateOptions"  ng-if="updatable" class="form-control" ng-model="utilisateur.date_embauche"/>
-  	</div>
+    <label class="col-sm-2 control-label" for="annees_experience">{{'user.experience'|translate}}</label>
+
+    <div class="col-sm-10">
+      <span ng-if="!updatable" class="form-control" id="annees_experience">{{::utilisateur.annees_experience}}</span>
+      <input ng-if="updatable" class="form-control input-xlarge" type="number" ng-model="utilisateur.annees_experience"
+             id="annees_experience"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="pretentions">{{'user.pretentions'|translate}}</label>
+
+    <div class="col-sm-10">
+      <span ng-if="!updatable" class="form-control" id="pretentions">{{::utilisateur.pretentions}}</span>
+      <input ng-if="updatable" class="form-control input-xlarge" type="number" ng-model="utilisateur.pretentions"
+             id="pretentions"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="mobilite">{{'user.mobilite'|translate}}</label>
+
+    <div class="col-sm-10">
+      <span ng-if="!updatable" class="form-control" id="mobilite">{{::utilisateur.mobilite}}</span>
+      <input ng-if="updatable" class="form-control input-xlarge" type="text" ng-model="utilisateur.mobilite"
+             id="mobilite"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="remarques">{{'user.remarques'|translate}}</label>
+
+    <div class="col-sm-10">
+      <textarea ng-if="!updatable" disabled="true" class="form-control"
+                id="remarques">{{::utilisateur.remarques}}</textarea>
+      <textarea ng-if="updatable" class="form-control input-xlarge" id="remarques" ng-model="utilisateur.remarques"
+                rows="5"></textarea>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="decision">{{'user.decision'|translate}}</label>
+
+    <div class="col-sm-10">
+      <span ng-if="!updatable" class="form-control" id="decision">{{::utilisateur.decision}}</span>
+      <input ng-if="updatable" class="form-control input-xlarge" type="text" ng-model="utilisateur.decision"
+             id="decision"/>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="source">{{'user.source'|translate}}</label>
+
+    <div class="col-sm-10">
+      <span ng-if="!updatable" class="form-control" id="source">{{::utilisateur.source}}</span>
+      <input ng-if="updatable" class="form-control input-xlarge" type="text" ng-model="utilisateur.source" id="source"/>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="date_embauche">{{'user.date_embauche'|translate}}</label>
+
+    <div class="col-sm-10">
+      <span ng-if="!updatable" class="form-control"
+            id="date_embauche">{{utilisateur.date_embauche|date:'dd/MM/yyyy'}}</span>
+      <input ui-date="dateOptions" id="date_embauche" ng-if="updatable" class="form-control"
+             ng-model="utilisateur.date_embauche"/>
+    </div>
   </div>
 
 
@@ -117,23 +152,23 @@
   <article class="table-rappels">
     <table ng-table="table-rappels" class="table table-striped table-bordered">
       <tbody>
-        <tr>
-          <th>{{'state'|translate}}</th>
-          <th>{{'reminder.date'|translate}}</th>
-          <th>{{'reminder.date_rdv'|translate}}</th>
-          <th>{{'comment'|translate}}</th>
-          <th>{{'actions'|translate}}</th>
-        </tr>
-        <tr ng-repeat="rappel in utilisateur.rappels | orderBy:'-date_rappel'">
-          <td class="{{'rappel.css.base'|translate}} {{getColorClass(rappel)}}"></td>
-          <td><span>{{::rappel.date_rappel | date : 'dd/MM/yyyy'}}</span></td>
-          <td><span>{{::rappel.utilisateur.nom}} {{::rappel.utilisateur.prenom}}</span></td>
-          <td><span>{{::rappel.commentaire}}</span></td>
-          <td width="200">
-            <a href="#" ng-if="!rappel.traite" ng-click="close(rappel.id)" class="btn btn-primary btn-xs" >{{'close'|translate}}</a>
-            <a href="/rappel/{{rappel.id}}/edit" class="btn btn-primary btn-xs" >{{'edit'|translate}}</a>
-          </td>
-        </tr>
+      <tr>
+        <th>{{'state'|translate}}</th>
+        <th>{{'reminder.date'|translate}}</th>
+        <th>{{'reminder.date_rdv'|translate}}</th>
+        <th>{{'comment'|translate}}</th>
+        <th>{{'actions'|translate}}</th>
+      </tr>
+      <tr ng-repeat="rappel in utilisateur.rappels | orderBy:'-date_rappel'">
+        <td class="{{'rappel.css.base'|translate}} {{getColorClass(rappel)}}"></td>
+        <td><span>{{::rappel.date_rappel | date : 'dd/MM/yyyy'}}</span></td>
+        <td><span>{{::rappel.utilisateur.nom}} {{::rappel.utilisateur.prenom}}</span></td>
+        <td><span>{{::rappel.commentaire}}</span></td>
+        <td width="200">
+          <a href="#" ng-if="!rappel.traite" ng-click="close(rappel.id)" class="btn btn-primary btn-xs">{{'close'|translate}}</a>
+          <a href="/rappel/{{rappel.id}}/edit" class="btn btn-primary btn-xs">{{'edit'|translate}}</a>
+        </td>
+      </tr>
       </tbody>
     </table>
   </article>
@@ -142,16 +177,20 @@
     <li><span class="{{'rappel.css.danger'|translate}}"></span> {{'rappel.danger'|translate}}</li>
     <li><span class="{{'rappel.css.normal'|translate}}"></span> {{'rappel.normal'|translate}}</li>
     <li><span class="{{'rappel.css.traite'|translate}}"></span> {{'rappel.traite'|translate}}</li>
-</ul>
+  </ul>
 
 </div>
 <div class="footer">
   <div ng-if="updatable">
     <a href="/utilisateur/list" role="button" class="btn btn-default">{{'cancel'|translate}}</a>
-  	<button ng-click="submit()" type="submit" ng-if="!utilisateur.id" class="btn btn-primary"><i class="icon-white icon-plus"></i>{{'add'|translate}}</button>
-  	<button ng-click="submit()" type="submit" ng-if="utilisateur.id" class="btn btn-primary"><i class="icon-white icon-plus"></i>{{'save'|translate}}</button>
+    <button ng-click="submit()" type="submit" ng-if="!utilisateur.id" class="btn btn-primary"><i
+            class="icon-white icon-plus"></i>{{'add'|translate}}
+    </button>
+    <button ng-click="submit()" type="submit" ng-if="utilisateur.id" class="btn btn-primary"><i
+            class="icon-white icon-plus"></i>{{'save'|translate}}
+    </button>
   </div>
   <div ng-if="!updatable">
-	   <a href="/utilisateur/list" role="button" class="btn btn-default">{{'close'|translate}}</a>
+    <a href="/utilisateur/list" role="button" class="btn btn-default">{{'close'|translate}}</a>
   </div>
 </div>

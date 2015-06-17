@@ -1,5 +1,5 @@
 var expect = require('chai').expect,
-    tracker;
+        tracker;
 
 // Connection to the database based on the environment.
 var conf = require('../app/config/development.conf.js');
@@ -24,46 +24,46 @@ describe('Service Tests', function () {
     });
 
     describe('Rappel tests', function () {
-      it('Should return a rappel :: rappel.findById', function (done) {
-        var rappelId = 1;
-        services.rappel.findById(rappelId).then(function (model) {
-            expect(model).to.be.an.instanceOf(services.models.rappel);
-            done();
+        it('Should return a rappel :: rappel.findById', function (done) {
+            var rappelId = 1;
+            services.rappel.findById(rappelId).then(function (model) {
+                expect(model).to.be.an.instanceOf(services.models.rappel);
+                done();
+            });
         });
-      });
 
 
-      it('Should return a rappel and the connected user :: rappel.findById', function (done) {
-        var rappelId = 1,
-            userId = 1,
-            discr = 'apsidien';
-        services.rappel.findById(rappelId).then(function (model) {
-            expect(model).to.be.an.instanceOf(services.models.rappel);
-            expect(model.relations.utilisateur.get('discr')).to.be.equals(discr);
-            done();
+        it('Should return a rappel and the connected user :: rappel.findById', function (done) {
+            var rappelId = 1,
+                    userId = 1,
+                    discr = 'apsidien';
+            services.rappel.findById(rappelId).then(function (model) {
+                expect(model).to.be.an.instanceOf(services.models.rappel);
+                expect(model.relations.utilisateur.get('discr')).to.be.equals(discr);
+                done();
+            });
         });
-      });
 
-      it('Should return collection of rappels :: rappel.findAllForNextMonth', function (done) {
-        services.rappel.findAllForNextMonth().then(function (model) {
-            expect(model).to.be.an.instanceOf(services.bookshelf.Collection);
-            done();
+        it('Should return collection of rappels :: rappel.findAllForNextMonth', function (done) {
+            services.rappel.findAllForNextMonth().then(function (model) {
+                expect(model).to.be.an.instanceOf(services.bookshelf.Collection);
+                done();
+            });
         });
-      });
 
-      it('Should return a collection of rappels :: rappel.findAllForUpcomingDay', function (done) {
-        var day_offset = 1;
-        services.rappel.findAllForUpcomingDay(day_offset).then(function (model) {
-            expect(model).to.be.an.instanceOf(services.bookshelf.Collection);
-            done();
+        it('Should return a collection of rappels :: rappel.findAllForUpcomingDay', function (done) {
+            var day_offset = 1;
+            services.rappel.findAllForUpcomingDay(day_offset).then(function (model) {
+                expect(model).to.be.an.instanceOf(services.bookshelf.Collection);
+                done();
+            });
         });
-      });
 
-      it('Should return collection of rappels :: rappel.findAllForToday', function (done) {
-        services.rappel.findAllForToday().then(function (model) {
-            expect(model).to.be.an.instanceOf(services.bookshelf.Collection);
-            done();
+        it('Should return collection of rappels :: rappel.findAllForToday', function (done) {
+            services.rappel.findAllForToday().then(function (model) {
+                expect(model).to.be.an.instanceOf(services.bookshelf.Collection);
+                done();
+            });
         });
-      });
     });
 });

@@ -14,10 +14,11 @@ Services.initialize = function (configuration, logger) {
     var services = {
                 VERSION: '0.0.1'
             },
-    knex = require('knex')({client: 'mysql', connection: configuration});
+            knex = require('knex')({client: 'mysql', connection: configuration});
 
-    knex.raw('select 1+1 as result').then(function () {}).catch(function(error){
-      console.log("Error :: Can't connect to the database, check your configuration. \n Code : "+error.code);
+    knex.raw('select 1+1 as result').then(function () {
+    }).catch(function (error) {
+        console.log("Error :: Can't connect to the database, check your configuration. \n Code : " + error.code);
     });
 
 
@@ -29,7 +30,7 @@ Services.initialize = function (configuration, logger) {
 
     // Register all services
     services.utilisateur = require('./utilisateur.js')(services.models, logger, services.bookshelf);
-    services.rappel = require('./rappel.js')(services.models, services.date, logger);
+    services.rappel = require('./rappel.js')(services.models, services.date);
 
 
     return services;
