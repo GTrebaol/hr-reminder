@@ -3,6 +3,16 @@
     <ul class="nav navbar-nav">
       <li><a href="./accueil">{{ 'header.home' | translate }}</a></li>
       <li><a href="./utilisateur/list">{{ 'header.users' | translate }}</a></li>
+      <li dropdown dropdown-append-to-body>
+        <a dropdown-toggle>{{'utils'|translate}}<span class="caret"></span></a>
+
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="./utils/import">{{ 'header.import' | translate }}</a></li>
+          </ul>
+        </li>
+      </li>
+
+
     </ul>
     <span my-own-clock class="pull-right date-display"></span>
   </nav>

@@ -52,11 +52,17 @@ var ReminderConfig = function ($locationProvider, $routeProvider, $translateProv
         controller: 'RappelCtrl'
     });
 
+    $routeProvider.when('/utils/import', {
+        templateUrl: '/partials/utils/import.html',
+        controller: 'UtilsCtrl'
+    });
+
     $routeProvider.otherwise({
         redirectTo: '/',
         templateUrl: '/partials/commons/home.html',
         controller: 'RappelCtrl'
     });
+
 
     $locationProvider.html5Mode(true);
 
@@ -79,5 +85,6 @@ angular.module('hrReminder', [
     'ngAnimate',
     'toastr',
     'ui.date',
-    'angularMoment'
+    'angularMoment',
+    'angularFileUpload'
 ]).config(ReminderConfig);
