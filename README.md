@@ -3,7 +3,7 @@
 Human resources staff needs to be reminded when and why a job applicant should be contacted. This application is meant to full fill that need.
 
 ## Models
-### Utilisateur
+### User
 ```
 {
    id : AI, PK, int,
@@ -26,14 +26,14 @@ Human resources staff needs to be reminded when and why a job applicant should b
    client_actuel : date, nullable,
 }
 ```
-### Rappel
+### Reminder
 ```
 {
    id : AI, PK, int,
    date_rappel : date,
    date_rdv : date, nullable,
    commentaire : varchar, nullable,
-   utilisateur_id : FK, int
+   user_id : FK, int
 }
 ```
 
@@ -69,13 +69,13 @@ Content-Type: application/json; charset=utf-8
 ### Endpoints
 
 
-#### Utilisateur
+#### User
 
 
-- **GET** an 'utilisateur' by its id
+- **GET** an 'user' by its id
     ###### Request
         ```
-        GET /utilisateur/{id}
+        GET /user/{id}
         ```
     ###### Response
         ```
@@ -94,7 +94,7 @@ Content-Type: application/json; charset=utf-8
 - **GET** an 'utilisateur' by its name
     ###### Request
         ```
-        GET /utilisateur/name/{name}
+        GET /user/name/{name}
         ```
     ###### Response
         ```
@@ -110,14 +110,14 @@ Content-Type: application/json; charset=utf-8
         }
         ```
 
-#### Rappel
+#### Reminder
 
 
-- **GET** a 'rappel' by its id
+- **GET** a 'reminder' by its id
 
     ###### Request
         ```
-        GET /utilisateur/{id}
+        GET /reminder/{id}
         ```
     ###### Response
         ```
@@ -128,15 +128,15 @@ Content-Type: application/json; charset=utf-8
             date_rappel : “2015-05-05”,
             date_rdv : “2015-06-05”,
             commentaire : “Salut, Sire. Je trouve qu’il fait beau, mais encore frais, mais beau !”,
-            utilisateur_id : 15
+            user_id : 15
             ...
         }
         ```
 
-- **GET** the upcoming 'rappels'
+- **GET** the upcoming 'reminders'
     ###### Request
         ```
-        GET /rappel/upcoming
+        GET /reminder/upcoming
         ```
     ###### Response
         ```
@@ -149,7 +149,7 @@ Content-Type: application/json; charset=utf-8
                   date_rappel : “2015-05-05”,
                   date_rdv : “2015-06-05”,
                   commentaire : “Bref, tout ça pour dire, que je voudrais bien qu’on me considère en tant que tel.”,
-                  utilisateur_id : 15
+                  user_id : 15
               },
               {
               }, ...
@@ -157,10 +157,10 @@ Content-Type: application/json; charset=utf-8
         }
         ```
 
-- **GET** the 'rappels' occurring in {day} day
+- **GET** the 'reminders' occurring in {day} day
     ###### Request
         ```
-        GET /rappel/upcoming/{day}
+        GET /reminder/upcoming/{day}
         ```
     ###### Response
         ```
@@ -173,7 +173,7 @@ Content-Type: application/json; charset=utf-8
                   date_rappel : “2015-05-05”,
                   date_rdv : “2015-06-05”,
                   commentaire : “ j’lis jamais rien. C’est un vrai piège à cons c’t’histoire-là. En plus j’sais pas lire.”,
-                  utilisateur_id : 15
+                  user_id : 15
               },
               {
               }, ...
@@ -184,11 +184,11 @@ Content-Type: application/json; charset=utf-8
 
 ## TODO
 - Develop a csv import from a specific format in order to populate the database.
-- Attach a CV file (pdf only?) to an 'Utilisateur'.
-- Identify the different type of users (Candidat, Apsidien, Independant) and display different fields for each.
+- Attach a CV file (pdf only?) to an 'User'.
+- Identify the different type of users (Candidat, Consultant, Independant) and display different fields for each.
 - For a 'Candidat', we should have a first interview date, and the source shall be choose from a predefined list of values
 - For an 'Independant', new fields : 'TJM', 'Ancien sous-traitant' (checkbox).
-- For an 'Apsidien', new fields : 'Annee embauche', 'Annee départ', 'Accord pour recontact', 'Eligible', 'Salaire'.
+- For an 'Consultant', new fields : 'Annee embauche', 'Annee départ', 'Accord pour recontact', 'Eligible', 'Salaire'.
 
 ### Thoughts
 I created only one table for all the different types of users that will be contained in this app. The thing is I will need to display different informations
