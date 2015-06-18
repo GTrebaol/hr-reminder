@@ -18,7 +18,7 @@ var uniqueFilter = function () {
 };
 
 
-var fetchUtilisateur = function () {
+var fetchUser = function () {
     return function (users, id) {
         for (var i = 0; i < users.length; i++) {
             if (users[i]['id'] == id) { //
@@ -41,5 +41,5 @@ getMethodFromCurrentUrl.$inject = ['$location'];
 
 
 angular.module('hrReminder').filter('unique', uniqueFilter);
-angular.module('hrReminder').filter('fetchUtilisateur', fetchUtilisateur);
+angular.module('hrReminder').filter('fetchUser', fetchUser);
 angular.module('hrReminder').filter('getMethodFromCurrentUrl', getMethodFromCurrentUrl);

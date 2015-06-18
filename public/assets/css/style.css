@@ -129,16 +129,16 @@ textarea {
 }
 
 /* basic positioning */
-.legend-rappel {
+.legend-reminder {
   list-style: none;
 }
 
-.legend-rappel li {
+.legend-reminder li {
   float: left;
   margin-right: 10px;
 }
 
-.legend-rappel span {
+.legend-reminder span {
   border: 1px solid #ccc;
   float: left;
   width: 12px;

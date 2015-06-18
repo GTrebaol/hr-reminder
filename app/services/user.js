@@ -7,61 +7,73 @@
  * @param logger
  * @param bookshelf
  */
-UtilisateurService = function (models, logger, bookshelf) {
+UserService = function (models, logger, bookshelf) {
 
 
     var self = {};
 
     /**
-     * Retourne un utilisateur avec ces rappels
+     * Retourne un user avec ces rappels
      *
      * @param id
      * @returns {models.utilisateur}
      */
     self.findById = function (id) {
-        return new models.utilisateur({id: parseInt(id)}).fetch({withRelated: ['rappels']});
+        return new models.user({id: parseInt(id)}).fetch({withRelated: ['reminders']});
     };
 
-
+    /**
+     *
+     * @param filters
+     * @param count
+     * @returns {*}
+     */
     self.findAll = function (filters, count) {
         var offset = filters.limit * (filters.currentPage - 1);
-        var query = bookshelf.knex('utilisateur');
+        var query = bookshelf.knex('user');
         query.where(1, '=', 1);
         if (filters.nom) {
             query.andWhere('nom', 'LIKE', '%' + filters.nom + '%');
         }
 
-        if (filters.discr && Object.keys(filters.discr).length > 0) {
-            query.andWhere(function () {
-                var first = true;
-                for (var i in filters.discr) {
-                    if (first) {
-                        this.where('discr', '=', '' + i);
-                        first = false;
-                    } else {
-                        this.orWhere('discr', '=', '' + i)
-                    }
-                }
-            })
-        }
+        self._addDiscrFilter(query, filters);
+
         if (!count) {
             query.limit(filters.limit).offset(offset);
         }
         return query;
     };
 
+    self._addDiscrFilter = function (query, filters) {
+        if (filters.discr && Object.keys(filters.discr).length > 0) {
+            query.andWhere(function () {
+                var first = true;
+                for (var i in filters.discr) {
+                    if (first) {
+                        this.where('discr', '=', '' + i.toString());
+                        first = false;
+                    }
+                    else {
+                        this.orWhere('discr', '=', '' + i.toString())
+                    }
+                }
+            })
+        }
+    };
+
+
     self.count = function () {
-        return new models.utilisateur().query().count('id as cnt');
+        return new models.user().query().count('id as cnt');
     };
 
     self.findByName = function (name) {
-        return new models.utilisateur().query(function (qb) {
+        return new models.user().query(function (qb) {
             qb.where('nom', 'LIKE', '%' + name + '');
         }).fetch({withRelated: ['rappels']});
     };
 
     self.findAllByDiscr = function (discr) {
-        return new models.utilisateur({discr: discr}).fetchAll();
+        return new models.user({discr: discr}).fetchAll();
     };
 
     self.save = function (model) {
@@ -69,11 +81,12 @@ UtilisateurService = function (models, logger, bookshelf) {
         if (model.rappels) {
             delete(model.rappels);
         }
-        return models.utilisateur.forge(model).save();
+        return models.user.forge(model).save();
     };
 
     return self;
 
-};
+}
+;
 
-module.exports = UtilisateurService;
+module.exports = UserService;

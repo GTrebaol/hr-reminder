@@ -8,23 +8,23 @@
 module.exports = function (bookshelf) {
     var models = {};
 
-    var Utilisateur = bookshelf.Model.extend({
-        tableName: "utilisateur",
-        rappels: function () {
-            return this.hasMany(Rappel);
+    var User = bookshelf.Model.extend({
+        tableName: "user",
+        reminders: function () {
+            return this.hasMany(Reminder);
         }
     });
 
-    var Rappel = bookshelf.Model.extend({
-        tableName: "rappel",
-        utilisateur: function () {
-            return this.belongsTo(Utilisateur);
+    var Reminder = bookshelf.Model.extend({
+        tableName: "reminder",
+        user: function () {
+            return this.belongsTo(User);
         }
     });
 
 
-    models.utilisateur = Utilisateur;
-    models.rappel = Rappel;
+    models.user = User;
+    models.reminder = Reminder;
 
     return models;
 };

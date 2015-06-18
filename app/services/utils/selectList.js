@@ -1,16 +1,15 @@
 /**
- * Date Service
  *
+ * @param models
+ * @returns {{}}
+ * @constructor
  */
-
-var assert = require('assert');
-
 SelectListService = function (models) {
 
     var self = {};
 
     self.getListDiscr = function () {
-        var query = new models.utilisateur().query(function (qb) {
+        var query = new models.user().query(function (qb) {
             qb.groupBy('discr');
         });
         return query.fetchAll({columns: ['discr']});

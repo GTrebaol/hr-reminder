@@ -1,8 +1,8 @@
 /**
  * Services module fetch information from database
- *
+ * @returns {*}
+ * @constructor
  */
-
 var Services = function () {
     return Services.initialize.apply(null, arguments);
 };
@@ -18,19 +18,23 @@ Services.initialize = function (configuration, logger) {
 
     knex.raw('select 1+1 as result').then(function () {
     }).catch(function (error) {
-        console.log("Error :: Can't connect to the database, check your configuration. \n Code : " + error.code);
+        logger.debug("Error :: Can't connect to the database, check your configuration. \n Code : " + error.code);
     });
+
+    var assert = require('assert');
+    var path = require('path');
 
 
     services.knex = knex;
     services.bookshelf = require('bookshelf')(knex);
     services.models = require('./models.js')(services.bookshelf);
-    services.date = require('./utils/date.js');
+    services.date = require('./utils/date.js')();
     services.selectList = require('./utils/selectList.js')(services.models);
+    services.csvImport = require('./utils/csvImport.js')(services.bookshelf, logger);
 
     // Register all services
-    services.utilisateur = require('./utilisateur.js')(services.models, logger, services.bookshelf);
-    services.rappel = require('./rappel.js')(services.models, services.date);
+    services.user = require('./user.js')(services.models, logger, services.bookshelf);
+    services.reminder = require('./reminder.js')(services.models, services.date);
 
 
     return services;

@@ -4,30 +4,28 @@
  * @param models
  * @param dateService
  */
-RappelService = function (models, dateService) {
+ReminderService = function (models, dateService) {
 
     var self = {};
     var MONTH_OFFSET = 30;
     var TODAY_OFFSET = 0;
-    var service = new dateService();
 
     self.findById = function (id) {
-        return new models.rappel({id: id}).fetch({withRelated: ['utilisateur']});
+        return new models.reminder({id: id}).fetch({withRelated: ['user']});
     };
 
     self.findAllForUpcomingDay = function (day_offset) {
-        var service = new dateService();
-        var date = service.getDateWithOffset(day_offset);
+        var date = dateService.getDateWithOffset(day_offset);
 
-        return new models.rappel({date_rappel: date, traite: 0}).fetchAll({withRelated: ['utilisateur']});
+        return new models.reminder({date_rappel: date, traite: 0}).fetchAll({withRelated: ['user']});
     };
 
     self.findAllForNextMonth = function () {
-        var dateOffset = service.getDateWithOffset(MONTH_OFFSET);
-        var dateToday = service.getDateToday();
-        return new models.rappel().query(function (qb) {
+        var dateOffset = dateService.getDateWithOffset(MONTH_OFFSET);
+        var dateToday = dateService.getDateToday();
+        return new models.reminder().query(function (qb) {
             qb.where('date_rappel', '<=', dateOffset).andWhere('date_rappel', '>=', dateToday).andWhere('traite', '0');
-        }).fetchAll({withRelated: 'utilisateur'});
+        }).fetchAll({withRelated: 'user'});
     };
 
     self.findAllForToday = function () {
@@ -35,14 +33,14 @@ RappelService = function (models, dateService) {
     };
 
     self.findAllPastRappels = function () {
-        var dateToday = service.getDateToday();
-        return new models.rappel().query(function (qb) {
+        var dateToday = dateService.getDateToday();
+        return new models.reminder().query(function (qb) {
             qb.where('date_rappel', '<', dateToday).andWhere('traite', '0');
-        }).fetchAll({withRelated: 'utilisateur'});
+        }).fetchAll({withRelated: 'user'});
     };
 
     self.setProcessed = function (model) {
-        delete(model.utilisateur);
+        delete(model.user);
         return model.save({traite: 1});
     };
 
@@ -50,17 +48,17 @@ RappelService = function (models, dateService) {
     self.save = function (model) {
         // The ORM doesn't remove the relations before doing operations on the entity.
         console.log(model.commentaire);
-        if (model.utilisateur) {
+        if (model.user) {
             if (!model.utilisateur_id) {
-                model.utilisateur_id = model.utilisateur.id;
+                model.utilisateur_id = model.user.id;
             }
-            delete(model.utilisateur);
+            delete(model.user);
         }
-        return models.rappel.forge(model).save();
+        return models.reminder.forge(model).save();
     };
 
     return self;
 
 };
 
-module.exports = RappelService;
+module.exports = ReminderService;

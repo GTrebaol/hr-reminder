@@ -13,7 +13,8 @@ var express = require('express'),
         routeDir = './app/routes/',
         routeFiles = fs.readdirSync(routeDir),
         log4js = require('log4js'),
-        mkdirp = require('mkdirp');
+        mkdirp = require('mkdirp'),
+        multer = require('multer');
 
 
 app = module.exports = express();
@@ -57,11 +58,18 @@ var conf = require('./app/config/' + env + '.conf.js');
 var services = require('./app/services')(conf.db, logger);
 app.set('services', services);
 
+
+//configure multer (multipart file handling)
+app.use(multer({ dest: './uploads/',
+    rename: function (fieldname, filename) {
+        return filename+Date.now();
+    }}));
+
 //Initializing routes
 routeFiles.forEach(function (file) {
     var filePath = path.resolve(routeDir, file), route = require(filePath);
     logger.debug('Loading routes for ' + file);
-    route.load(app);
+    route.load(app, logger);
 });
 
 // Configure the url rewriting

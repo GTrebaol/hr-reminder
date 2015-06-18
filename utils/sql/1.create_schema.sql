@@ -20,9 +20,9 @@ USE `reminder` ;
 -- -----------------------------------------------------
 -- Table `reminder`.`utilisateur`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `reminder`.`utilisateur` ;
+DROP TABLE IF EXISTS `reminder`.`user` ;
 
-CREATE TABLE IF NOT EXISTS `reminder`.`utilisateur` (
+CREATE TABLE IF NOT EXISTS `reminder`.`user` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `nom` VARCHAR(80) NOT NULL,
   `prenom` VARCHAR(80) NOT NULL,
@@ -51,21 +51,21 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `reminder`.`rappel`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `reminder`.`rappel` ;
+DROP TABLE IF EXISTS `reminder`.`reminder` ;
 
-CREATE TABLE IF NOT EXISTS `reminder`.`rappel` (
+CREATE TABLE IF NOT EXISTS `reminder`.`reminder` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `date_rappel` DATE NOT NULL,
   `date_rdv` DATE NULL DEFAULT NULL,
   `commentaire` VARCHAR(150) NULL DEFAULT NULL,
   `traite` TINYINT(1) NOT NULL DEFAULT '0',
-  `utilisateur_id` INT(11) NOT NULL,
-  PRIMARY KEY (`id`, `utilisateur_id`),
+  `user_id` INT(11) NOT NULL,
+  PRIMARY KEY (`id`, `user_id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC),
-  INDEX `fk_rappel_utilisateur1_idx` (`utilisateur_id` ASC),
+  INDEX `fk_rappel_user1_idx` (`user_id` ASC),
   CONSTRAINT `fk_rappel_utilisateur1`
-    FOREIGN KEY (`utilisateur_id`)
-    REFERENCES `reminder`.`utilisateur` (`id`)
+    FOREIGN KEY (`user_id`)
+    REFERENCES `reminder`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB

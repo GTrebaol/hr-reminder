@@ -1,12 +1,11 @@
 /**
- * Date Service
  *
+ * @returns {{}}
+ * @constructor
  */
-
-var assert = require('assert');
-
 DateService = function () {
 
+    var assert = require('assert');
     var self = {};
 
     self.convert = function (date) {

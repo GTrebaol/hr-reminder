@@ -6,50 +6,50 @@ var ReminderConfig = function ($locationProvider, $routeProvider, $translateProv
 
     RestangularProvider.setBaseUrl("./api");
 
-    $routeProvider.when('/utilisateur/list', {
-        templateUrl: '/partials/utilisateur/list.html',
-        controller: 'UtilisateurCtrl'
+    $routeProvider.when('/user/list', {
+        templateUrl: '/partials/user/list.html',
+        controller: 'UserCtrl'
     });
 
-    $routeProvider.when('/utilisateur/add', {
-        templateUrl: '/partials/utilisateur/form.html',
-        controller: 'UtilisateurCtrl'
+    $routeProvider.when('/user/add', {
+        templateUrl: '/partials/user/form.html',
+        controller: 'UserCtrl'
     });
 
-    $routeProvider.when('/utilisateur/:id/edit', {
-        templateUrl: '/partials/utilisateur/form.html',
-        controller: 'UtilisateurCtrl'
+    $routeProvider.when('/user/:id/edit', {
+        templateUrl: '/partials/user/form.html',
+        controller: 'UserCtrl'
     });
 
-    $routeProvider.when('/utilisateur/:id/view', {
-        templateUrl: '/partials/utilisateur/form.html',
-        controller: 'UtilisateurCtrl'
+    $routeProvider.when('/user/:id/view', {
+        templateUrl: '/partials/user/form.html',
+        controller: 'UserCtrl'
     });
 
-    $routeProvider.when('/utilisateur/:id/edit', {
-        templateUrl: '/partials/utilisateur/form.html',
-        controller: 'UtilisateurCtrl'
+    $routeProvider.when('/user/:id/edit', {
+        templateUrl: '/partials/user/form.html',
+        controller: 'UserCtrl'
     });
 
 
-    $routeProvider.when('/rappel/:id/edit', {
-        templateUrl: '/partials/rappel/form.html',
-        controller: 'RappelCtrl'
+    $routeProvider.when('/reminder/:id/edit', {
+        templateUrl: '/partials/reminder/form.html',
+        controller: 'ReminderCtrl'
     });
 
-    $routeProvider.when('/rappel/add/:id/user', {
-        templateUrl: '/partials/rappel/form.html',
-        controller: 'RappelCtrl'
+    $routeProvider.when('/reminder/add/:id/user', {
+        templateUrl: '/partials/reminder/form.html',
+        controller: 'ReminderCtrl'
     });
 
-    $routeProvider.when('/rappel/:id/view', {
-        templateUrl: '/partials/rappel/form.html',
-        controller: 'RappelCtrl'
+    $routeProvider.when('/reminder/:id/view', {
+        templateUrl: '/partials/reminder/form.html',
+        controller: 'ReminderCtrl'
     });
 
-    $routeProvider.when('/rappel/list', {
-        templateUrl: '/partials/rappel/list.html',
-        controller: 'RappelCtrl'
+    $routeProvider.when('/reminder/list', {
+        templateUrl: '/partials/reminder/list.html',
+        controller: 'ReminderCtrl'
     });
 
     $routeProvider.when('/utils/import', {
@@ -60,7 +60,7 @@ var ReminderConfig = function ($locationProvider, $routeProvider, $translateProv
     $routeProvider.otherwise({
         redirectTo: '/',
         templateUrl: '/partials/commons/home.html',
-        controller: 'RappelCtrl'
+        controller: 'ReminderCtrl'
     });
 
 

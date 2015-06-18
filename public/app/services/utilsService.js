@@ -1,14 +1,19 @@
 'use strict';
 
-/* Services */
 
+/**
+ *
+ * @param Restangular
+ * @param $log
+ * @constructor
+ */
 var UtilsService = function (Restangular, $log) {
 
 
     /**
      * Get the list of discr
-     * @param id utilisateur ID
      * @returns {*}
+     * @param callback
      */
     this.getListDiscr = function (callback) {
         $log.info("UtilService :: getListDiscr");

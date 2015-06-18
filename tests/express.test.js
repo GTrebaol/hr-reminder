@@ -5,7 +5,7 @@
 // describe('Express rest api server', function () {
 //
 //     it('should get a user by its id', function (done) {
-//         app.get('api/utilisateur/:id').expect(200);
+//         app.get('api/user/:id').expect(200);
 //     })
 //
 // })

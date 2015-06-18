@@ -1,12 +1,12 @@
-<article class="table-rappels">
-  <table ng-table="table-rappels" class="table table-striped table-bordered">
+<article class="table-reminders">
+  <table ng-table="table-reminders" class="table table-striped table-bordered">
     <tbody>
-    <tr ng-if="allPastRappels.length">
+    <tr ng-if="findAllPastReminders.length">
       <td colspan=7>
         <h3>Rappels en retard</h3>
       </td>
     </tr>
-    <tr ng-if="allPastRappels.length">
+    <tr ng-if="findAllPastReminders.length">
       <th>{{'state'|translate}}</th>
       <th>{{'reminder.date'|translate}}</th>
       <th>{{'user.name'|translate}}</th>
@@ -15,24 +15,24 @@
       <th>{{'comment'|translate}}</th>
       <th>{{'actions'|translate}}</th>
     </tr>
-    <tr ng-repeat="rappel in allPastRappels | orderBy:'date_rappel'">
+    <tr ng-repeat="reminder in findAllPastReminders | orderBy:'date_rappel'">
       <td style="background-color:red"></td>
-      <td><span>{{::rappel.date_rappel | date : 'dd/MM/yyyy'}}</span></td>
-      <td><span>{{::rappel.utilisateur.nom}} {{::rappel.utilisateur.prenom}}</span></td>
-      <td><span>{{::rappel.utilisateur.telephone}} </span></td>
-      <td><span>{{::rappel.utilisateur.mail}} </span></td>
-      <td><span>{{::rappel.commentaire}}</span></td>
+      <td><span>{{::reminder.date_rappel | date : 'dd/MM/yyyy'}}</span></td>
+      <td><span>{{::reminder.user.nom}} {{::reminder.user.prenom}}</span></td>
+      <td><span>{{::reminder.user.telephone}} </span></td>
+      <td><span>{{::reminder.user.mail}} </span></td>
+      <td><span>{{::reminder.commentaire}}</span></td>
       <td width="200">
-        <a href="#" ng-click="close(rappel.id)" class="btn btn-primary btn-xs">{{'close'|translate}}</a>
-        <a href="/rappel/{{rappel.id}}/edit" class="btn btn-primary btn-xs">{{'edit'|translate}}</a>
+        <a href="#" ng-click="close(reminder.id)" class="btn btn-primary btn-xs">{{'close'|translate}}</a>
+        <a href="/reminder/{{reminder.id}}/edit" class="btn btn-primary btn-xs">{{'edit'|translate}}</a>
       </td>
     </tr>
-    <tr ng-if="allUpcomingRappels.length">
+    <tr ng-if="allUpcomingReminders.length">
       <td colspan=7>
         <h3>Rappels à venir</h3>
       </td>
     </tr>
-    <tr ng-if="allUpcomingRappels.length">
+    <tr ng-if="allUpcomingReminders.length">
       <th>{{'state'|translate}}</th>
       <th>{{'reminder.date'|translate}}</th>
       <th>{{'user.name'|translate}}</th>
@@ -41,16 +41,16 @@
       <th>{{'comment'|translate}}</th>
       <th>{{'actions'|translate}}</th>
     </tr>
-    <tr ng-repeat="rappel in allUpcomingRappels | orderBy:'date_rappel'">
+    <tr ng-repeat="reminder in allUpcomingReminders | orderBy:'date_rappel'">
       <td style="background-color:orange"></td>
-      <td><span>{{::rappel.date_rappel | date : 'dd/MM/yyyy'}}</span></td>
-      <td><span>{{::rappel.utilisateur.nom}} {{::rappel.utilisateur.prenom}}</span></td>
-      <td><span>{{::rappel.utilisateur.telephone}} </span></td>
-      <td><span>{{::rappel.utilisateur.mail}} </span></td>
-      <td><span>{{::rappel.commentaire}}</span></td>
+      <td><span>{{::reminder.date_rappel | date : 'dd/MM/yyyy'}}</span></td>
+      <td><span>{{::reminder.user.nom}} {{::reminder.user.prenom}}</span></td>
+      <td><span>{{::reminder.user.telephone}} </span></td>
+      <td><span>{{::reminder.user.mail}} </span></td>
+      <td><span>{{::reminder.commentaire}}</span></td>
       <td width="200">
-        <a href="#" ng-click="close(rappel.id)" class="btn btn-primary btn-xs">{{'close'|translate}}</a>
-        <a href="/rappel/{{rappel.id}}/edit" class="btn btn-primary btn-xs">{{'edit'|translate}}</a>
+        <a href="#" ng-click="close(reminder.id)" class="btn btn-primary btn-xs">{{'close'|translate}}</a>
+        <a href="/reminder/{{reminder.id}}/edit" class="btn btn-primary btn-xs">{{'edit'|translate}}</a>
       </td>
     </tr>
     </tbody>

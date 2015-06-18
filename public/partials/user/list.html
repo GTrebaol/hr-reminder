@@ -1,4 +1,4 @@
-<h3>{{::userMethod}}<a href="utilisateur/add" role="button" class="btn btn-primary pull-right"><i
+<h3>{{::userMethod}}<a href="user/add" role="button" class="btn btn-primary pull-right"><i
         class="icon-white icon-plus"></i>{{'add.user'|translate}}</a></h3>
 <br>
 
@@ -46,19 +46,19 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="utilisateur in utilisateurs | filter:search | orderBy:'nom'">
-      <td><span>{{::utilisateur.nom}}</span></td>
-      <td><span>{{::utilisateur.prenom}}</span></td>
-      <td><span>{{::utilisateur.mail}}</span></td>
-      <td><span>{{::utilisateur.telephone}}</span></td>
-      <td><span>{{::utilisateur.competences}}</span></td>
-      <td><span>{{::utilisateur.discr|uppercase}}</span></td>
+    <tr ng-repeat="user in users | filter:search | orderBy:'nom'">
+      <td><span>{{::user.nom}}</span></td>
+      <td><span>{{::user.prenom}}</span></td>
+      <td><span>{{::user.mail}}</span></td>
+      <td><span>{{::user.telephone}}</span></td>
+      <td><span>{{::user.competences}}</span></td>
+      <td><span>{{::user.discr|uppercase}}</span></td>
       <td width="200">
-        <a href="/utilisateur/{{utilisateur.id}}/view"
+        <a href="/user/{{user.id}}/view"
            class="btn btn-primary btn-xs btn-info">{{'details'|translate}}</a>
-        <a href="/utilisateur/{{utilisateur.id}}/edit"
+        <a href="/user/{{user.id}}/edit"
            class="btn btn-primary btn-xs btn-warning">{{'edit'|translate}}</a>
-        <a href="/rappel/add/{{utilisateur.id}}/user" class="btn btn-primary btn-xs">{{'reminder.add'|translate}}</a>
+        <a href="/reminder/add/{{user.id}}/user" class="btn btn-primary btn-xs">{{'reminder.add'|translate}}</a>
       </td>
     </tr>
     </tbody>

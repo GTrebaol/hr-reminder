@@ -5,10 +5,10 @@
  *
  *
  */
-var UtilisateurCtrl = function ($scope, $modal, $filter, $route, $location,
-                                $routeParams, toastr, UtilisateurService, UtilsService, RappelService) {
+var UserCtrl = function ($scope, $modal, $filter, $route, $location,
+                                $routeParams, toastr, UserService, UtilsService, ReminderService) {
 
-    $scope.utilisateur = {};
+    $scope.user = {};
     $scope.filters = {};
     $scope.listDiscr = [];
 
@@ -37,8 +37,8 @@ var UtilisateurCtrl = function ($scope, $modal, $filter, $route, $location,
     };
 
     $scope.pageChanged = function () {
-        UtilisateurService.findAllUtilisateurs($scope.filters).then(function (data) {
-            $scope.utilisateurs = data.utilisateurs;
+        UserService.findAllUsers($scope.filters).then(function (data) {
+            $scope.users = data.users;
             $scope.filters = data.vars;
         });
     };
@@ -46,22 +46,22 @@ var UtilisateurCtrl = function ($scope, $modal, $filter, $route, $location,
 
     $scope.view = function () {
         var id = $routeParams.id;
-        UtilisateurService.findUtilisateurById(id).then(function (data) {
-            $scope.utilisateur = data;
+        UserService.findUserById(id).then(function (data) {
+            $scope.user = data;
         });
     };
 
 
-    $scope.getColorClass = function (rappel) {
-        return RappelService.getColorClass(rappel);
+    $scope.getColorClass = function (reminder) {
+        return ReminderService.getColorClass(reminder);
     };
 
 
     $scope.submit = function () {
-        if ($scope.$isUtilisateurValid()) {
-            UtilisateurService.saveOrCreateUtilisateur($scope.utilisateur).then(function (utilisateur) {
+        if ($scope.$isUserValid()) {
+            UserService.saveOrCreateUser($scope.user).then(function (user) {
                 toastr.success($filter('translate')('user.success'));
-                $location.path("/utilisateur/" + utilisateur.id + "/view");
+                $location.path("/user/" + user.id + "/view");
             })
         } else {
             toastr.error($filter('translate')('form.error'));
@@ -76,8 +76,8 @@ var UtilisateurCtrl = function ($scope, $modal, $filter, $route, $location,
         }
     };
 
-    $scope.$isUtilisateurValid = function () {
-        return ($scope.utilisateur.nom) && ($scope.utilisateur.prenom) && ($scope.utilisateur.discr);
+    $scope.$isUserValid = function () {
+        return ($scope.user.nom) && ($scope.user.prenom) && ($scope.user.discr);
     };
 
     $scope.$loadDiscrList = function () {
@@ -88,8 +88,8 @@ var UtilisateurCtrl = function ($scope, $modal, $filter, $route, $location,
     };
 
     $scope.close = function (id) {
-        RappelService.processRappel(id).then(function (rappel) {
-            $location.path("/rappel/add/" + rappel.utilisateur_id + "/user");
+        ReminderService.processReminder(id).then(function (reminder) {
+            $location.path("/reminder/add/" + reminder.user_id + "/user");
         })
     };
 
@@ -108,7 +108,7 @@ var UtilisateurCtrl = function ($scope, $modal, $filter, $route, $location,
 }
 
 
-UtilisateurCtrl.$inject = ['$scope', '$modal', '$filter', '$route', '$location',
-    '$routeParams', 'toastr', 'UtilisateurService', 'UtilsService', 'RappelService']
+UserCtrl.$inject = ['$scope', '$modal', '$filter', '$route', '$location',
+    '$routeParams', 'toastr', 'UserService', 'UtilsService', 'ReminderService']
 
-angular.module('hrReminder').controller('UtilisateurCtrl', UtilisateurCtrl);
+angular.module('hrReminder').controller('UserCtrl', UserCtrl);
