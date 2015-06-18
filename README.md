@@ -1,7 +1,6 @@
 # Documentation
 
-The purpose of this application is to allow the human ressources workers to be reminded on a regular basis to contact some people.
-It will notify what users shall be recontacted and allow the creation of a new reminders on a specific date.
+Human resources staff needs to be reminded when and why a job applicant should be contacted. This application is meant to full fill that need.
 
 ## Models
 ### Utilisateur
@@ -184,10 +183,12 @@ Content-Type: application/json; charset=utf-8
 
 
 ## TODO
+- Develop a csv import from a specific format in order to populate the database.
+- Attach a CV file (pdf only?) to an 'Utilisateur'.
 - Identify the different type of users (Candidat, Apsidien, Independant) and display different fields for each.
 - For a 'Candidat', we should have a first interview date, and the source shall be choose from a predefined list of values
-- For an 'Independant', new fields : 'TJM', 'Ancien sous-traitant Apside' (checkbox).
-- For an 'Apsidien', new fields : 'Annee embauche Apside', 'Annee départ Apside', 'Accord pour recontact', 'Eligible', 'Salaire'.
+- For an 'Independant', new fields : 'TJM', 'Ancien sous-traitant' (checkbox).
+- For an 'Apsidien', new fields : 'Annee embauche', 'Annee départ', 'Accord pour recontact', 'Eligible', 'Salaire'.
 
 ### Thoughts
 I created only one table for all the different types of users that will be contained in this app. The thing is I will need to display different informations
