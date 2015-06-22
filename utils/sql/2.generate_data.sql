@@ -84,8 +84,8 @@ UNLOCK TABLES;
 LOCK TABLES `interview` WRITE;
 /*!40000 ALTER TABLE `interview` DISABLE KEYS */;
 INSERT INTO `interview` VALUES
-(1, 'ESE', NULL, '1'),
-(2, 'Premier entretien', '1', '2');
+(1, 'ESE', NULL, '2015-05-05', 1),
+(2, 'Premier entretien', '1','2014-08-21', 2);
 /*!40000 ALTER TABLE `interview` ENABLE KEYS */;
 UNLOCK TABLES;
 

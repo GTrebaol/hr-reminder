@@ -26,9 +26,8 @@ module.exports.load = function (app, logger) {
     app.post('/api/import/csv', function (req, res) {
         logger.debug("Routes - Utils::importCsv");
         if(services.csvImport.checkFile(req)) {
-            var sqlImport = services.csvImport.readFile(req.files.file.path);
-            services.csvImport.loadSql(sqlImport).then(function () {
-                return res.json(200, 'zobi');
+            services.csvImport.readFile(req.files.file.path).then(function () {
+                return res.status(200).json('zobi');
             }).catch(function (error) {
                 console.log(error);
                 res.json(500, error);

@@ -66,7 +66,8 @@ DROP TABLE IF EXISTS `reminder`.`interview` ;
 CREATE TABLE IF NOT EXISTS `reminder`.`interview` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `remarques` VARCHAR(400) NOT NULL,
-  `decision` TINYINT(4) NULL DEFAULT NULL,
+  `decision` VARCHAR(50) NULL,
+  `date` DATE NOT NULL,
   `user_id` INT(11) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_interview_user1_idx` (`user_id` ASC),
