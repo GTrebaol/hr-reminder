@@ -19,7 +19,7 @@ UserService = function (models, logger, bookshelf) {
      * @returns {models.utilisateur}
      */
     self.findById = function (id) {
-        return new models.user({id: parseInt(id)}).fetch({withRelated: ['reminders']});
+        return new models.user({id: parseInt(id)}).fetch({withRelated: ['reminders', 'skills', 'customers', 'interviews']});
     };
 
     /**
@@ -37,9 +37,28 @@ UserService = function (models, logger, bookshelf) {
         }
 
         self._addDiscrFilter(query, filters);
+        self._addSkillsFilter(query, filters);
 
         if (!count) {
             query.limit(filters.limit).offset(offset);
+        }
+        return query;
+    };
+
+    self._addSkillsFilter = function(query, filters){
+        if(filters.skills && Object.keys(filters.skills).length > 0){
+            var subquery = bookshelf.knex.select('user_has_skill.user_id').from('skill').innerJoin('user_has_skill', 'skill.id', 'user_has_skill.skill_id');
+            var first = true;
+            for (var i in filters.skills) {
+                if (first) {
+                    subquery.where('label', '=', '' + i.toString());
+                    first = false;
+                }
+                else {
+                    subquery.orWhere('discr', '=', '' + i.toString())
+                }
+            }
+            query.whereIn('id', subquery);
         }
         return query;
     };

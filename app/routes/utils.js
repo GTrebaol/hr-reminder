@@ -3,7 +3,7 @@ var services = app.get('services');
 module.exports.load = function (app, logger) {
 
     app.get('/api/utils/list/discr', function (req, res) {
-        console.log("Routes - Utils::getDiscr");
+        logger.debug("Routes - Utils::getDiscr");
         services.selectList.getListDiscr().then(function (model) {
             return res.json(model);
         }).catch(function (error) {
@@ -12,9 +12,19 @@ module.exports.load = function (app, logger) {
         });
     });
 
+    app.get('/api/utils/list/skill', function (req, res) {
+        logger.debug("Routes - Utils::getSkills");
+        services.skill.findAll().then(function (models) {
+            return res.json(models);
+        }).catch(function (error) {
+            console.log(error);
+            res.json(500, error);
+        });
+    });
+
 
     app.post('/api/import/csv', function (req, res) {
-        console.log("Routes - Utils::importCsv");
+        logger.debug("Routes - Utils::importCsv");
         if(services.csvImport.checkFile(req)) {
             var sqlImport = services.csvImport.readFile(req.files.file.path);
             services.csvImport.loadSql(sqlImport).then(function () {
