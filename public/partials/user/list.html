@@ -51,7 +51,7 @@
       <td><span>{{::user.prenom}}</span></td>
       <td><span>{{::user.mail}}</span></td>
       <td><span>{{::user.telephone}}</span></td>
-      <td><span>{{::user.competences}}</span></td>
+      <td><span ng-repeat="competence in user.skills">{{competence.skill.label}} </span></td>
       <td><span>{{::user.discr|uppercase}}</span></td>
       <td width="200">
         <a href="/user/{{user.id}}/view"

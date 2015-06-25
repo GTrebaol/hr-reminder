@@ -25,16 +25,12 @@ module.exports.load = function (app, logger) {
 
     app.post('/api/import/csv', function (req, res) {
         logger.debug("Routes - Utils::importCsv");
-        if(services.csvImport.checkFile(req)) {
-            services.csvImport.readFile(req.files.file.path).then(function () {
-                return res.status(200).json('zobi');
-            }).catch(function (error) {
-                console.log(error);
-                res.json(500, error);
-            });
-        }else{
-            res.json(500, 'wrong file type');
-        }
+        services.csvImport.readFile(req.files.file.path).then(function (quantity) {
+            return res.status(200).json(quantity);
+        }).catch(function (error) {
+            console.log(error);
+            res.status(500).json(error);
+        });
     });
 
 

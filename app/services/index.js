@@ -23,6 +23,7 @@ Services.initialize = function (configuration, logger) {
 
     var assert = require('assert');
     var path = require('path');
+    var underscore = require('underscore');
 
 
     services.knex = knex;
@@ -35,7 +36,7 @@ Services.initialize = function (configuration, logger) {
     // Register all services
     services.user = require('./user.js')(services.models, logger, services.bookshelf);
     services.reminder = require('./reminder.js')(services.models, services.date);
-    services.skill = require('./skill.js')(services.models, logger);
+    services.skill = require('./skill.js')(services.models, logger, underscore);
 
 
     return services;

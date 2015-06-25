@@ -38,7 +38,10 @@ module.exports.load = function (app, logger) {
             vars.count = models.length
         });
         services.user.findAll(vars, false).then(function (models) {
-            return res.json({users: models, vars: vars});
+            services.skill.findSkillForUsers(models).then(function(skills){
+                return res.json({users: models, vars: vars, skills:skills});
+            });
+
         }).catch(function (error) {
             logger.error(error);
             res.status(500).json(error);

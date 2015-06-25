@@ -73,9 +73,15 @@ var ReminderConfig = function ($locationProvider, $routeProvider, $translateProv
     $translateProvider.preferredLanguage('fr');
 
 
-}
+};
 
 ReminderConfig.$inject = ['$locationProvider', '$routeProvider', '$translateProvider', 'RestangularProvider', '$httpProvider'];
+
+var underscore = angular.module('underscore', []);
+underscore.factory('_', function () {
+    return window._; // assumes underscore has already been loaded on the page
+});
+
 
 angular.module('hrReminder', [
     'restangular',
@@ -86,5 +92,7 @@ angular.module('hrReminder', [
     'toastr',
     'ui.date',
     'angularMoment',
-    'angularFileUpload'
+    'angularFileUpload',
+    'underscore'
 ]).config(ReminderConfig);
+

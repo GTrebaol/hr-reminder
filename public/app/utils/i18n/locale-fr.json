@@ -1,6 +1,9 @@
 {
   "header.home": "Accueil",
   "header.users": "Utilisateurs",
+  "header.import" : "Importer",
+  "header.utils" : "Utils",
+  "import.xsl" : "Importer un fichier excel",
   "reminders": "Rappels",
   "users": "utilisateurs",
   "date.format": "dd/MM/yyyy",
@@ -61,5 +64,6 @@
   "for.user": "de l'utilisateur",
   "user.form.error": "Veuillez renseigner les données obligatoires",
   "user.success": "Utilisateur mis à jour avec succès",
+  "upload.success" : "Fichier importé, nombre de ligne insérées : ",
   "reminder.success": "Rappel mis à jour avec succès"
 }

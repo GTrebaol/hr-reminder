@@ -31,8 +31,7 @@ var ReminderCtrl = function ($scope, $filter, $routeParams, $location, $route, t
             $scope.reminder.user_id = $scope.user.id;
         });
         var today = new Date();
-        var in6months = new Date(new Date(today).setMonth(today.getMonth() + 6));
-        $scope.reminder.date_rappel = in6months;
+        $scope.reminder.date_rappel = new Date(new Date(today).setMonth(today.getMonth() + 6));
         $scope.updatable = true;
     };
 

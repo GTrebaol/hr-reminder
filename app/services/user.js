@@ -42,7 +42,9 @@ UserService = function (models, logger, bookshelf) {
         if (!count) {
             query.limit(filters.limit).offset(offset);
         }
+        console.log(query.toString());
         return query;
+
     };
 
     self._addSkillsFilter = function(query, filters){
@@ -97,8 +99,17 @@ UserService = function (models, logger, bookshelf) {
 
     self.save = function (model) {
         // The ORM doesn't remove the relations before doing operations on the entity.
-        if (model.rappels) {
-            delete(model.rappels);
+        if (model.reminders) {
+            delete(model.reminders);
+        }
+        if(model.interviews){
+            delete(model.interviews);
+        }
+        if(model.skills){
+            delete(model.skills);
+        }
+        if(model.customers){
+            delete(model.customers);
         }
         return models.user.forge(model).save();
     };

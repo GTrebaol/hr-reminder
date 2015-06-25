@@ -6,7 +6,8 @@
  *
  */
 var UserCtrl = function ($scope, $modal, $filter, $route, $location,
-                                $routeParams, toastr, UserService, UtilsService, ReminderService) {
+                                $routeParams, toastr, UserService,
+                                UtilsService, ReminderService, _) {
 
     $scope.user = {};
     $scope.filters = {};
@@ -39,6 +40,12 @@ var UserCtrl = function ($scope, $modal, $filter, $route, $location,
     $scope.pageChanged = function () {
         UserService.findAllUsers($scope.filters).then(function (data) {
             $scope.users = data.users;
+            _.each($scope.users, function(user, key, list){
+                user.skills = _.filter(data.skills, function(skill){
+                    return skill.user_id == user.id;
+                });
+            });
+
             $scope.filters = data.vars;
         });
     };
@@ -109,6 +116,7 @@ var UserCtrl = function ($scope, $modal, $filter, $route, $location,
 
 
 UserCtrl.$inject = ['$scope', '$modal', '$filter', '$route', '$location',
-    '$routeParams', 'toastr', 'UserService', 'UtilsService', 'ReminderService']
+    '$routeParams', 'toastr', 'UserService', 'UtilsService', 'ReminderService',
+    '_'];
 
 angular.module('hrReminder').controller('UserCtrl', UserCtrl);

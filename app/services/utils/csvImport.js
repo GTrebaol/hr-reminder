@@ -34,50 +34,45 @@ CsvImportService = function (bookshelf, logger) {
         'source': 'K'
     };
 
-
-    self.checkFile = function (file) {
-        //return assert.equal(path.extname(file.name), '.csv');
-        return true;
-    };
-
-
     self.readFile = function (file) {
         return new Promise(function (success, reject) {
             try {
-                var excelObj = xlsParser.readFile(file);
+                var excelObj = xlsParser.readFile(file, {cellDate: true, cellHTML: true, cellNF: true});
                 var sheets = Object.keys(excelObj.Sheets).map(function (k) {
                     return excelObj.Sheets[k];
                 });
                 var usersInterviews = buildObjectsCandidats(sheets[xslSheetMap['candidats']]);
-                var quantityInsert = insertData(usersInterviews);
+                insertData(usersInterviews).then(function (res) {
+                    success(res);
+                }).catch(function (error) {
+                    reject(error);
+                });
+
             } catch (error) {
                 reject(error);
             }
-
-            success();
         });
     };
 
 
     var insertData = function (usersInterviews) {
-        var users = usersInterviews['users'];
-        var interviews = usersInterviews['interviews'];
-        knex.transaction(function (trx) {
-            for (var i = 0; i < users.length; i++) {
-                var user = users[i];
-                var interview = interviews[i];
-                insertUserAndInterview(user, interview, trx).then(function (res) {
-
+        return new Promise(function (success, reject) {
+            var users = usersInterviews['users'];
+            var interviews = usersInterviews['interviews'];
+            var promises = [];
+            knex.transaction(function (trx) {
+                for (var i = 0; i < users.length; i++) {
+                    var user = users[i];
+                    var interview = interviews[i];
+                    promises.push(insertUserAndInterview(user, interview, trx));
+                }
+                return Promise.all(promises).then(function (dataArray) {
+                    trx.commit();
+                    success(dataArray.length);
                 });
-            }
-        }).then(function (inserts) {
-            logger.debug(inserts.length + ' entities saved');
-            return inserts.length;
+            });
 
-        }).catch(function (error) {
-            logger.error(error);
-        });
-
+        })
     };
 
     var insertUserAndInterview = function (user, interview, trx) {
@@ -87,21 +82,14 @@ CsvImportService = function (bookshelf, logger) {
                     var id_user = id[0];
                     interview.user_id = id_user;
                     knex.insert(interview).into('interview').transacting(trx).then(function (id) {
-                        var id_inter = id[0];
-                        success({id: id_user}, {id: id_inter});
-                    }).catch(function (error) {
-                        logger.error(error);
-                        reject(error);
-                    })
+                        success();
+                    });
                 }).catch(function (error) {
                     logger.error(error);
                     reject(error);
                 });
-            } else {
-                reject();
             }
         })
-
     };
 
 
@@ -109,7 +97,7 @@ CsvImportService = function (bookshelf, logger) {
         var users = [];
         var interviews = [];
         var endOfFile = -1;
-        for (var i = 2; i != endOfFile; i++) {
+        for (var i = 2; ; i++) {
             var user = {};
             var interview = {};
             for (var attr = 0; attr < Object.keys(consultantsMapping).length; attr++) {
@@ -121,6 +109,17 @@ CsvImportService = function (bookshelf, logger) {
                     var key = Object.keys(consultantsMapping)[attr];
                     if (type != 'e') {
                         if (attr == 9 || attr == 10) {
+                            if (attr == 10) {
+                                var regex = "([0-9]{1,2})\/([0-9]{1,2})\/([0-9]{2,4})";
+                                var result = value.match(regex);
+                                if (result && result.length >= 3) {
+                                    if (type == 'n') {
+                                        value = (result[3].length > 2 ? result[3] : "20" + result[3]) + "-" + (result[1].length > 1 ? result[1] : "0" + result[1]) + "-" + (result[2].length > 1 ? result[2] : "0" + result[2]);
+                                    } else {
+                                        value = result[3] + "-" + result[2] + "-" + result[1];
+                                    }
+                                }
+                            }
                             interview[key] = value;
                         } else {
                             user[key] = value;
@@ -128,11 +127,14 @@ CsvImportService = function (bookshelf, logger) {
                     }
                 } else {
                     i = endOfFile;
+                    break;
                 }
             }
             if (i != endOfFile) {
                 users.push(user);
                 interviews.push(interview);
+            } else {
+                break;
             }
 
         }
@@ -142,7 +144,8 @@ CsvImportService = function (bookshelf, logger) {
 
     return self;
 
-};
+}
+;
 
 
 module.exports = CsvImportService;

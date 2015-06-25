@@ -41,10 +41,10 @@ module.exports = function (bookshelf) {
     var UserHasSkill = bookshelf.Model.extend({
         tableName: "user_has_skill",
         user: function () {
-            this.belongsTo(User);
+            return this.belongsTo(User);
         },
         skill: function () {
-            this.belongsTo(Skill);
+            return this.belongsTo(Skill);
         }
     });
 
@@ -59,10 +59,10 @@ module.exports = function (bookshelf) {
     var UserHasCustomer = bookshelf.Model.extend({
         tableName: "user_has_customer",
         customer: function () {
-            this.belongsTo(Customer);
+            return this.belongsTo(Customer);
         },
         user: function () {
-            this.belongsTo(User);
+            return this.belongsTo(User);
         }
     });
 

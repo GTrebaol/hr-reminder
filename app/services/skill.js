@@ -6,7 +6,7 @@
  * @constructor
  * @param logger
  */
-SkillService = function (models, logger) {
+SkillService = function (models, logger, underscore) {
 
 
     var self = {};
@@ -18,7 +18,20 @@ SkillService = function (models, logger) {
 
 
     self.findUsersForSkill = function (label) {
-        return new models.skills().fetch({label: label}).withRelated(['users']);
+        return new models.skill({label: label}).fetch({withRelated: ['users']});
+    };
+
+
+    self.findSkillForUsers = function (users) {
+        return new models.hasSkill().query(function (qb) {
+            var ids = [];
+            for(var i = 0; i < users.length; i++){
+                ids.push(users[i].id);
+            }
+            qb.whereIn('user_id',ids);
+            console.log(qb.toString());
+        }).fetchAll({withRelated: ['skill']});
+
     };
 
 

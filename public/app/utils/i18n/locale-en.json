@@ -1,6 +1,9 @@
 {
   "header.home": "News",
   "header.users": "Users",
+  "header.import" : "Import",
+  "header.utils" : "Utils",
+  "import.xsl" : "Import .xls file",
   "reminders": "Reminders",
   "users": "users",
   "date.format": "dd/MM/yyyy",
@@ -60,5 +63,6 @@
   "for.user": "for the user",
   "form.error": "Please, fill the mandatory inputs",
   "user.success": "User successfully updated",
+  "upload.success" : "File imported. Insertions : ",
   "reminder.success": "Reminder successfully updated"
 }
