@@ -66,11 +66,10 @@ CsvImportService = function (bookshelf, logger) {
                     var interview = interviews[i];
                     promises.push(insertUserAndInterview(user, interview, trx));
                 }
-                return Promise.all(promises).then(function (dataArray) {
+                Promise.all(promises).then(function () {
                     trx.commit();
-                    success(dataArray.length);
                 });
-            });
+            }).then(success());
 
         })
     };
@@ -79,8 +78,7 @@ CsvImportService = function (bookshelf, logger) {
         return new Promise(function (success, reject) {
             if (user.nom && user.prenom) {
                 knex.insert(user).into('user').transacting(trx).then(function (id) {
-                    var id_user = id[0];
-                    interview.user_id = id_user;
+                    interview.user_id = id[0];
                     knex.insert(interview).into('interview').transacting(trx).then(function (id) {
                         success();
                     });

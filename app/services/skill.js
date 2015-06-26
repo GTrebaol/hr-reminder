@@ -29,7 +29,6 @@ SkillService = function (models, logger, underscore) {
                 ids.push(users[i].id);
             }
             qb.whereIn('user_id',ids);
-            console.log(qb.toString());
         }).fetchAll({withRelated: ['skill']});
 
     };

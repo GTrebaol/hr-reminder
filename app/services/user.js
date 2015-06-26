@@ -42,7 +42,6 @@ UserService = function (models, logger, bookshelf) {
         if (!count) {
             query.limit(filters.limit).offset(offset);
         }
-        console.log(query.toString());
         return query;
 
     };
