@@ -23,7 +23,7 @@ Services.initialize = function (configuration, logger) {
 
     var assert = require('assert');
     var path = require('path');
-    var underscore = require('underscore');
+    var _ = require('underscore');
 
 
     services.knex = knex;
@@ -34,9 +34,9 @@ Services.initialize = function (configuration, logger) {
     services.csvImport = require('./utils/csvImport.js')(services.bookshelf, logger);
 
     // Register all services
-    services.user = require('./user.js')(services.models, logger, services.bookshelf);
+    services.user = require('./user.js')(services.models, logger, services.bookshelf, _);
     services.reminder = require('./reminder.js')(services.models, services.date);
-    services.skill = require('./skill.js')(services.models, logger, underscore);
+    services.skill = require('./skill.js')(services.models, logger, _);
 
 
     return services;

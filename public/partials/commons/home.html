@@ -1,12 +1,12 @@
 <article class="table-reminders">
   <table ng-table="table-reminders" class="table table-striped table-bordered">
     <tbody>
-    <tr ng-if="findAllPastReminders.length">
+    <tr ng-if="allPastReminders.length">
       <td colspan=7>
         <h3>Rappels en retard</h3>
       </td>
     </tr>
-    <tr ng-if="findAllPastReminders.length">
+    <tr ng-if="allPastReminders.length">
       <th>{{'state'|translate}}</th>
       <th>{{'reminder.date'|translate}}</th>
       <th>{{'user.name'|translate}}</th>
@@ -15,10 +15,10 @@
       <th>{{'comment'|translate}}</th>
       <th>{{'actions'|translate}}</th>
     </tr>
-    <tr ng-repeat="reminder in findAllPastReminders | orderBy:'date_rappel'">
+    <tr ng-repeat="reminder in allPastReminders | orderBy:'date_rappel'">
       <td style="background-color:red"></td>
       <td><span>{{::reminder.date_rappel | date : 'dd/MM/yyyy'}}</span></td>
-      <td><span>{{::reminder.user.nom}} {{::reminder.user.prenom}}</span></td>
+      <td><span><a href="/user/{{reminder.user.id}}/view">{{::reminder.user.nom}} {{::reminder.user.prenom}}</a></span></td>
       <td><span>{{::reminder.user.telephone}} </span></td>
       <td><span>{{::reminder.user.mail}} </span></td>
       <td><span>{{::reminder.commentaire}}</span></td>
@@ -44,7 +44,7 @@
     <tr ng-repeat="reminder in allUpcomingReminders | orderBy:'date_rappel'">
       <td style="background-color:orange"></td>
       <td><span>{{::reminder.date_rappel | date : 'dd/MM/yyyy'}}</span></td>
-      <td><span>{{::reminder.user.nom}} {{::reminder.user.prenom}}</span></td>
+      <td><span><a href="/user/{{reminder.user.id}}/view">{{::reminder.user.nom}} {{::reminder.user.prenom}}</a></span></td>
       <td><span>{{::reminder.user.telephone}} </span></td>
       <td><span>{{::reminder.user.mail}} </span></td>
       <td><span>{{::reminder.commentaire}}</span></td>

@@ -64,7 +64,6 @@ module.exports.load = function (app, logger) {
 
     app.put('/api/user/update', function (req, res) {
         logger.debug("Routes - Utilisateur::update");
-        logger.debug(req.body);
         services.user.save(req.body).then(function (model) {
             return res.json(model);
         }).catch(function (error) {

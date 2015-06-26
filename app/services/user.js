@@ -7,22 +7,24 @@
  * @param logger
  * @param bookshelf
  */
-UserService = function (models, logger, bookshelf) {
+UserService = function (models, logger, bookshelf, _) {
 
 
     var self = {};
 
     /**
-     * Retourne un user avec ces rappels
+     * find an user by its id
      *
      * @param id
-     * @returns {models.utilisateur}
+     * @returns {models.user}
      */
     self.findById = function (id) {
         return new models.user({id: parseInt(id)}).fetch({withRelated: ['reminders', 'skills', 'customers', 'interviews']});
     };
 
     /**
+     *
+     * Find the users based on the filters values
      *
      * @param filters
      * @param count
@@ -46,6 +48,13 @@ UserService = function (models, logger, bookshelf) {
 
     };
 
+    /**
+     *  create subquery for skill filtering
+     * @param query
+     * @param filters
+     * @returns {*}
+     * @private
+     */
     self._addSkillsFilter = function(query, filters){
         if(filters.skills && Object.keys(filters.skills).length > 0){
             var subquery = bookshelf.knex.select('user_has_skill.user_id').from('skill').innerJoin('user_has_skill', 'skill.id', 'user_has_skill.skill_id');
@@ -64,6 +73,12 @@ UserService = function (models, logger, bookshelf) {
         return query;
     };
 
+    /**
+     * Create a subquery for the discr filters
+     * @param query
+     * @param filters
+     * @private
+     */
     self._addDiscrFilter = function (query, filters) {
         if (filters.discr && Object.keys(filters.discr).length > 0) {
             query.andWhere(function () {
@@ -81,36 +96,43 @@ UserService = function (models, logger, bookshelf) {
         }
     };
 
-
+    /**
+     * Count
+     * @returns {*}
+     */
     self.count = function () {
         return new models.user().query().count('id as cnt');
     };
 
+    /**
+     * Find an user by it's name
+     * @param name
+     * @returns {*}
+     */
     self.findByName = function (name) {
         return new models.user().query(function (qb) {
             qb.where('nom', 'LIKE', '%' + name + '');
         }).fetch({withRelated: ['rappels']});
     };
 
+    /**
+     * Find users by their discr
+     * @param discr
+     * @returns {*}
+     */
     self.findAllByDiscr = function (discr) {
         return new models.user({discr: discr}).fetchAll();
     };
 
+    /**
+     * insert or update an user
+     * @param model
+     * @returns {*}
+     */
     self.save = function (model) {
         // The ORM doesn't remove the relations before doing operations on the entity.
-        if (model.reminders) {
-            delete(model.reminders);
-        }
-        if(model.interviews){
-            delete(model.interviews);
-        }
-        if(model.skills){
-            delete(model.skills);
-        }
-        if(model.customers){
-            delete(model.customers);
-        }
-        return models.user.forge(model).save();
+        var newModel = _.omit(model, _.isObject);
+        return models.user.forge(newModel).save();
     };
 
     return self;
