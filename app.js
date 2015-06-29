@@ -91,6 +91,7 @@ var server = http.createServer(app);
 
 server.listen(app.get('port'), app.get('ipaddress'), function () {
     logger.debug('Server running and listening on ' + app.get('ipaddress') + ':' + app.get('port'));
+    logger.debug('Chosen environment : '+env);
 });
 
 server.on('error', function (e) {

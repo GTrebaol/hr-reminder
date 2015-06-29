@@ -2,6 +2,20 @@
 
 Human resources staff needs to be reminded when and why a job applicant should be contacted. This application is meant to full fill that need.
 
+
+#Installation
+
+Pre-requisites : git, MySQL server, node, bower
+
+1. Clone the project : `git clone http://github.com/GTrebaol/hr-reminder.git`.
+2. Install the backend dependencies : get in the project folder and launch `npm install`.
+3. Install the frontend dependencies : get in the `/public/` folder and launch `bower install`.
+4. Load the MySQL schema script existing in `/utils/sql/1.create_schema.sql`.
+5. Check the configuration values in the files `/app/config/`
+6. Choose your environment by setting the NODE_ENV value.
+7. Launch the server : `node app.js`
+
+
 ## Models
 ### User
 ```
