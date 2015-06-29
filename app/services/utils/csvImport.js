@@ -18,7 +18,7 @@ CsvImportService = function (bookshelf, logger) {
     var knex = bookshelf.knex;
 
 
-    var consultantsMapping = {
+    var candidatsMapping = {
         'nom': 'L',
         'prenom': 'M',
         'age': 'N',
@@ -98,27 +98,17 @@ CsvImportService = function (bookshelf, logger) {
         for (var i = 2; ; i++) {
             var user = {};
             var interview = {};
-            for (var attr = 0; attr < Object.keys(consultantsMapping).length; attr++) {
-                var indexName = Object.keys(consultantsMapping)[attr];
-                var xslCase = consultantsMapping[indexName] + i.toString();
+            for (var attr = 0; attr < Object.keys(candidatsMapping).length; attr++) {
+                var indexName = Object.keys(candidatsMapping)[attr];
+                var xslCase = candidatsMapping[indexName] + i.toString();
                 if (worksheet[xslCase] != undefined) {
                     var value = worksheet[xslCase].w;
                     var type = worksheet[xslCase].t;
-                    var key = Object.keys(consultantsMapping)[attr];
+                    var key = Object.keys(candidatsMapping)[attr];
                     if (type != 'e') {
-                        if (attr == 9 || attr == 10) {
-                            if (attr == 10) {
-                                var regex = "([0-9]{1,2})\/([0-9]{1,2})\/([0-9]{2,4})";
-                                var result = value.match(regex);
-                                if (result && result.length >= 3) {
-                                    if (type == 'n') {
-                                        value = (result[3].length > 2 ? result[3] : "20" + result[3]) + "-" + (result[1].length > 1 ? result[1] : "0" + result[1]) + "-" + (result[2].length > 1 ? result[2] : "0" + result[2]);
-                                    } else {
-                                        value = result[3] + "-" + result[2] + "-" + result[1];
-                                    }
-                                }
-                            }
-                            interview[key] = value;
+                        if (isInterview(attr)) {
+                            interview[key] = handleDateInterview(value, attr);
+                            ;
                         } else {
                             user[key] = value;
                         }
@@ -138,6 +128,26 @@ CsvImportService = function (bookshelf, logger) {
         }
         return {'users': users, 'interviews': interviews};
 
+    };
+
+
+    var handleDateInterview = function (value, attr) {
+        if (attr == 10) {
+            var regex = "([0-9]{1,2})\/([0-9]{1,2})\/([0-9]{2,4})";
+            var result = value.match(regex);
+            if (result && result.length >= 3) {
+                if (type == 'n') {
+                    value = (result[3].length > 2 ? result[3] : "20" + result[3]) + "-" + (result[1].length > 1 ? result[1] : "0" + result[1]) + "-" + (result[2].length > 1 ? result[2] : "0" + result[2]);
+                } else {
+                    value = result[3] + "-" + result[2] + "-" + result[1];
+                }
+            }
+        }
+        return value;
+    };
+
+    var isInterview = function (attr) {
+        return attr == 9 || attr == 10;
     };
 
     return self;

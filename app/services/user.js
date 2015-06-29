@@ -126,13 +126,13 @@ UserService = function (models, logger, bookshelf, _) {
 
     /**
      * insert or update an user
-     * @param model
      * @returns {*}
+     * @param user
      */
-    self.save = function (model) {
+    self.save = function (user) {
         // The ORM doesn't remove the relations before doing operations on the entity.
-        var newModel = _.omit(model, _.isObject);
-        return models.user.forge(newModel).save();
+        var userNoRelations = _.omit(user, _.isObject);
+        return models.user.forge(userNoRelations).save();
     };
 
     return self;
