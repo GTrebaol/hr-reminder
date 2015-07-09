@@ -1,6 +1,6 @@
 # Documentation
 
-Human resources staff needs to be reminded when and why a job applicant should be contacted. This application is meant to full fill that need.
+Human resources staff needs to be reminded when and why a job applicant should be contacted. This application is meant to fulfil that need.
 
 
 #Installation
