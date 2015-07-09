@@ -107,7 +107,7 @@ CsvImportService = function (bookshelf, logger) {
                     var key = Object.keys(candidatsMapping)[attr];
                     if (type != 'e') {
                         if (isInterview(attr)) {
-                            interview[key] = handleDateInterview(value, attr);
+                            interview[key] = handleDateInterview(value, attr, type);
                             ;
                         } else {
                             user[key] = value;
@@ -131,7 +131,7 @@ CsvImportService = function (bookshelf, logger) {
     };
 
 
-    var handleDateInterview = function (value, attr) {
+    var handleDateInterview = function (value, attr, type) {
         if (attr == 10) {
             var regex = "([0-9]{1,2})\/([0-9]{1,2})\/([0-9]{2,4})";
             var result = value.match(regex);
